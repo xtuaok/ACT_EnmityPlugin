@@ -156,7 +156,7 @@ namespace Tamagawa.EnmityPlugin
             {
                 enmity.Target = new TargetInfo
                 {
-                    Name = "",
+                    Name = "No target",
                     ID = 0,
                     MaxHP = 0,
                     CurrentHP = 0,
