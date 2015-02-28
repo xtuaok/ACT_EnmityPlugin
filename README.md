@@ -15,7 +15,8 @@ OverlayPluginをインストールしたフォルダに、ZIPの中身をすべ�
 
 ## 使い方
 
-OverlayPlugin と概ね変わりません。
+OverlayPlugin と概ね変わりません。  
+ACTのPluginListからEnmityPlugin.dllをロードすれば使えるようになります。 
 
 ## 表示する情報について
 
