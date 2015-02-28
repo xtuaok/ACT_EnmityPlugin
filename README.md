@@ -1,6 +1,6 @@
 # EnmityPlugin
 
-OverlayPlugin の機能をつかって、現在のターゲットの敵視量、距離、HP等をオーバーレイ表示するプラグインです。 
+[OverlayPlugin](https://github.com/RainbowMage/OverlayPlugin) の機能をつかって、現在のターゲットの敵視量、距離、HP等をオーバーレイ表示するプラグインです。 
 
 ![sample](https://raw.githubusercontent.com/xtuaok/ACT_EnmityPlugin/master/sample.png)  
 
@@ -23,7 +23,7 @@ ACTのPluginListからEnmityPlugin.dllをロードすれば使えるようにな
 メモリに存在するカレントターゲットの敵視値を表示します。  
 計算等で算出しているのものではないので、リアルな値として参考になります。   
 メモリには上位16キャラ分存在するので最大で16キャラ分表示されます。  
-名前の下に表示されているゲージはヘイト1位との相対的な敵視量のグラフで、デフォルトでは自分は赤の棒で表現されます。
+名前の下に表示されているゲージはヘイト1位との相対的な敵視量のグラフで、デフォルトでは自分のゲージは赤、自分以外は緑で表現されます。
 
 さらに、ターゲットとの距離、HPパーセント、HP/HPMaxが表示可能です。  
 その他表示できる項目については resources/enmity.html のサンプルJSONを参考にしてください。  
