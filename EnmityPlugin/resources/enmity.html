@@ -1,4 +1,4 @@
-<html>
+﻿<html>
 <head>
   <meta charset="utf-8" />
   <title></title>
@@ -102,7 +102,7 @@
       display: block;
       bottom: -15px;
       height: 3px;
-      background-color: rgba(0,255,0,0.5);
+      background-color: rgba(145, 63, 65, 0.50);
       z-index: 1;
     }
 
@@ -110,10 +110,17 @@
       position: relative;
     }
 
-    .me {
-      background-color: rgba(255,0,0,0.5);
+    .PLD,.WAR,.MRD,GLD {
+      background-color: rgba(70,96,226,0.5);
     }
-  </style>
+    .CNJ,.WHM,.SCH {
+      background-color: rgba(70,129,47,0.5);
+    }
+    .content .me {
+      color: #FFFF00;
+	    text-shadow: -1px 0 2px #594709, 0 1px 2px #594709, 1px 0 2px #594709, 0 -1px 2px #594709;
+    }
+	</style>
   <script>
 
     //
@@ -124,8 +131,9 @@
       "Enmity": {
         "Target": { 'Name': 'マンドラゴラ・プライム', 'HPPercent': '17.74%', 'CurrentHP': 221004, 'MaxHP': 1245321, 'Distance': '3.02m' },
         "Entries": [
-          { "Name": 'Tomonori Tamagawa', "Enmity": 128923, 'EnmityString': '128,923', 'isMe': true, 'HateRate': 100 },
-          { "Name": 'Tomonori Arakawa', "Enmity": 3845, 'EnmityString': '3,845', 'isMe': false, 'HateRate': 20 }
+          { "Name": 'Tomonori Tamagawa', "Enmity": 128923, 'EnmityString': '128,923', 'isMe': true, 'HateRate': 100,'JobName':"WAR" },
+          { "Name": 'Tomonori Arakawa', "Enmity": 3845, 'EnmityString': '3,845', 'isMe': false, 'HateRate': 20, 'JobName': 'SCH' },
+          { "Name": 'Tomonori Tonegawa', "Enmity": 0, 'EnmityString': '0', 'isMe': false, 'HateRate': 00, 'JobName': 'WHM' }
         ]
       }
     };
@@ -149,8 +157,24 @@
     var useHTMLTargetDefine = true;
 
     // 表示するデータの定義
-    var bodyDefine = "<span class='character'>{Name}</span><span class='enmity'>{Enmity}</span>";
-
+    //var bodyDefine = "<span class='character'>{Name}</span><span class='enmity'>{EnmityString}</span>";
+    var bodyDefine = function (e) {
+      var content = document.createElement('div');
+      var name = document.createElement('span');
+      var enmity = document.createElement('name');
+      content.classList.add('content');
+      name.classList.add('character');
+      enmity.classList.add('enmity');
+      if (e.isMe == true) {
+        name.classList.add('me');
+        enmity.classList.add('me');
+      }
+      name.innerText = e.Name;
+      enmity.innerText = e.Enmity
+      content.appendChild(name);
+      content.appendChild(enmity);
+      return content;
+    };
     //
     // 以下表示用スクリプト
     //
@@ -180,7 +204,7 @@
           return;
         }
       } else if (typeof targetDefine === 'string') {
-        elementText = targetDefine.replace(/{(.+?)}/g, function (_, key) { return data.Enmity.Target[key] || ""; });
+        elementText = targetDefine.replace(/{(.+?)}/g, function (_, key) { return key in data.Enmity.Target ? data.Enmity.Target[key] : ""; });
       } else {
         console.log("updateTarget: 'targetDefine' should be string or function that returns string.");
         return;
@@ -207,26 +231,29 @@
       body.innerHTML = '';
 
       // List の内容を作成
-      for (var entryIndex in data.Enmity.Entries) {
-        var entry = data.Enmity.Entries[entryIndex];
-        // var li = document.createElement('li');
+      data.Enmity.Entries.forEach(function(entry, index, array) {
         var box = document.createElement('div');
         var graph = document.createElement('div');
-        var content = document.createElement('div');
-        // クラス
         box.classList.add('box');
+        graph.classList.add(entry.JobName);
         graph.classList.add('gauge');
-        content.classList.add('content');
         graph.style.width = "" + entry.HateRate + "%";
         if (entry.isMe == true) {
           graph.classList.add('me');
         }
-        content.innerHTML = bodyDefine.replace(/{(.+?)}/g, function (_, key) { return entry[key] || ""; });
-        // li.appendChild(box);
-        box.appendChild(content);
+        if (typeof (bodyDefine) == 'string') {
+          var content = document.createElement('div');
+          // クラス
+          content.classList.add('content');
+          content.innerHTML = bodyDefine.replace(/{(.+?)}/g, function (_, key) { return key in entry ? entry[key] : ""; });
+          box.appendChild(content);
+        } else {
+          content = bodyDefine(entry);
+          box.appendChild(content);
+        }
         box.appendChild(graph);
         body.appendChild(box);
-      }
+      });
     }
   </script>
 </head>

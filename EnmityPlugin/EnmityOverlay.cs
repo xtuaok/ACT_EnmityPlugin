@@ -214,6 +214,7 @@ namespace Tamagawa.EnmityPlugin
                             if (c != null)
                             {
                                 entry.Name = c.Name;
+                                entry.Job = c.Job;
                             }
                             if (entry.ID == mypc.ID)
                             {
@@ -285,6 +286,44 @@ namespace Tamagawa.EnmityPlugin
             };
         }
 
+        ///
+        /// Job enum
+        ///
+        public enum JobEnum : byte
+        {
+            UNKNOWN,
+            GLD,
+            PGL,
+            MRD,
+            LNC,
+            ARC,
+            CNJ,
+            THM,
+            CRP,
+            BSM,
+            ARM,
+            GSM,
+            LTW,
+            WVR,
+            ALC,
+            CUL,
+            MIN,
+            BTN,
+            FSH,
+            PLD,
+            MNK,
+            WAR,
+            DRG,
+            BRD,
+            WHM,
+            BLM,
+            ACN,
+            SMN,
+            SCH,
+            ROG,
+            NIN
+        }
+
         //// 敵視されてるキャラエントリ
         private class EnmityEntry
         {
@@ -293,6 +332,14 @@ namespace Tamagawa.EnmityPlugin
             public uint Enmity;
             public bool isMe;
             public int HateRate;
+            public int Job;
+            public string JobName
+            {
+                get
+                {
+                    return Enum.GetName(typeof(JobEnum), Job);
+                }
+            }
             public string EnmityString
             {
                 get
