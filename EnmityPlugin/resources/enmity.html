@@ -102,7 +102,7 @@
       display: block;
       bottom: -15px;
       height: 3px;
-      background-color: rgba(145, 63, 65, 0.50);
+      background-color: rgba(145, 63, 65, 0.75);
       z-index: 1;
     }
 
@@ -111,10 +111,10 @@
     }
 
     .PLD,.WAR,.MRD,GLD {
-      background-color: rgba(70,96,226,0.5);
+      background-color: rgba(70,96,226,0.75);
     }
     .CNJ,.WHM,.SCH {
-      background-color: rgba(70,129,47,0.5);
+      background-color: rgba(70,129,47,0.75);
     }
     .content .me {
       color: #FFFF00;
@@ -170,7 +170,7 @@
         enmity.classList.add('me');
       }
       name.innerText = e.Name;
-      enmity.innerText = e.Enmity
+      enmity.innerText = e.EnmityString;
       content.appendChild(name);
       content.appendChild(enmity);
       return content;

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Resources;
 using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,7 @@ namespace Tamagawa.EnmityPlugin
         private IntPtr charmapAddress = IntPtr.Zero;
         private IntPtr targetAddress = IntPtr.Zero;
         private IntPtr hateAddress = IntPtr.Zero;
+        private bool suppress_log = false;
 
         public EnmityOverlay(EnmityOverlayConfig config)
             : base(config, "EnmityOverlay")
@@ -41,10 +43,14 @@ namespace Tamagawa.EnmityPlugin
                 {
                     if (pid != FFXIVPluginHelper.GetFFXIVProcess.Id)
                     {
-                        getPointerAddress();
                         pid = FFXIVPluginHelper.GetFFXIVProcess.Id;
-                        // スキャン間隔をもどす
-                        timer.Interval = this.Config.ScanInterval;
+                        if (pid != 0)
+                        {
+                            getPointerAddress();
+                            // スキャン間隔をもどす
+                            timer.Interval = this.Config.ScanInterval;
+                            suppress_log = false;
+                        }
                     }
                 }
             }
@@ -97,7 +103,11 @@ namespace Tamagawa.EnmityPlugin
                 checkProcessId(); // プロセスチェック
                 if (pid == 0)
                 {
-                    Log(LogLevel.Warning, "Could not get FFXIV Process.Id");
+                    if (suppress_log == false)
+                    {
+                        Log(LogLevel.Warning, Messages.ProcessNotFound);
+                        suppress_log = true;
+                    }
                     // スキャン間隔を一旦遅くする
                     timer.Interval = 3000;
                     return;
@@ -257,7 +267,7 @@ namespace Tamagawa.EnmityPlugin
             }
             timer.Interval = this.Config.ScanInterval;
             timer.Start();
-            Log(LogLevel.Info, "Memory scanning started");
+            Log(LogLevel.Info, Messages.StartScanning);
         }
 
         /// <summary>
@@ -266,7 +276,7 @@ namespace Tamagawa.EnmityPlugin
         public new void Stop()
         {
             timer.Stop();
-            Log(LogLevel.Info, "Memory scanning stopped.");
+            Log(LogLevel.Info, Messages.StopScanning);
         }
 
         protected override void InitializeTimer()

@@ -12,6 +12,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Threading;
 using System.Text.RegularExpressions;
+using System.Resources;
 
 namespace Tamagawa.EnmityPlugin
 {
@@ -52,6 +53,9 @@ namespace Tamagawa.EnmityPlugin
 
                 // プラグインの配置してあるフォルダを検索するカスタムリゾルバーでアセンブリを解決する
                 AppDomain.CurrentDomain.AssemblyResolve += CustomAssemblyResolve;
+
+                // アップデートチェック
+                this.UpdateCheck();
 
                 // コンフィグ系読み込み
                 LoadConfig();
@@ -147,31 +151,31 @@ namespace Tamagawa.EnmityPlugin
             catch (FileLoadException ex)
             {
                 var message = string.Format(
-                    Localization.GetText(TextItem.RequiredAssemblyFileCannotRead),
+                    Messages.RequiredAssemblyFileCannotRead,
                     path
                     );
                 Log(LogLevel.Error, "AssemblyResolve: => {0}", message);
                 Log(LogLevel.Error, "AssemblyResolve: => {0}", ex);
-                MessageBox.Show(message, Localization.GetText(TextItem.ErrorTitle), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(message, Messages.ErrorTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (NotSupportedException ex)
             {
                 var message = string.Format(
-                    Localization.GetText(TextItem.RequiredAssemblyFileBlocked),
+                    Messages.RequiredAssemblyFileBlocked,
                     path
                     );
                 Log(LogLevel.Error, "AssemblyResolve: => {0}", message);
                 Log(LogLevel.Error, "AssemblyResolve: => {0}", ex);
-                MessageBox.Show(message, Localization.GetText(TextItem.ErrorTitle), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(message, Messages.ErrorTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
                 var message = string.Format(
-                    Localization.GetText(TextItem.RequiredAssemblyFileException),
+                    Messages.RequiredAssemblyFileException,
                     path
                     );
                 Log(LogLevel.Error, "AssemblyResolve: => {0}", ex);
-                MessageBox.Show(message, Localization.GetText(TextItem.ErrorTitle), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(message, Messages.ErrorTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             return null;
@@ -260,6 +264,18 @@ namespace Tamagawa.EnmityPlugin
 #endif
 
             this.Logs.Add(new LogEntry(level, DateTime.Now, message));
+        }
+
+        /// <summary>
+        /// アップデートチェック
+        /// </summary>
+        private void UpdateCheck()
+        {
+            var message = UpdateChecker.Check();
+            if (!string.IsNullOrWhiteSpace(message))
+            {
+                Log(LogLevel.Info, "UpdateChecker: {0}", message);
+            }
         }
 
         internal void Log(LogLevel level, string format, params object[] args)
