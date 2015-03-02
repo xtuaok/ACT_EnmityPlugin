@@ -1,4 +1,4 @@
-﻿<html>
+<html>
 <head>
   <meta charset="utf-8" />
   <title></title>
@@ -180,7 +180,7 @@
           return;
         }
       } else if (typeof targetDefine === 'string') {
-        elementText = targetDefine.replace(/{(.+?)}/g, function (_, key) { return data.Enmity.Target[key]; });
+        elementText = targetDefine.replace(/{(.+?)}/g, function (_, key) { return data.Enmity.Target[key] || ""; });
       } else {
         console.log("updateTarget: 'targetDefine' should be string or function that returns string.");
         return;
@@ -221,7 +221,7 @@
         if (entry.isMe == true) {
           graph.classList.add('me');
         }
-        content.innerHTML = bodyDefine.replace(/{(.+?)}/g, function (_, key) { return entry[key]; });
+        content.innerHTML = bodyDefine.replace(/{(.+?)}/g, function (_, key) { return entry[key] || ""; });
         // li.appendChild(box);
         box.appendChild(content);
         box.appendChild(graph);
