@@ -102,7 +102,7 @@
       display: block;
       bottom: -15px;
       height: 3px;
-      background-color: rgba(145, 63, 65, 0.75);
+      background-color: rgba(101, 50, 50, 0.75);
       z-index: 1;
     }
 
@@ -111,10 +111,13 @@
     }
 
     .PLD,.WAR,.MRD,GLD {
-      background-color: rgba(70,96,226,0.75);
+      background-color: rgba(52,67,150,0.75);
     }
     .CNJ,.WHM,.SCH {
-      background-color: rgba(70,129,47,0.75);
+      background-color: rgba(57,101,39,0.75);
+    }
+    .Pet {
+      background-color: rgba(150,147,52,0.75);
     }
     .content .me {
       color: #FFFF00;
@@ -240,6 +243,9 @@
         graph.style.width = "" + entry.HateRate + "%";
         if (entry.isMe == true) {
           graph.classList.add('me');
+        }
+        if (entry.isPet == true) {
+          graph.classList.add('Pet');
         }
         if (typeof (bodyDefine) == 'string') {
           var content = document.createElement('div');

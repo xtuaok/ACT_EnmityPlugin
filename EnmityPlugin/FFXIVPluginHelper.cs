@@ -112,6 +112,8 @@ namespace Tamagawa.EnmityPlugin
 
                         fi = temp.GetType().GetField("ID", BindingFlags.Public | BindingFlags.Instance);
                         combatant.ID = (uint)fi.GetValue(temp);
+                        fi = temp.GetType().GetField("OwnerID", BindingFlags.Public | BindingFlags.Instance);
+                        combatant.OwnerID = (uint)fi.GetValue(temp);
                         fi = temp.GetType().GetField("Job", BindingFlags.Public | BindingFlags.Instance);
                         combatant.Job = (int)fi.GetValue(temp);
                         fi = temp.GetType().GetField("Name", BindingFlags.Public | BindingFlags.Instance);

@@ -225,6 +225,7 @@ namespace Tamagawa.EnmityPlugin
                             {
                                 entry.Name = c.Name;
                                 entry.Job = c.Job;
+                                entry.OwnerID = c.OwnerID;
                             }
                             if (entry.ID == mypc.ID)
                             {
@@ -338,6 +339,7 @@ namespace Tamagawa.EnmityPlugin
         private class EnmityEntry
         {
             public uint ID;
+            public uint OwnerID;
             public string Name;
             public uint Enmity;
             public bool isMe;
@@ -355,6 +357,13 @@ namespace Tamagawa.EnmityPlugin
                 get
                 {
                     return Enmity.ToString("##,#");
+                }
+            }
+            public bool isPet
+            {
+                get
+                {
+                    return (OwnerID != 0);
                 }
             }
         }
