@@ -7,6 +7,10 @@
 表示部にOverlayPluginの機能を使用しているため、OverlayPluginの導入が必要です。   
 (必ずしもOverlayPluginをACTでロードする必要はありませんが、適切な場所に配置されている必要があります。)
 
+## ダウンロード
+
+[リリースページ](https://github.com/xtuaok/ACT_EnmityPlugin/releases/latest)よりダウンロードできます。
+
 ## インストール
 
 OverlayPluginをインストールしたフォルダに、ZIPの中身をすべてコピーします。   
