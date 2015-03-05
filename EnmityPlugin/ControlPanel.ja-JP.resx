@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label11.Text" xml:space="preserve">
-    <value>※最大フレームレートの変更を有効にするためにはプラグインの再起動が必要です</value>
+    <value>※最大フレームレートおよびホットキーの変更を有効にするためにはプラグインの再起動が必要です</value>
   </data>
   <data name="label14.Text" xml:space="preserve">
     <value>最大フレームレート</value>
@@ -141,7 +141,35 @@
   <data name="label18.Text" xml:space="preserve">
     <value>スキャン間隔 (ミリ秒)</value>
   </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>グローバルホットキーを使用</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="textEnmityGlobalHotkey.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 19</value>
+  </data>
   <data name="tabPage3.Text" xml:space="preserve">
     <value>ターゲットの敵視</value>
+  </data>
+  <data name="menuCopyLogAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 22</value>
+  </data>
+  <data name="menuLogCopy.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 22</value>
+  </data>
+  <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>179, 6</value>
+  </data>
+  <data name="menuFollowLatestLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 22</value>
+  </data>
+  <data name="toolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>179, 6</value>
+  </data>
+  <data name="menuClearLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 22</value>
+  </data>
+  <data name="contextMenuLogList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>183, 104</value>
   </data>
 </root>

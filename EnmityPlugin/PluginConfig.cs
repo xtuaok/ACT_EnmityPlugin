@@ -30,6 +30,7 @@ namespace Tamagawa.EnmityPlugin
             this.EnmityOverlay = new EnmityOverlayConfig();
             this.EnmityOverlay.Position = new Point(320, 20);
             this.EnmityOverlay.Size = new Size(300, 500);
+            this.EnmityOverlay.IsVisible = false;
             this.FollowLatestLog = false;
             this.IsFirstLaunch = true;
         }

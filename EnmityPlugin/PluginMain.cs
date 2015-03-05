@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Reflection;
 using RainbowMage.HtmlRenderer;
+using RainbowMage.OverlayPlugin;
 using System;
 using System.Drawing;
 using System.IO;
@@ -296,14 +297,5 @@ namespace Tamagawa.EnmityPlugin
             this.Level = level;
             this.Time = time;
         }
-    }
-
-    public enum LogLevel
-    {
-        Trace,
-        Debug,
-        Info,
-        Warning,
-        Error
     }
 }

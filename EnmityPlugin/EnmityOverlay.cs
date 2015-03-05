@@ -9,13 +9,12 @@ using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
+using RainbowMage.OverlayPlugin;
 
 namespace Tamagawa.EnmityPlugin
 {
-    class EnmityOverlay : RainbowMage.OverlayPlugin.OverlayBase<EnmityOverlayConfig>
+    class EnmityOverlay : OverlayBase<EnmityOverlayConfig>
     {
-        public new event EventHandler<LogEventArgs> OnLog;
-
         private static string charmapSignature = "FFFFFFFF????????DB0FC93FDB0F49416F12833A00000000????????DB0FC93FDB0F49416F12833A00000000";
         private static int charmapOffset = 44;
         private static string targetSignature = "403F00000000000000000000000000000000????0000????000000000000??000000????????DB0FC93FDB0F49416F12833A";
@@ -26,10 +25,21 @@ namespace Tamagawa.EnmityPlugin
         private IntPtr hateAddress = IntPtr.Zero;
         private bool suppress_log = false;
 
-        public EnmityOverlay(EnmityOverlayConfig config)
-            : base(config, "EnmityOverlay")
-        {
-            /// ここでロガーは使えない
+        public EnmityOverlay(EnmityOverlayConfig config) : base(config, "EnmityOverlay")
+        {            
+            /// FIXME: 継承するとなぜかOnLogできないので追加する
+            this.Overlay.Renderer.BrowserError += (o, e) =>
+            {
+                Log(LogLevel.Error, "BrowserError: {0}, {1}, {2}", e.ErrorCode, e.ErrorText, e.Url);
+            };
+            this.Overlay.Renderer.BrowserLoad += (o, e) =>
+            {
+                Log(LogLevel.Debug, "BrowserLoad: {0}: {1}", e.HttpStatusCode, e.Url);
+            };
+            this.Overlay.Renderer.BrowserConsoleLog += (o, e) =>
+            {
+                Log(LogLevel.Info, "BrowserConsole: {0} (Source: {1}, Line: {2})", e.Message, e.Source, e.Line);
+            };
         }
 
         /// <summary>
@@ -74,7 +84,7 @@ namespace Tamagawa.EnmityPlugin
             if (list.Count == 1)
             {
                 charmapAddress = list[0];
-                hateAddress = charmapAddress - 120584 - 80; // patch 2.51
+                hateAddress = charmapAddress - 120664; // patch >= 2.51
             }
 
             /// TARGET
@@ -91,10 +101,10 @@ namespace Tamagawa.EnmityPlugin
             Log(LogLevel.Debug, "Target Address: 0x{0:X}", (int)targetAddress);
         }
 
-        public override void Navigate(string url)
-        {
-            base.Navigate(url);
-        }
+        //public override void Navigate(string url)
+        //{
+        //    base.Navigate(url);
+        //}
 
         protected override void Update()
         {
@@ -110,7 +120,7 @@ namespace Tamagawa.EnmityPlugin
                     }
                     // スキャン間隔を一旦遅くする
                     timer.Interval = 3000;
-                    return;
+                    // return; 一応表示するので戻らない
                 }
 
                 var updateScript = CreateEventDispatcherScript();
@@ -138,6 +148,7 @@ namespace Tamagawa.EnmityPlugin
             var serializer = new JavaScriptSerializer();
             /// Overlay に渡すオブジェクト
             EnmityObject enmity = new EnmityObject();
+            enmity.Entries = new List<EnmityEntry>();
 
             uint currentTarget;
             uint currentTargetID;
@@ -146,7 +157,7 @@ namespace Tamagawa.EnmityPlugin
             if (pid == 0)
             {
                 enmity.Target = new TargetInfo{
-                    Name = "FFXIV seems not active",
+                    Name = "FFXIV process is not available.",
                     ID = 0,
                     MaxHP = 0,
                     CurrentHP = 0,
@@ -193,9 +204,6 @@ namespace Tamagawa.EnmityPlugin
                 {
                     /// 周辺の戦闘キャラリスト(IDからNameを取得するため)
                     List<Combatant> combatantList = FFXIVPluginHelper.GetCombatantList();
-
-                    /// ターゲットの敵視リスト(最大16)
-                    enmity.Entries = new List<EnmityEntry>();
 
                     /// 一度に全部読む
                     byte[] buffer = FFXIVPluginHelper.GetByteArray((uint)hateAddress.ToInt64(), 16 * 72);
@@ -373,30 +381,6 @@ namespace Tamagawa.EnmityPlugin
         {
             public TargetInfo Target;
             public List<EnmityEntry> Entries;
-        }
-
-        public new class LogEventArgs : EventArgs
-        {
-            public string Message { get; private set; }
-            public LogLevel Level { get; private set; }
-            public LogEventArgs(LogLevel level, string message)
-            {
-                this.Message = message;
-                this.Level = level;
-            }
-        }
-
-        protected void Log(LogLevel level, string message)
-        {
-            if (OnLog != null)
-            {
-                OnLog(this, new LogEventArgs(level, string.Format("{0}: {1}", this.Name, message)));
-            }
-        }
-
-        protected void Log(LogLevel level, string format, params object[] args)
-        {
-            Log(level, string.Format(format, args));
         }
     }
 }

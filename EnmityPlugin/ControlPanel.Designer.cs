@@ -51,6 +51,10 @@
             this.buttonEnmitySelectFile = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
             this.nudEnmityScanInterval = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.checkEnmityEnableGlobalHotkey = new System.Windows.Forms.CheckBox();
+            this.textEnmityGlobalHotkey = new System.Windows.Forms.TextBox();
             this.listViewLog = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -74,6 +78,7 @@
             this.tableLayoutPanel8.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudEnmityScanInterval)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.contextMenuLogList.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -109,9 +114,9 @@
             // tableLayoutPanel7
             // 
             resources.ApplyResources(this.tableLayoutPanel7, "tableLayoutPanel7");
-            this.tableLayoutPanel7.Controls.Add(this.label11, 1, 5);
-            this.tableLayoutPanel7.Controls.Add(this.label14, 0, 4);
-            this.tableLayoutPanel7.Controls.Add(this.nudEnmityMaxFrameRate, 1, 4);
+            this.tableLayoutPanel7.Controls.Add(this.label11, 1, 6);
+            this.tableLayoutPanel7.Controls.Add(this.label14, 0, 5);
+            this.tableLayoutPanel7.Controls.Add(this.nudEnmityMaxFrameRate, 1, 5);
             this.tableLayoutPanel7.Controls.Add(this.label15, 0, 1);
             this.tableLayoutPanel7.Controls.Add(this.label16, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.label17, 0, 2);
@@ -121,6 +126,8 @@
             this.tableLayoutPanel7.Controls.Add(this.tableLayoutPanel9, 1, 2);
             this.tableLayoutPanel7.Controls.Add(this.label18, 0, 3);
             this.tableLayoutPanel7.Controls.Add(this.nudEnmityScanInterval, 1, 3);
+            this.tableLayoutPanel7.Controls.Add(this.label1, 0, 4);
+            this.tableLayoutPanel7.Controls.Add(this.tableLayoutPanel1, 1, 4);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             // 
             // label11
@@ -256,6 +263,31 @@
             0});
             this.nudEnmityScanInterval.ValueChanged += new System.EventHandler(this.nudEnmityScanInterval_ValueChanged);
             // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // tableLayoutPanel1
+            // 
+            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
+            this.tableLayoutPanel1.Controls.Add(this.checkEnmityEnableGlobalHotkey, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.textEnmityGlobalHotkey, 1, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            // 
+            // checkEnmityEnableGlobalHotkey
+            // 
+            resources.ApplyResources(this.checkEnmityEnableGlobalHotkey, "checkEnmityEnableGlobalHotkey");
+            this.checkEnmityEnableGlobalHotkey.Name = "checkEnmityEnableGlobalHotkey";
+            this.checkEnmityEnableGlobalHotkey.UseVisualStyleBackColor = true;
+            this.checkEnmityEnableGlobalHotkey.CheckedChanged += new System.EventHandler(this.checkEnmityEnableGlobalHotkey_CheckedChanged);
+            // 
+            // textEnmityGlobalHotkey
+            // 
+            resources.ApplyResources(this.textEnmityGlobalHotkey, "textEnmityGlobalHotkey");
+            this.textEnmityGlobalHotkey.Name = "textEnmityGlobalHotkey";
+            this.textEnmityGlobalHotkey.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textEnmityGlobalHotkey_KeyDown);
+            // 
             // listViewLog
             // 
             resources.ApplyResources(this.listViewLog, "listViewLog");
@@ -353,6 +385,8 @@
             this.tableLayoutPanel9.ResumeLayout(false);
             this.tableLayoutPanel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudEnmityScanInterval)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.contextMenuLogList.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -392,5 +426,9 @@
         private System.Windows.Forms.Button buttonEnmitySelectFile;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.NumericUpDown nudEnmityScanInterval;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox checkEnmityEnableGlobalHotkey;
+        private System.Windows.Forms.TextBox textEnmityGlobalHotkey;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

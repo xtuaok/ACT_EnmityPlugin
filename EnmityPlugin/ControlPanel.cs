@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
 using System.Threading;
+using RainbowMage.OverlayPlugin;
 
 namespace Tamagawa.EnmityPlugin
 {
@@ -49,6 +50,9 @@ namespace Tamagawa.EnmityPlugin
             this.textEnmityUrl.Text = config.EnmityOverlay.Url;
             this.nudEnmityMaxFrameRate.Value = config.EnmityOverlay.MaxFrameRate;
             this.nudEnmityScanInterval.Value = config.EnmityOverlay.ScanInterval;
+            this.checkEnmityEnableGlobalHotkey.Checked = config.EnmityOverlay.GlobalHotkeyEnabled;
+            this.textEnmityGlobalHotkey.Enabled = this.checkEnmityEnableGlobalHotkey.Checked;
+            this.textEnmityGlobalHotkey.Text = GetHotkeyString(config.EnmityOverlay.GlobalHotkeyModifiers, config.EnmityOverlay.GlobalHotkey);
         }
 
         private void SetupEnmityConfigHandlers()
@@ -88,7 +92,30 @@ namespace Tamagawa.EnmityPlugin
                     this.nudEnmityScanInterval.Value = e.NewScanInterval;
                 });
             };
+            this.config.EnmityOverlay.GlobalHotkeyEnabledChanged += (o, e) =>
+            {
+                this.InvokeIfRequired(() =>
+                {
+                    this.checkEnmityEnableGlobalHotkey.Checked = e.NewGlobalHotkeyEnabled;
+                    this.textEnmityGlobalHotkey.Enabled = this.checkEnmityEnableGlobalHotkey.Checked;
+                });
+            };
+            this.config.EnmityOverlay.GlobalHotkeyChanged += (o, e) =>
+            {
+                this.InvokeIfRequired(() =>
+                {
+                    this.textEnmityGlobalHotkey.Text = GetHotkeyString(this.config.EnmityOverlay.GlobalHotkeyModifiers, e.NewHotkey);
+                });
+            };
+            this.config.EnmityOverlay.GlobalHotkeyModifiersChanged += (o, e) =>
+            {
+                this.InvokeIfRequired(() =>
+                {
+                    this.textEnmityGlobalHotkey.Text = GetHotkeyString(e.NewHotkey, this.config.EnmityOverlay.GlobalHotkey);
+                });
+            };
         }
+
         private void InvokeIfRequired(Action action)
         {
             if (this.InvokeRequired)
@@ -237,5 +264,73 @@ namespace Tamagawa.EnmityPlugin
                 pluginMain.EnmityOverlay.Start();
             }
         }
+
+        private void checkEnmityEnableGlobalHotkey_CheckedChanged(object sender, EventArgs e)
+        {
+            this.config.EnmityOverlay.GlobalHotkeyEnabled = this.checkEnmityEnableGlobalHotkey.Checked;
+            this.textEnmityGlobalHotkey.Enabled = this.config.EnmityOverlay.GlobalHotkeyEnabled;
+        }
+
+        private void textEnmityGlobalHotkey_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+            var key = RemoveModifiers(e.KeyCode, e.Modifiers);
+            this.config.EnmityOverlay.GlobalHotkey = key;
+            this.config.EnmityOverlay.GlobalHotkeyModifiers = e.Modifiers;
+        }
+
+        /// <summary>
+        ///   Generates human readable keypress string
+        ///   人間が読めるキー押下文字列を生成します
+        /// </summary>
+        /// <param name="Modifier"></param>
+        /// <param name="key"></param>
+        /// <param name="defaultText"></param>
+        /// <returns></returns>
+        private string GetHotkeyString(Keys Modifier, Keys key, String defaultText = "")
+        {
+            StringBuilder sbKeys = new StringBuilder();
+            if ((Modifier & Keys.Shift) == Keys.Shift)
+            {
+                sbKeys.Append("Shift + ");
+            }
+            if ((Modifier & Keys.Control) == Keys.Control)
+            {
+                sbKeys.Append("Ctrl + ");
+            }
+            if ((Modifier & Keys.Alt) == Keys.Alt)
+            {
+                sbKeys.Append("Alt + ");
+            }
+            if ((Modifier & Keys.LWin) == Keys.LWin || (Modifier & Keys.RWin) == Keys.RWin)
+            {
+                sbKeys.Append("Win + ");
+            }
+            sbKeys.Append(Enum.ToObject(typeof(Keys), key).ToString());
+            return sbKeys.ToString();
+        }
+
+        /// <summary>
+        ///  Removes stray references to Left/Right shifts, etc and modifications of the actual key value caused by bitwise operations
+        ///  ビット単位の操作に起因する左/右シフト、などと実際のキー値の変更に浮遊の参照を削除します。
+        /// </summary>
+        /// <param name="KeyCode"></param>
+        /// <param name="Modifiers"></param>
+        /// <returns></returns>
+        private Keys RemoveModifiers(Keys KeyCode, Keys Modifiers)
+        {
+            var key = KeyCode;
+            var modifiers = new List<Keys>() { Keys.ControlKey, Keys.LControlKey, Keys.Alt, Keys.ShiftKey, Keys.Shift, Keys.LShiftKey, Keys.RShiftKey, Keys.Control, Keys.LWin, Keys.RWin };
+            foreach (var mod in modifiers)
+            {
+                if (key.HasFlag(mod))
+                {
+                    if (key == mod)
+                        key &= ~mod;
+                }
+            }
+            return key;
+        }
+
     }
 }
