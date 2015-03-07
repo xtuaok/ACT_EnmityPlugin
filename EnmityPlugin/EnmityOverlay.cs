@@ -13,7 +13,7 @@ using RainbowMage.OverlayPlugin;
 
 namespace Tamagawa.EnmityPlugin
 {
-    class EnmityOverlay : OverlayBase<EnmityOverlayConfig>
+    public class EnmityOverlay : OverlayBase<EnmityOverlayConfig>
     {
         private static string charmapSignature = "FFFFFFFF????????DB0FC93FDB0F49416F12833A00000000????????DB0FC93FDB0F49416F12833A00000000";
         private static int charmapOffset = 44;
@@ -25,21 +25,9 @@ namespace Tamagawa.EnmityPlugin
         private IntPtr hateAddress = IntPtr.Zero;
         private bool suppress_log = false;
 
-        public EnmityOverlay(EnmityOverlayConfig config) : base(config, "EnmityOverlay")
-        {            
-            /// FIXME: 継承するとなぜかOnLogできないので追加する
-            this.Overlay.Renderer.BrowserError += (o, e) =>
-            {
-                Log(LogLevel.Error, "BrowserError: {0}, {1}, {2}", e.ErrorCode, e.ErrorText, e.Url);
-            };
-            this.Overlay.Renderer.BrowserLoad += (o, e) =>
-            {
-                Log(LogLevel.Debug, "BrowserLoad: {0}: {1}", e.HttpStatusCode, e.Url);
-            };
-            this.Overlay.Renderer.BrowserConsoleLog += (o, e) =>
-            {
-                Log(LogLevel.Info, "BrowserConsole: {0} (Source: {1}, Line: {2})", e.Message, e.Source, e.Line);
-            };
+        public EnmityOverlay(EnmityOverlayConfig config) : base(config, config.Name)
+        {
+            Log(LogLevel.Info, "Initialize EnmityOverlay");
         }
 
         /// <summary>

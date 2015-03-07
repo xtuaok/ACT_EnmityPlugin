@@ -132,18 +132,6 @@
   <data name="ProcessNotFound" xml:space="preserve">
     <value>FFXIVのプロセスIDが見つかりませんでした。</value>
   </data>
-  <data name="RequiredAssemblyFileBlocked" xml:space="preserve">
-    <value>セキュリティ上の問題からアセンブリ {0} を読み込めません。アセンブリがネットワーク上にあるか、またはブロックされている可能性があります。</value>
-  </data>
-  <data name="RequiredAssemblyFileCannotRead" xml:space="preserve">
-    <value>アセンブリ {0} は存在しますが、読み込めません。</value>
-  </data>
-  <data name="RequiredAssemblyFileException" xml:space="preserve">
-    <value>アセンブリ {0}の読み込み時に例外が発生しました:\n{1}</value>
-  </data>
-  <data name="RequiredAssemblyFileNotFound" xml:space="preserve">
-    <value>アセンブリ {0} が存在しません。</value>
-  </data>
   <data name="StartScanning" xml:space="preserve">
     <value>メモリスキャンを開始</value>
   </data>

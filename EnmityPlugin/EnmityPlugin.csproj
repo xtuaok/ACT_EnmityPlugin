@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Tamagawa.EnmityPlugin</RootNamespace>
-    <AssemblyName>EnmityPlugin</AssemblyName>
+    <AssemblyName>EnmityOverlay</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -109,11 +109,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigEventArgs.cs" />
-    <Compile Include="ControlPanel.cs">
+    <Compile Include="EnmityOverlayConfigPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ControlPanel.Designer.cs">
-      <DependentUpon>ControlPanel.cs</DependentUpon>
+    <Compile Include="EnmityOverlayConfigPanel.Designer.cs">
+      <DependentUpon>EnmityOverlayConfigPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="EnmityOverlayConfig.cs" />
     <Compile Include="FFXIVPluginHelper.cs" />
@@ -123,11 +123,9 @@
       <DependentUpon>Messages.resx</DependentUpon>
     </Compile>
     <Compile Include="NativeMethods.cs" />
-    <Compile Include="PluginConfig.cs" />
-    <Compile Include="PluginMain.cs" />
+    <Compile Include="OverlayAddonMain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UpdateChecker.cs" />
-    <Compile Include="Util.cs" />
     <Compile Include="EnmityOverlay.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -136,11 +134,11 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ControlPanel.ja-JP.resx">
-      <DependentUpon>ControlPanel.cs</DependentUpon>
+    <EmbeddedResource Include="EnmityOverlayConfigPanel.ja-JP.resx">
+      <DependentUpon>EnmityOverlayConfigPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ControlPanel.resx">
-      <DependentUpon>ControlPanel.cs</DependentUpon>
+    <EmbeddedResource Include="EnmityOverlayConfigPanel.resx">
+      <DependentUpon>EnmityOverlayConfigPanel.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Messages.ja-JP.resx" />
@@ -154,8 +152,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /Y "$(SolutionDir)README.md" "$(TargetDir)EnmityPlugin-README.txt"
-copy /Y "$(SolutionDir)LICENSE.txt" "$(TargetDir)EnmityPlugin-LICENSE.txt"
+    <PostBuildEvent>copy /Y "$(SolutionDir)README.md" "$(TargetDir)EnmityOverlay-README.txt"
+copy /Y "$(SolutionDir)LICENSE.txt" "$(TargetDir)EnmityOverlay-LICENSE.txt"
 </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

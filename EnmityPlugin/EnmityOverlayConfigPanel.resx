@@ -189,9 +189,6 @@
   <data name="&gt;&gt;buttonEnmityReloadBrowser.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Enable Global Hotkey</value>
-  </data>
   <data name="&gt;&gt;buttonEnmitySelectFile.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -298,7 +295,7 @@
     <value>tabControl1</value>
   </data>
   <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
-    <value>splitContainer1.Panel1</value>
+    <value>$this</value>
   </data>
   <data name="nudEnmityScanInterval.Location" type="System.Drawing.Point, System.Drawing">
     <value>156, 67</value>
@@ -412,7 +409,7 @@
     <value>tableLayoutPanel9</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel7.Parent" xml:space="preserve">
-    <value>tabPage3</value>
+    <value>$this</value>
   </data>
   <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
     <value>427, 55</value>
@@ -452,9 +449,6 @@
   </data>
   <data name="checkEnmityClickThru.Location" type="System.Drawing.Point, System.Drawing">
     <value>158, 25</value>
-  </data>
-  <data name="tableLayoutPanel8.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
   </data>
   <data name="nudEnmityScanInterval.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -552,8 +546,14 @@
   <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
     <value>158, 190</value>
   </data>
+  <data name="&gt;&gt;menuCopyLogAll.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="tabPage3.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="tabPage3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
@@ -561,8 +561,8 @@
   <data name="columnHeader2.Text" xml:space="preserve">
     <value>Level</value>
   </data>
-  <data name="&gt;&gt;splitContainer1.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Enable Global Hotkey</value>
   </data>
   <data name="listViewLog.Size" type="System.Drawing.Size, System.Drawing">
     <value>602, 132</value>
@@ -672,8 +672,8 @@
   <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="toolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 6</value>
+  <data name="tableLayoutPanel8.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="checkEnmityEnableGlobalHotkey.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -693,8 +693,8 @@
   <data name="&gt;&gt;checkEnmityClickThru.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="&gt;&gt;menuCopyLogAll.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;splitContainer1.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="label14.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -766,7 +766,7 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>ControlPanel</value>
+    <value>EnmityOverlayConfigPanel</value>
   </data>
   <data name="&gt;&gt;listViewLog.Type" xml:space="preserve">
     <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -777,14 +777,14 @@
   <data name="tableLayoutPanel9.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
+  <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 0</value>
+  </data>
   <data name="menuClearLog.Text" xml:space="preserve">
     <value>Clear logs</value>
   </data>
   <data name="label17.Text" xml:space="preserve">
     <value>URL</value>
-  </data>
-  <data name="&gt;&gt;splitContainer1.Panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="label11.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -843,8 +843,8 @@
   <data name="label18.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
-  <data name="&gt;&gt;splitContainer1.Panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="toolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 6</value>
   </data>
   <data name="label14.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -948,8 +948,8 @@
   <data name="listViewLog.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 0</value>
+  <data name="&gt;&gt;splitContainer1.Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="menuLogCopy.Text" xml:space="preserve">
     <value>Copy selected logs</value>

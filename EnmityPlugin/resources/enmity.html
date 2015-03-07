@@ -113,9 +113,11 @@
     .PLD,.WAR,.MRD,GLD {
       background-color: rgba(52,67,150,0.75);
     }
+
     .CNJ,.WHM,.SCH {
       background-color: rgba(57,101,39,0.75);
     }
+
     .Pet {
       background-color: rgba(150,147,52,0.75);
     }
@@ -132,7 +134,7 @@
     // ダミーデータ(デバッグ用)
     var ActXivDebug = {
       "Enmity": {
-        "Target": { 'Name': 'マンドラゴラ・プライム', 'HPPercent': '17.74%', 'CurrentHP': 221004, 'MaxHP': 1245321, 'Distance': '3.02m' },
+        "Target": { 'Name': 'マンドラゴラ・プライム', 'HPPercent': '17.74%', 'CurrentHP': 221004, 'MaxHP': 1245321, 'Distance': '3.02m', 'EffectiveDistance': 2, 'HorizontalDistance': '2.32m' },
         "Entries": [
           { "Name": 'Tomonori Tamagawa', "Enmity": 128923, 'EnmityString': '128,923', 'isMe': true, 'HateRate': 100,'JobName':"WAR" },
           { "Name": 'Tomonori Arakawa', "Enmity": 3845, 'EnmityString': '3,845', 'isMe': false, 'HateRate': 20, 'JobName': 'SCH' },
@@ -153,7 +155,7 @@
          "<table class='target_info'><tbody><tr><td class='target_name' colspan='2'>ターゲット: <span class='targetBody'>{Name}</span></td></tr>" +
          "<tr id='target_detail'>" +
          "<td class='target_hp'>HP: <span class='targetBody'>{HPPercent} ({CurrentHP}/{MaxHP})</span></td>" +
-         "<td class='target_distance'>距離: <span class='targetBody'>{Distance}</span></td>" +
+         "<td class='target_distance'>距離: <span class='targetBody'>{Distance}</span>({EffectiveDistance}m)</td>" +
          "</tr></tbody></table>\n";
 
     // 上記のターゲット情報を HTML として扱うなら true

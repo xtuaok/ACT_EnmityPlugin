@@ -20,10 +20,6 @@ namespace Tamagawa.EnmityPlugin
         public const int WS_EX_TRANSPARENT = 0x00000020;
         public const int WS_EX_TOOLWINDOW = 0x00000080;
 
-        [DllImport("kernel32")]
-        public static extern void CopyMemory(IntPtr dest, IntPtr src, uint count);
-                // For hide from ALT+TAB preview
-
         [DllImport("user32.dll", EntryPoint = "SetWindowLongPtr", SetLastError = true)]
         public static extern IntPtr SetWindowLongPtr(IntPtr hWnd, int nIndex, IntPtr dwNewLong);
 

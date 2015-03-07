@@ -4,11 +4,11 @@
 ./build.bat
 
 # バージョン取得
-$version = [System.Diagnostics.FileVersionInfo]::GetVersionInfo("Build\EnmityPlugin.dll").FileVersion
+$version = [System.Diagnostics.FileVersionInfo]::GetVersionInfo("Build\EnmityOverlay.dll").FileVersion
 
 # フォルダ名
 $buildFolder = ".\Build"
-$fullFolder = ".\Distribute\EnmityPlugin-" + $version
+$fullFolder = ".\Distribute\EnmityOverlay-" + $version
 
 # フォルダが既に存在するなら消去
 if ( Test-Path $fullFolder -PathType Container ) {
