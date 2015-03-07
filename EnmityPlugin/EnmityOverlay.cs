@@ -161,7 +161,10 @@ namespace Tamagawa.EnmityPlugin
                     ID = 0,
                     MaxHP = 0,
                     CurrentHP = 0,
-                    Distance = " 0.00m"
+                    Distance = "0.00m",
+                    EffectiveDistance = 0,
+                    HorizontalDistance = "0.00m"
+
                 };
                 return serializer.Serialize(enmity);
             }
@@ -181,7 +184,9 @@ namespace Tamagawa.EnmityPlugin
                     ID = 0,
                     MaxHP = 0,
                     CurrentHP = 0,
-                    Distance = " 0.00m"
+                    Distance = "0.00m",
+                    EffectiveDistance = 0,
+                    HorizontalDistance = "0.00m"
                 };
                 return serializer.Serialize(enmity);
             }
@@ -199,6 +204,7 @@ namespace Tamagawa.EnmityPlugin
 
                 /// 距離計算
                 enmity.Target.Distance = String.Format("{0,5:F2}m", mypc.GetDistanceTo(enmity.Target));
+                enmity.Target.HorizontalDistance = String.Format("{0,5:F2}m", mypc.GetHorizontalDistanceTo(enmity.Target));
 
                 if (enmity.Target.Type == TargetType.Monster)
                 {

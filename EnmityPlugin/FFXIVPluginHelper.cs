@@ -148,7 +148,7 @@ namespace Tamagawa.EnmityPlugin
             fixed (byte* p = &source[0x74]) target.ID = *(uint*)p;
 
             target.Type = (TargetType)source[0x8A];
-            target.intDistance = source[0x90];
+            target.EffectiveDistance = source[0x90];
 
             fixed (byte* p = &source[0xA0]) target.X = *(float*)p;
             fixed (byte* p = &source[0xA4]) target.Z = *(float*)p;
@@ -327,8 +327,9 @@ namespace Tamagawa.EnmityPlugin
     {
         public string Name;
         public uint ID;
-        public int intDistance;
+        public int EffectiveDistance;
         public string Distance;
+        public string HorizontalDistance;
         public float X;
         public float Y;
         public float Z;
@@ -358,6 +359,12 @@ namespace Tamagawa.EnmityPlugin
             var distanceY = (float)Math.Abs(Y - target.Y);
             var distanceZ = (float)Math.Abs(Z - target.Z);
             return (float)Math.Sqrt((distanceX * distanceX) + (distanceY * distanceY) + (distanceZ * distanceZ));
+        }
+        public float GetHorizontalDistanceTo(TargetInfo target)
+        {
+            var distanceX = (float)Math.Abs(X - target.X);
+            var distanceY = (float)Math.Abs(Y - target.Y);
+            return (float)Math.Sqrt((distanceX * distanceX) + (distanceY * distanceY));
         }
     }
 
