@@ -5,39 +5,71 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using Advanced_Combat_Tracker;
 
 namespace Tamagawa.EnmityPlugin
 {
     public class OverlayAddonMain : IOverlayAddon
     {
         // OverlayPluginのリソースフォルダ
-        public static string ResourcesDirectory;
+        public static string ResourcesDirectory = String.Empty;
 
         // IOverlayAddon を実装したクラスの静的コンストラクタの中で、オーバーレイの型を登録する
-        static OverlayAddonMain()
+        public OverlayAddonMain()
         {
+            // OverlayPlugin.Coreを期待
             Assembly asm = System.Reflection.Assembly.GetCallingAssembly();
-            foreach (ActPluginData plugin in ActGlobals.oFormActMain.ActPlugins)
+            if (asm.Location == null || asm.Location == "")
             {
-                if(plugin.pluginFile.Name == asm.ManifestModule.ScopeName) {
-                    ResourcesDirectory = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(plugin.pluginFile.FullName), "resources");
-                    break;
-                }
+                // 場所がわからないなら自分の場所にする
+                asm = Assembly.GetExecutingAssembly();
             }
-
-            OverlayTypeManager.RegisterOverlayType<
-                EnmityOverlay,
-                EnmityOverlayConfig,
-                EnmityOverlayConfigPanel>(
-                "Enmity Overlay",
-                (config) => new EnmityOverlay(config as EnmityOverlayConfig),
-                (name) => new EnmityOverlayConfig(name),
-                (overlay) => new EnmityOverlayConfigPanel(overlay as EnmityOverlay)
-                );
-
-            // 更新チェック
+            ResourcesDirectory = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(asm.Location), "resources");
             UpdateChecker.Check();
+        }
+
+        public string Name
+        {
+            get { return "Enmity"; }
+        }
+
+        public string Description
+        {
+            get { return "Show enmity values of current target."; }
+        }
+
+        public Type OverlayType
+        {
+            get { return typeof(EnmityOverlay); }
+        }
+
+        public Type OverlayConfigType
+        {
+            get { return typeof(EnmityOverlayConfig); }
+        }
+
+        public Type OverlayConfigControlType
+        {
+            get { return typeof(EnmityOverlayConfigPanel); }
+        }
+
+        public IOverlay CreateOverlayInstance(IOverlayConfig config)
+        {
+            return new EnmityOverlay((EnmityOverlayConfig)config);
+        }
+
+        public IOverlayConfig CreateOverlayConfigInstance(string name)
+        {
+            return new EnmityOverlayConfig(name);
+        }
+
+        public System.Windows.Forms.Control CreateOverlayConfigControlInstance(IOverlay overlay)
+        {
+            return new EnmityOverlayConfigPanel((EnmityOverlay)overlay);
+        }
+
+        public void Dispose()
+        {
+
         }
     }
 }

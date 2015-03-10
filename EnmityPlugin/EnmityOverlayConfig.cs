@@ -9,7 +9,7 @@ using RainbowMage.OverlayPlugin;
 namespace Tamagawa.EnmityPlugin
 {
     [Serializable]
-    public class EnmityOverlayConfig : OverlayConfig
+    public class EnmityOverlayConfig : OverlayConfigBase
     {
         public event EventHandler<ScanIntervalChangedEventArgs> ScanIntervalChanged;
 
@@ -23,6 +23,11 @@ namespace Tamagawa.EnmityPlugin
         private EnmityOverlayConfig()
             : base(null)
         {
+        }
+
+        public override Type OverlayType
+        {
+            get { return typeof(EnmityOverlay); }
         }
 
         private int scanInterval;
