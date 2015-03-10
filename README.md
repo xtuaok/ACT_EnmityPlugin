@@ -4,7 +4,7 @@
 
 ![sample](https://raw.githubusercontent.com/xtuaok/ACT_EnmityPlugin/master/sample.png) 
 
-OverlayPlugin (0.3.1.0以降)のアドオンとして動作するため、OverlayPluginの導入が必要です。
+OverlayPlugin (0.3.1.0以降)のアドオンとして動作するため、 OverlayPlugin の導入が必要です。
 
 ## ダウンロード
 
@@ -12,10 +12,10 @@ OverlayPlugin (0.3.1.0以降)のアドオンとして動作するため、Overla
 
 ## インストール
 
-OverlayPluginをインストールしたフォルダにaddonsというフォルダを作り、EnmityOverlay.dllを入れます。   
-ja-JPの中身はOverlayPluginのja-JPフォルダにコピーします。  
-同じようにresourcesの中身はOverlayPluginのresourcesフォルダにコピーします。  
-たとえば "C:\Program Files\Advanced Combat Tracker\OverlayPlugin\" にOverlayPluginをインストールした場合、下記のような構成になればよいです。
+OverlayPlugin をインストールしたフォルダに `addons` というフォルダを作り、`EnmityOverlay.dll` を入れます。   
+`ja-JP` の中身は `OverlayPlugin` の `ja-JP` フォルダにコピーします。  
+同じように `resources` の中身は `OverlayPlugin` の `resources` フォルダにコピーします。  
+たとえば `C:\Program Files\Advanced Combat Tracker\OverlayPlugin\` に OverlayPlugin をインストールした場合、下記のような構成になればよいです。
 ```
 C:\Program Files\Advanced Combat Tracker\OverlayPlugin\
     ├addons
@@ -29,7 +29,10 @@ C:\Program Files\Advanced Combat Tracker\OverlayPlugin\
 
 ## 使い方
 
-OverlayPlugin と概ね変わりません。  
+OverlayPluginの設定より新規オーバーレイとしてEnmityOverlayタイプのオーバーレイを追加してください。  
+設定は miniparse や spelltimer オーバーレイとほぼ変わりません。  
+
+見た目のカスタマイズは`resources\enmity.html`ファイルを編集することで可能です。  
 
 ## 表示する情報について
 
@@ -39,22 +42,22 @@ OverlayPlugin と概ね変わりません。
 名前の下に表示されているゲージはヘイト1位との相対的な敵視量のグラフで、色はロールアイコンに準じています。
 
 さらに、ターゲットとの距離、HPパーセント、HP/HPMaxが表示可能です。  
-その他表示できる項目については resources/enmity.html のサンプルJSONを参考にしてください。  
+その他表示できる項目については `resources\enmity.html` のサンプルJSON(ActXivDebug)を参考にしてください。  
 
-将来OverlayPluginに大きな変更があった場合、正しく動かなくなる可能性があります。  
-また、FFXIVプロセスのメモリを参照しているので、FFにパッチがあたるとデータを
-正しく参照できなくなる可能性があります。  
+将来 OverlayPlugin のインターフェースに大きな変更があった場合、正しく動かなくなる可能性があります。  
+また、FFXIVプロセスのメモリを参照しているので、FFにパッチがあたるとデータを正しく参照できなくなる可能性があります。  
 
 ### 敵視情報
 
 軽くメモリを検索した限りではカレントターゲットの敵視量しかメモリにありません。  
 つまり、ターゲットしてない敵はもちろん、フォーカスターゲットやホバーターゲット、ターゲットのターゲットなどの敵視量は得ることができません。
 
-標準UIの敵視リストの情報はメモリにないのかと言われれば、表示されている以上ありますが、有効な情報として利用可能な状態ではなさそうです。  
-未確認ですが恐らく、例えば「大まかな1位との差」などといった、敵視を4段階のマークで表現するに必要な最低限の情報かと思われます。
+標準UIの敵視リストの情報は有効に使えないような気がしています。  
 
 ### 距離情報
 
-*Distance* は3次元距離なのでジャンプするだけでも数値が変わります。  
-*HorizontalDistance* は高さを考慮していない座標の距離でジャンプしても変わりません。  
-*EffectiveDistance* はスキルの有効範囲等に影響する距離で整数値でしか得ることができません。また、スキル対象になりえないオブジェクト(呼び鈴等)の距離は0になるようです。    
+JSONに含まれるターゲットへの距離情報についてです。
+
+* `Distance` は3次元距離なのでジャンプするだけでも数値が変わります。
+* `HorizontalDistance` は高さを考慮していない座標の距離でジャンプしても変わりません。
+* `EffectiveDistance` はスキルの有効範囲等に影響する距離で整数値でしか得ることができません。また、スキル対象になりえないオブジェクト(呼び鈴等)の距離は0になるようです。
