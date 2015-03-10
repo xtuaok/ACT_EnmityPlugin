@@ -4,7 +4,7 @@
 
 ![sample](https://raw.githubusercontent.com/xtuaok/ACT_EnmityPlugin/master/sample.png) 
 
-OverlayPlugin (0.3.0.0以降)のアドオンとして動作するため、OverlayPluginの導入が必要です。
+OverlayPlugin (0.3.1.0以降)のアドオンとして動作するため、OverlayPluginの導入が必要です。
 
 ## ダウンロード
 
@@ -24,7 +24,7 @@ C:\Program Files\Advanced Combat Tracker\OverlayPlugin\
     │ └EnmityOverlay.resources.dll
     ├resources
     │ └enmity.html
-    └OverlayPlugin.dll, HtmlRenderer.dll ....
+    └OverlayPlugin.dll, OverlayPlugin.Core.dll, OverlayPlugin.Common.dll ....
 ```
 
 ## 使い方

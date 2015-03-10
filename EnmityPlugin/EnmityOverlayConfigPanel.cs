@@ -25,8 +25,8 @@ namespace Tamagawa.EnmityPlugin
             this.overlay = overlay;
             this.config = overlay.Config;
 
-            SetupConfigEventHandlers();
             SetupControlProperties();
+            SetupConfigEventHandlers();
         }
 
         private void SetupControlProperties()
@@ -173,8 +173,7 @@ namespace Tamagawa.EnmityPlugin
             this.config.ScanInterval = (int)nudEnmityScanInterval.Value;
             if (this.overlay != null)
             {
-                this.overlay.Stop();
-                this.overlay.Start();
+                this.overlay.UpdateScanInterval();
             }
         }
 

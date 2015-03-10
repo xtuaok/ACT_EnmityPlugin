@@ -13,7 +13,6 @@ namespace Tamagawa.EnmityPlugin
         // OverlayPluginのリソースフォルダ
         public static string ResourcesDirectory = String.Empty;
 
-        // IOverlayAddon を実装したクラスの静的コンストラクタの中で、オーバーレイの型を登録する
         public OverlayAddonMain()
         {
             // OverlayPlugin.Coreを期待
@@ -24,6 +23,11 @@ namespace Tamagawa.EnmityPlugin
                 asm = Assembly.GetExecutingAssembly();
             }
             ResourcesDirectory = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(asm.Location), "resources");
+        }
+
+        static OverlayAddonMain()
+        {
+            // static constructor should be called only once
             UpdateChecker.Check();
         }
 

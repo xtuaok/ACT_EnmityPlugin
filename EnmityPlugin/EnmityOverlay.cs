@@ -261,11 +261,21 @@ namespace Tamagawa.EnmityPlugin
         }
 
         /// <summary>
+        /// スキャン間隔を更新する
+        /// </summary>
+        public void UpdateScanInterval()
+        {
+            timer.Interval = this.Config.ScanInterval;
+            Log(LogLevel.Info, Messages.UpdateScanInterval, this.Config.ScanInterval);
+        }
+
+        /// <summary>
         /// スキャンを開始する
         /// </summary>
         public new void Start()
         {
-            if (this.Config.IsVisible == false) {
+            if (this.Config.IsVisible == false)
+            {
                 return;
             }
             timer.Interval = this.Config.ScanInterval;
@@ -278,8 +288,11 @@ namespace Tamagawa.EnmityPlugin
         /// </summary>
         public new void Stop()
         {
-            timer.Stop();
-            Log(LogLevel.Info, Messages.StopScanning);
+            if (timer.Enabled)
+            {
+                timer.Stop();
+                Log(LogLevel.Info, Messages.StopScanning);
+            }
         }
 
         protected override void InitializeTimer()

@@ -195,7 +195,7 @@
             // 
             resources.ApplyResources(this.nudEnmityScanInterval, "nudEnmityScanInterval");
             this.nudEnmityScanInterval.Maximum = new decimal(new int[] {
-            1000,
+            10000,
             0,
             0,
             0});

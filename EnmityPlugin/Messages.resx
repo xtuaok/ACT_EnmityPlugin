@@ -144,4 +144,7 @@
   <data name="UpdateNotFound" xml:space="preserve">
     <value>The plugin is up to date. (v{0})</value>
   </data>
+  <data name="UpdateScanInterval" xml:space="preserve">
+    <value>Set scan interval to {0}msec.</value>
+  </data>
 </root>
