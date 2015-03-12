@@ -1,6 +1,4 @@
-﻿Import-Module $PSScriptRoot\PS-Zip.psm1
-
-# ビルド
+﻿# ビルド
 ./build.bat
 
 # バージョン取得
@@ -17,11 +15,16 @@ if ( Test-Path $fullFolder -PathType Container ) {
 
 # フォルダ作成
 New-Item -ItemType directory -Path $fullFolder
+New-Item -ItemType directory -Path "$fullFolder\addons"
 
 # full
 xcopy /Y /R /S /EXCLUDE:full.exclude "$buildFolder\*" "$fullFolder"
+mv "$fullFolder\EnmityOverlay.dll" "$fullFolder\addons"
+
+cd Distribute
+$folder = "EnmityOverlay-" + $version
 
 # アーカイブ
-New-ZipCompress -source $fullFolder -destination "$fullFolder.zip"
+& "C:\Program Files\7-Zip\7z.exe" "a" "$folder.zip" "$folder"
 
 pause
