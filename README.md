@@ -27,12 +27,15 @@ C:\Program Files\Advanced Combat Tracker\OverlayPlugin\
     └OverlayPlugin.dll, OverlayPlugin.Core.dll, OverlayPlugin.Common.dll ....
 ```
 
+単純には配布されているZipの中身をそのままOverlayPluginのフォルダにコピーするだけでよいことになります。
+
 ## 使い方
 
-OverlayPluginの設定より新規オーバーレイとしてEnmityOverlayタイプのオーバーレイを追加してください。  
+OverlayPluginの設定で新規オーバーレイとして`Enmity`タイプのオーバーレイを追加してください。  
 設定は miniparse や spelltimer オーバーレイとほぼ変わりません。  
 
 見た目のカスタマイズは`resources\enmity.html`ファイルを編集することで可能です。  
+その際ファイル名を変更しておけば、アップデートの時誤って上書きされることを防げます。  
 
 ## 表示する情報について
 
