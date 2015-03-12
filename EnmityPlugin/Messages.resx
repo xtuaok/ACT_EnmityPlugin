@@ -141,6 +141,9 @@
   <data name="Update" xml:space="preserve">
     <value>Update: v{0}</value>
   </data>
+  <data name="UpdateAvailable" xml:space="preserve">
+    <value>Update is available but ignored. (v{0})</value>
+  </data>
   <data name="UpdateNotFound" xml:space="preserve">
     <value>The plugin is up to date. (v{0})</value>
   </data>

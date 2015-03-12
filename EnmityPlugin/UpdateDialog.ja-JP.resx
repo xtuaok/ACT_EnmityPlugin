@@ -117,37 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Current" xml:space="preserve">
-    <value>現在: v{0}</value>
+  <data name="buttonYes.Text" xml:space="preserve">
+    <value>はい</value>
   </data>
-  <data name="ErrorTitle" xml:space="preserve">
-    <value>エラー</value>
+  <data name="buttonLater.Text" xml:space="preserve">
+    <value>あとで</value>
   </data>
-  <data name="NewVersionIsAvailable" xml:space="preserve">
-    <value>EnmityPluginの新しいバージョンが入手可能です！</value>
+  <data name="buttonIgnore.Text" xml:space="preserve">
+    <value>このリリースは無視</value>
   </data>
-  <data name="OpenSiteNow" xml:space="preserve">
-    <value>今すぐダウンロード？</value>
-  </data>
-  <data name="ProcessNotFound" xml:space="preserve">
-    <value>FFXIVのプロセスIDが見つかりませんでした.</value>
-  </data>
-  <data name="StartScanning" xml:space="preserve">
-    <value>メモリスキャンを開始</value>
-  </data>
-  <data name="StopScanning" xml:space="preserve">
-    <value>メモリスキャンを停止</value>
-  </data>
-  <data name="Update" xml:space="preserve">
-    <value>最新: v{0}</value>
-  </data>
-  <data name="UpdateAvailable" xml:space="preserve">
-    <value>無視されたアップデートがあります.(v{0})</value>
-  </data>
-  <data name="UpdateNotFound" xml:space="preserve">
-    <value>プラグインは最新版です. (v{0})</value>
-  </data>
-  <data name="UpdateScanInterval" xml:space="preserve">
-    <value>スキャン間隔を {0}msec に設定.</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>EnmityOverlay アップデート</value>
   </data>
 </root>
