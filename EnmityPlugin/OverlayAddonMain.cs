@@ -12,6 +12,7 @@ namespace Tamagawa.EnmityPlugin
     {
         // OverlayPluginのリソースフォルダ
         public static string ResourcesDirectory = String.Empty;
+        public static string UpdateMessage = String.Empty;
 
         public OverlayAddonMain()
         {
@@ -28,7 +29,7 @@ namespace Tamagawa.EnmityPlugin
         static OverlayAddonMain()
         {
             // static constructor should be called only once
-            UpdateChecker.Check();
+            UpdateMessage = UpdateChecker.Check();
         }
 
         public string Name
