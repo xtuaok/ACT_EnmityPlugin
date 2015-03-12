@@ -27,7 +27,6 @@ namespace Tamagawa.EnmityPlugin
 
         public EnmityOverlay(EnmityOverlayConfig config) : base(config, config.Name)
         {
-            Log(LogLevel.Info, "Initialize EnmityOverlay");
         }
 
         /// <summary>
@@ -266,7 +265,7 @@ namespace Tamagawa.EnmityPlugin
         public void UpdateScanInterval()
         {
             timer.Interval = this.Config.ScanInterval;
-            Log(LogLevel.Info, Messages.UpdateScanInterval, this.Config.ScanInterval);
+            Log(LogLevel.Debug, Messages.UpdateScanInterval, this.Config.ScanInterval);
         }
 
         /// <summary>
@@ -274,6 +273,11 @@ namespace Tamagawa.EnmityPlugin
         /// </summary>
         public new void Start()
         {
+            if (OverlayAddonMain.UpdateMessage != String.Empty)
+            {
+                Log(LogLevel.Info, OverlayAddonMain.UpdateMessage);
+                OverlayAddonMain.UpdateMessage = String.Empty;
+            }
             if (this.Config.IsVisible == false)
             {
                 return;
