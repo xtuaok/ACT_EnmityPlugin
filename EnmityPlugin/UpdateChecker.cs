@@ -41,6 +41,10 @@ namespace Tamagawa.EnmityPlugin
         public static string Check()
         {
             var release = string.Empty;
+
+            System.Net.Configuration.HttpWebRequestElement httpConfig = new System.Net.Configuration.HttpWebRequestElement();
+            httpConfig.UseUnsafeHeaderParsing = true;
+
             try
             {
                 var json = String.Empty;
@@ -56,6 +60,15 @@ namespace Tamagawa.EnmityPlugin
                 var serializer = new JavaScriptSerializer();
                 ReleaseInfo ri = (ReleaseInfo)serializer.Deserialize(json, typeof(ReleaseInfo));
                 string version = ri.tag_name.Replace("v", string.Empty);
+                Version ignore;
+                try
+                {
+                    ignore = new Version(Properties.Settings.Default.IgnoreVersion);
+                }
+                catch
+                {
+                    ignore = new Version("0.0.0.0");
+                }
                 var latest = new Version(version);
                 var current = Assembly.GetExecutingAssembly().GetName().Version;
                 if (current >= latest)
@@ -63,16 +76,32 @@ namespace Tamagawa.EnmityPlugin
                     release = String.Format(Messages.UpdateNotFound, current.ToString());
                     return release;
                 }
+                if (ignore >= latest)
+                {
+                    release = String.Format(Messages.UpdateAvailable, latest.ToString());
+                    return release;
+                }
                 var message = Messages.NewVersionIsAvailable + Environment.NewLine + Environment.NewLine;
                 message += String.Format(Messages.Update, latest.ToString()) + Environment.NewLine;
                 message += String.Format(Messages.Current, current.ToString()) + Environment.NewLine;
                 message += Environment.NewLine;
                 message +=Messages.OpenSiteNow;
-                if (MessageBox.Show(message, ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) != DialogResult.Yes)
+                var updateDialog = new UpdateDialog();
+//                updateDialog.StartPosition = FormStartPosition.CenterParent;
+                updateDialog.setDialogMessage(message);
+                var result = updateDialog.ShowDialog();
+                switch (result)
                 {
-                    return release;
+                    case DialogResult.Yes:
+                        Process.Start(ri.html_url);
+                        break;
+                    case DialogResult.Ignore:
+                        Properties.Settings.Default.IgnoreVersion = latest.ToString();
+                        Properties.Settings.Default.Save();
+                        break;
+                    default:
+                        break;
                 }
-                Process.Start(ri.html_url);
             } catch (Exception ex)
             {
                 release = String.Format("Update check error: {0}", ex.ToString());

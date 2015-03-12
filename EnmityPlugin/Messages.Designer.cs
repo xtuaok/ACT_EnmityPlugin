@@ -106,42 +106,6 @@ namespace Tamagawa.EnmityPlugin {
         }
         
         /// <summary>
-        ///   Could not load required assembly file {0} due to security reasons. It seems the file has blocked or placed on the untrusted zone (such as network drive). に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        internal static string RequiredAssemblyFileBlocked {
-            get {
-                return ResourceManager.GetString("RequiredAssemblyFileBlocked", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Could not load required assembly file {0}. に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        internal static string RequiredAssemblyFileCannotRead {
-            get {
-                return ResourceManager.GetString("RequiredAssemblyFileCannotRead", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Exception occured when loading required assembly file {0}:\n{1} に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        internal static string RequiredAssemblyFileException {
-            get {
-                return ResourceManager.GetString("RequiredAssemblyFileException", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Required assembly file {0} was not found. に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        internal static string RequiredAssemblyFileNotFound {
-            get {
-                return ResourceManager.GetString("RequiredAssemblyFileNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Memory scanning started. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string StartScanning {
@@ -169,11 +133,29 @@ namespace Tamagawa.EnmityPlugin {
         }
         
         /// <summary>
+        ///   Update is available but ignored. (v{0}) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string UpdateAvailable {
+            get {
+                return ResourceManager.GetString("UpdateAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   The plugin is up to date. (v{0}) に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string UpdateNotFound {
             get {
                 return ResourceManager.GetString("UpdateNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Set scan interval to {0}msec. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string UpdateScanInterval {
+            get {
+                return ResourceManager.GetString("UpdateScanInterval", resourceCulture);
             }
         }
     }

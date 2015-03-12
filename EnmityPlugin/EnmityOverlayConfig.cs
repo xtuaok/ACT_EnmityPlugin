@@ -9,9 +9,26 @@ using RainbowMage.OverlayPlugin;
 namespace Tamagawa.EnmityPlugin
 {
     [Serializable]
-    public class EnmityOverlayConfig : RainbowMage.OverlayPlugin.OverlayConfig
+    public class EnmityOverlayConfig : OverlayConfigBase
     {
         public event EventHandler<ScanIntervalChangedEventArgs> ScanIntervalChanged;
+
+        public EnmityOverlayConfig(string name)
+            : base(name)
+        {
+            this.scanInterval = 100;
+            this.Url = new Uri(System.IO.Path.Combine(OverlayAddonMain.ResourcesDirectory, "enmity.html")).ToString();
+        }
+
+        private EnmityOverlayConfig()
+            : base(null)
+        {
+        }
+
+        public override Type OverlayType
+        {
+            get { return typeof(EnmityOverlay); }
+        }
 
         private int scanInterval;
         [XmlElement("ScanInterval")]
@@ -34,9 +51,6 @@ namespace Tamagawa.EnmityPlugin
             }
         }
 
-        public EnmityOverlayConfig()
-        {
-            this.scanInterval = 100;
-        }
+
     }
 }

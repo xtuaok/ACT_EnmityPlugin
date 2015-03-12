@@ -298,7 +298,7 @@
     <value>tabControl1</value>
   </data>
   <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
-    <value>splitContainer1.Panel1</value>
+    <value>$this</value>
   </data>
   <data name="nudEnmityScanInterval.Location" type="System.Drawing.Point, System.Drawing">
     <value>156, 67</value>
@@ -412,7 +412,7 @@
     <value>tableLayoutPanel9</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel7.Parent" xml:space="preserve">
-    <value>tabPage3</value>
+    <value>$this</value>
   </data>
   <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
     <value>427, 55</value>
@@ -766,7 +766,7 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>ControlPanel</value>
+    <value>EnmityOverlayConfigPanel</value>
   </data>
   <data name="&gt;&gt;listViewLog.Type" xml:space="preserve">
     <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -777,14 +777,14 @@
   <data name="tableLayoutPanel9.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
+  <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 0</value>
+  </data>
   <data name="menuClearLog.Text" xml:space="preserve">
     <value>Clear logs</value>
   </data>
   <data name="label17.Text" xml:space="preserve">
     <value>URL</value>
-  </data>
-  <data name="&gt;&gt;splitContainer1.Panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="label11.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -948,8 +948,8 @@
   <data name="listViewLog.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 0</value>
+  <data name="&gt;&gt;splitContainer1.Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="menuLogCopy.Text" xml:space="preserve">
     <value>Copy selected logs</value>
