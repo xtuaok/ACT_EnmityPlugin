@@ -39,13 +39,17 @@
       text-shadow: -1px 0 2px #795516, 0 1px 2px #795516, 1px 0 2px #795516, 0 -1px 2px #795516;
       font-weight: 300;
       white-space: nowrap;
+      padding: 2px;
     }
 
     .target_info {
       width: 100%;
+      position: relative;
+      bottom: 0;
+      z-index: 2;
     }
 
-    .target_name, .target_hp {
+    .target_header {
       color: #DED7BE;
       text-shadow: -1px 0 2px #795516, 0 1px 2px #795516, 1px 0 2px #795516, 0 -1px 2px #795516;
       font-weight: 300;
@@ -53,15 +57,7 @@
       text-align: left;
     }
 
-    .target_distance {
-      color: #DED7BE;
-      text-shadow: -1px 0 2px #795516, 0 1px 2px #795516, 1px 0 2px #795516, 0 -1px 2px #795516;
-      font-weight: 300;
-      white-space: nowrap;
-      text-align: right;
-    }
-
-    .targetBody {
+    .target_body {
       color: #E2EBF5;
       text-shadow: -1px 0 3px #217AA2, 0 1px 3px #217AA2, 1px 0 3px #217AA2, 0 -1px 3px #217AA2;
       font-weight: 300;
@@ -121,20 +117,36 @@
     .Pet {
       background-color: rgba(150,147,52,0.75);
     }
+
     .content .me {
       color: #FFFF00;
 	    text-shadow: -1px 0 2px #594709, 0 1px 2px #594709, 1px 0 2px #594709, 0 -1px 2px #594709;
     }
+
+    .hp_gauge {
+      position: absolute;
+      display: block;
+      bottom: 2px;
+      height: 2px;
+      background-color: rgba(81, 255, 0, 0.75);
+      z-index: 1;
+    }
+
+    .hp_text {
+      position: relative;
+      bottom: 0;
+      z-index: 2;
+    }
 	</style>
   <script>
-
     //
     // プラグイン側から以下のような ActXiv オブジェクトとしてデータが提供される
     //
     // ダミーデータ(デバッグ用)
     var ActXivDebug = {
       "Enmity": {
-        "Target": { 'Name': 'マンドラゴラ・プライム', 'HPPercent': '17.74%', 'CurrentHP': 221004, 'MaxHP': 1245321, 'Distance': '3.02m', 'EffectiveDistance': 2, 'HorizontalDistance': '2.32m' },
+                "Target": { 'Name': 'マンドラゴラ・プライム', 'HPPercent': 17.74, 'CurrentHP': 221004, 'MaxHP': 1245321, 'Distance': 3.02, 'EffectiveDistance': 2, 'HorizontalDistance': 2.32 },
+        // "Target": null,
         "Entries": [
           { "Name": 'Tomonori Tamagawa', "Enmity": 128923, 'EnmityString': '128,923', 'isMe': true, 'HateRate': 100,'JobName':"WAR" },
           { "Name": 'Tomonori Arakawa', "Enmity": 3845, 'EnmityString': '3,845', 'isMe': false, 'HateRate': 20, 'JobName': 'SCH' },
@@ -142,39 +154,127 @@
         ]
       }
     };
-    //
-    // データの更新は 1 秒毎。
+
     //
     // プラグインから onOverlayDataUpdate イベントが発行されるので、それを受信することもできる
     // イベントハンドラの第一引数の detail プロパティ内に上記のオブジェクトが入る
     //
 
     // ターゲット情報の定義
-    // FIXME:  DOM
-    var targetDefine =
-         "<table class='target_info'><tbody><tr><td class='target_name' colspan='2'>ターゲット: <span class='targetBody'>{Name}</span></td></tr>" +
-         "<tr id='target_detail'>" +
-         "<td class='target_hp'>HP: <span class='targetBody'>{HPPercent} ({CurrentHP}/{MaxHP})</span></td>" +
-         "<td class='target_distance'>距離: <span class='targetBody'>{Distance}</span>({EffectiveDistance}m)</td>" +
-         "</tr></tbody></table>\n";
+    // テンプレート文字列
+    var _targetDefine =
+      "<div><div class='box'>" +
+        "<div class='hp_gauge' style='width: {HPPercent}%'></div>" +
+        "<div class='target_info'><span class='target_header'>ターゲット: </span> " +
+        "<span class='target_body'>{Name}</span></div>" +
+      "</div>" +
+      "<div class='target_detail'>" +
+        "<span>HP: </span>" +
+        "<span class='target_body'>{HPPercent}% ({CurrentHP}/{MaxHP})</span>" +
+        "<div style='float: right'>" +
+          "<span>距離: </span>" +
+          "<span class='target_body'>{Distance}m ({EffectiveDistance}m)</span>" +
+        "</div>" +
+      "</div>";
+
+    // なにもターゲットしてない時のテンプレート
+    var noTargetDefine =
+         "<div class='target_name'>ターゲット: <span class='target_body'>No target</span></div>\n";
+
+    // 関数にする場合のサンプル
+    var targetDefine = function (target) {
+      if (target == null) {
+        return noTargetDefine;
+      }
+
+      // ターゲット全体の箱
+      var body = document.createElement('div');
+
+      // ターゲット名の箱
+      var box = document.createElement('div');
+      box.classList.add('box');
+      var target_info = document.createElement('div');
+      target_info.classList.add('target_info');
+
+      // HPバー
+      var gauge = document.createElement('div');
+      gauge.classList.add('hp_gauge');
+      gauge.style.width = target.HPPercent + "%";
+      box.appendChild(gauge);
+
+      // ヘッダ
+      var span = document.createElement('span');
+      span.classList.add('target_header');
+      span.textContent = "ターゲット: ";
+      target_info.appendChild(span);
+
+      // 名前
+      span = document.createElement('span');
+      span.classList.add('target_body');
+      span.textContent = target.Name;
+      target_info.appendChild(span);
+
+      box.appendChild(target_info);
+      body.appendChild(box);
+
+      
+      // ターゲット詳細行
+      var detail = document.createElement('div');
+      detail.id = 'target_detail';
+
+      // HP:
+      span = document.createElement('span');
+      span.textContent = "HP: ";
+      detail.appendChild(span);
+
+      // HP value
+      span = document.createElement('span');
+      span.classList.add('target_body');
+      span.textContent = target.HPPercent + "% (" + target.CurrentHP + "/" + target.MaxHP + ")";
+      detail.appendChild(span);
+
+      // 距離: (右寄せ)
+      div = document.createElement('div');
+      div.style.float = 'right';
+      span = document.createElement('span');
+      span.classList.add('target_header');
+      span.textContent = "距離: ";
+      div.appendChild(span);
+
+      // 距離 value
+      span = document.createElement('span');
+      span.classList.add('target_body');
+      span.textContent = target.Distance + "m (" + target.EffectiveDistance + "m)";
+      div.appendChild(span);
+
+      detail.appendChild(div);
+
+      body.appendChild(detail);
+
+      return body.outerHTML;
+    }
+
 
     // 上記のターゲット情報を HTML として扱うなら true
     var useHTMLTargetDefine = true;
 
     // 表示するデータの定義
     //var bodyDefine = "<span class='character'>{Name}</span><span class='enmity'>{EnmityString}</span>";
-    var bodyDefine = function (e) {
+    var bodyDefine = function (e, index) {
+      var rank = index + 1;
       var content = document.createElement('div');
       var name = document.createElement('span');
-      var enmity = document.createElement('name');
+      var enmity = document.createElement('span');
       content.classList.add('content');
       name.classList.add('character');
       enmity.classList.add('enmity');
       if (e.isMe == true) {
         name.classList.add('me');
         enmity.classList.add('me');
+        name.innerText = rank + '. YOU'; // たとえば自分をYOUに変えてみる。
+      } else {
+        name.innerText = rank + '. ' + e.Name;
       }
-      name.innerText = e.Name;
       enmity.innerText = e.EnmityString;
       content.appendChild(name);
       content.appendChild(enmity);
@@ -209,23 +309,22 @@
           return;
         }
       } else if (typeof targetDefine === 'string') {
-        elementText = targetDefine.replace(/{(.+?)}/g, function (_, key) { return key in data.Enmity.Target ? data.Enmity.Target[key] : ""; });
+        if (data.Enmity.Target == null) {
+          elementText = noTargetDefine;
+        } else {
+          elementText = targetDefine.replace(/{(.+?)}/g, function (_, key) { return key in data.Enmity.Target ? data.Enmity.Target[key] : ""; });
+        }
+
       } else {
         console.log("updateTarget: 'targetDefine' should be string or function that returns string.");
         return;
       }
-
       // テキスト設定
       if (!useHTMLTargetDefine) {
         var hoge = data.Enmity.Target;
         targetElem.innerText = elementText;
       } else {
         targetElem.innerHTML = elementText;
-      }
-      if (data.Enmity.Target.ID == 0) {
-        document.getElementById('target_detail').style.display = 'none';
-      } else {
-        document.getElementById('target_detail').style.display = '';
       }
     }
 
@@ -256,7 +355,7 @@
           content.innerHTML = bodyDefine.replace(/{(.+?)}/g, function (_, key) { return key in entry ? entry[key] : ""; });
           box.appendChild(content);
         } else {
-          content = bodyDefine(entry);
+          content = bodyDefine(entry, index);
           box.appendChild(content);
         }
         box.appendChild(graph);
