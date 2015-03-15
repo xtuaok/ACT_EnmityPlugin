@@ -148,9 +148,9 @@ namespace Tamagawa.EnmityPlugin
                     ID = 0,
                     MaxHP = 0,
                     CurrentHP = 0,
-                    Distance = "0.00m",
+                    Distance = "0.00",
                     EffectiveDistance = 0,
-                    HorizontalDistance = "0.00m"
+                    HorizontalDistance = "0.00"
 
                 };
                 return serializer.Serialize(enmity);
@@ -165,16 +165,7 @@ namespace Tamagawa.EnmityPlugin
             /// なにもターゲットしてない
             if (currentTarget <= 0)
             {
-                enmity.Target = new TargetInfo
-                {
-                    Name = "No target",
-                    ID = 0,
-                    MaxHP = 0,
-                    CurrentHP = 0,
-                    Distance = "0.00m",
-                    EffectiveDistance = 0,
-                    HorizontalDistance = "0.00m"
-                };
+                enmity.Target = null;
                 return serializer.Serialize(enmity);
             }
 
@@ -190,8 +181,8 @@ namespace Tamagawa.EnmityPlugin
                 enmity.Target = FFXIVPluginHelper.GetTargetInfoFromByteArray(source);
 
                 /// 距離計算
-                enmity.Target.Distance = String.Format("{0,5:F2}m", mypc.GetDistanceTo(enmity.Target));
-                enmity.Target.HorizontalDistance = String.Format("{0,5:F2}m", mypc.GetHorizontalDistanceTo(enmity.Target));
+                enmity.Target.Distance = mypc.GetDistanceTo(enmity.Target).ToString("0.00");
+                enmity.Target.HorizontalDistance = mypc.GetHorizontalDistanceTo(enmity.Target).ToString("0.00");
 
                 if (enmity.Target.Type == TargetType.Monster)
                 {
