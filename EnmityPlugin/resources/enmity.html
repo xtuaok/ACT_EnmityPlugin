@@ -4,7 +4,6 @@
   <title></title>
   <style>
 
-
     * {
       /* フォント （一部のフォントは上手く適用されない） */
       font-family: "Meiryo";
@@ -42,11 +41,20 @@
       padding: 2px;
     }
 
-    .target_info {
+    #target_name_plate {
       width: 100%;
       position: relative;
       bottom: 0;
       z-index: 2;
+    }
+
+    #target_hp_gauge {
+      position: absolute;
+      display: block;
+      bottom: 2px;
+      height: 2px;
+      /* background-color: rgba(81, 255, 0, 0.75); */ /* Apply Effect で設定するのでコメント */
+      z-index: 1;
     }
 
     .target_header {
@@ -106,7 +114,7 @@
       position: relative;
     }
 
-    .PLD,.WAR,.MRD,GLD {
+    .PLD,.WAR,.MRD,.GLD {
       background-color: rgba(52,67,150,0.75);
     }
 
@@ -120,24 +128,9 @@
 
     .content .me {
       color: #FFFF00;
-	    text-shadow: -1px 0 2px #594709, 0 1px 2px #594709, 1px 0 2px #594709, 0 -1px 2px #594709;
+      text-shadow: -1px 0 2px #594709, 0 1px 2px #594709, 1px 0 2px #594709, 0 -1px 2px #594709;
     }
-
-    .hp_gauge {
-      position: absolute;
-      display: block;
-      bottom: 2px;
-      height: 2px;
-      background-color: rgba(81, 255, 0, 0.75);
-      z-index: 1;
-    }
-
-    .hp_text {
-      position: relative;
-      bottom: 0;
-      z-index: 2;
-    }
-	</style>
+  </style>
   <script>
     //
     // プラグイン側から以下のような ActXiv オブジェクトとしてデータが提供される
@@ -145,10 +138,10 @@
     // ダミーデータ(デバッグ用)
     var ActXivDebug = {
       "Enmity": {
-                "Target": { 'Name': 'マンドラゴラ・プライム', 'HPPercent': 17.74, 'CurrentHP': 221004, 'MaxHP': 1245321, 'Distance': 3.02, 'EffectiveDistance': 2, 'HorizontalDistance': 2.32 },
+        "Target": { 'Name': 'マンドラゴラ・プライム', 'HPPercent': 17.74, 'CurrentHP': 221004, 'MaxHP': 1245321, 'Distance': 3.02, 'EffectiveDistance': 2, 'HorizontalDistance': 2.32 },
         // "Target": null,
         "Entries": [
-          { "Name": 'Tomonori Tamagawa', "Enmity": 128923, 'EnmityString': '128,923', 'isMe': true, 'HateRate': 100,'JobName':"WAR" },
+          { "Name": 'Tomonori Tamagawa', "Enmity": 128923, 'EnmityString': '128,923', 'isMe': true, 'HateRate': 100,'JobName': 'WAR' },
           { "Name": 'Tomonori Arakawa', "Enmity": 3845, 'EnmityString': '3,845', 'isMe': false, 'HateRate': 20, 'JobName': 'SCH' },
           { "Name": 'Tomonori Tonegawa', "Enmity": 0, 'EnmityString': '0', 'isMe': false, 'HateRate': 00, 'JobName': 'WHM' }
         ]
@@ -162,27 +155,29 @@
 
     // ターゲット情報の定義
     // テンプレート文字列
-    var _targetDefine =
-      "<div><div class='box'>" +
-        "<div class='hp_gauge' style='width: {HPPercent}%'></div>" +
-        "<div class='target_info'><span class='target_header'>ターゲット: </span> " +
-        "<span class='target_body'>{Name}</span></div>" +
-      "</div>" +
-      "<div class='target_detail'>" +
-        "<span>HP: </span>" +
-        "<span class='target_body'>{HPPercent}% ({CurrentHP}/{MaxHP})</span>" +
-        "<div style='float: right'>" +
-          "<span>距離: </span>" +
-          "<span class='target_body'>{Distance}m ({EffectiveDistance}m)</span>" +
+    var targetDefine =
+        "<div class='box'>" +
+          "<div id='target_hp_gauge' style='width: {HPPercent}%'></div>" +
+          "<div id='target_name_plate'>" +
+            "<span class='target_header'>ターゲット: </span> " +
+            "<span id='target_name' class='target_body'>{Name}</span>" +
+          "</div>" +
         "</div>" +
-      "</div>";
+        "<div id='target_detail'>" +
+          "<span>HP: </span>" +
+          "<span class='target_body'>{HPPercent}% ({CurrentHP}/{MaxHP})</span>" +
+          "<div style='float: right'>" +
+            "<span>距離: </span>" +
+            "<span class='target_body'>{Distance}m ({EffectiveDistance}m)</span>" +
+          "</div>" +
+        "</div>";
 
     // なにもターゲットしてない時のテンプレート
     var noTargetDefine =
-         "<div class='target_name'>ターゲット: <span class='target_body'>No target</span></div>\n";
+         "<div id='target_name_plate'>ターゲット: <span class='target_body'>No target</span></div>";
 
     // 関数にする場合のサンプル
-    var targetDefine = function (target) {
+    var _targetDefine = function (target) {
       if (target == null) {
         return noTargetDefine;
       }
@@ -194,11 +189,11 @@
       var box = document.createElement('div');
       box.classList.add('box');
       var target_info = document.createElement('div');
-      target_info.classList.add('target_info');
+      target_info.id = 'target_name_plate';
 
       // HPバー
       var gauge = document.createElement('div');
-      gauge.classList.add('hp_gauge');
+      gauge.id = 'target_hp_gauge';
       gauge.style.width = target.HPPercent + "%";
       box.appendChild(gauge);
 
@@ -251,15 +246,32 @@
 
       body.appendChild(detail);
 
-      return body.outerHTML;
+      return body.innerHTML;
     }
 
 
     // 上記のターゲット情報を HTML として扱うなら true
     var useHTMLTargetDefine = true;
 
+    // 最後の装飾処理を適当に定義する 
+    var applyEffect = function (data) {
+       if (data.Enmity.Target != null) {
+         // HPバーの色を変えるとか
+         var hp = data.Enmity.Target.HPPercent;
+         var element = document.getElementById('target_hp_gauge');
+         if (hp < 25) {
+           element.style.backgroundColor = 'rgba(255, 45, 45, 0.75)';
+         } else if (hp < 50) {
+           element.style.backgroundColor = 'rgba(239, 151, 43, 0.75)';
+         } else if (hp < 75) {
+           element.style.backgroundColor = 'rgba(201, 204, 36, 0.75)';
+         } else {
+           element.style.backgroundColor = 'rgba(38, 214, 70, 0.75)';
+         }
+       }
+    };
+
     // 表示するデータの定義
-    //var bodyDefine = "<span class='character'>{Name}</span><span class='enmity'>{EnmityString}</span>";
     var bodyDefine = function (e, index) {
       var rank = index + 1;
       var content = document.createElement('div');
@@ -293,6 +305,7 @@
     function update(data) {
       updateTarget(data);
       updateEnmityList(data);
+      applyEffect(data);
     }
 
     // ターゲット情報を更新する
