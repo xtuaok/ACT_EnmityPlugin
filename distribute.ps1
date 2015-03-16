@@ -2,7 +2,7 @@
 ./build.bat
 
 # バージョン取得
-$version = [System.Diagnostics.FileVersionInfo]::GetVersionInfo("Build\EnmityOverlay.dll").FileVersion
+$version = [System.Diagnostics.FileVersionInfo]::GetVersionInfo("Build\addons\EnmityOverlay.dll").FileVersion
 
 # フォルダ名
 $buildFolder = ".\Build"
@@ -15,11 +15,9 @@ if ( Test-Path $fullFolder -PathType Container ) {
 
 # フォルダ作成
 New-Item -ItemType directory -Path $fullFolder
-New-Item -ItemType directory -Path "$fullFolder\addons"
 
 # full
 xcopy /Y /R /S /EXCLUDE:full.exclude "$buildFolder\*" "$fullFolder"
-mv "$fullFolder\EnmityOverlay.dll" "$fullFolder\addons"
 
 cd Distribute
 $folder = "EnmityOverlay-" + $version

@@ -180,7 +180,8 @@
   <PropertyGroup>
     <PostBuildEvent>copy /Y "$(SolutionDir)README.md" "$(TargetDir)EnmityOverlay-README.txt"
 copy /Y "$(SolutionDir)LICENSE.txt" "$(TargetDir)EnmityOverlay-LICENSE.txt"
-</PostBuildEvent>
+mkdir "$(TargetDir)\addons"
+move /Y "$(TargetPath)" "$(TargetDir)\addons"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
