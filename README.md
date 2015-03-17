@@ -31,8 +31,10 @@ C:\Program Files\Advanced Combat Tracker\OverlayPlugin\
 
 ## 使い方
 
-OverlayPluginの設定で新規オーバーレイとして`Enmity`タイプのオーバーレイを追加してください。  
-設定は miniparse や spelltimer オーバーレイとほぼ変わりません。  
+OverlayPluginの設定で新しいオーバーレイとして`Enmity`タイプのオーバーレイを追加してください。  
+![install](https://raw.githubusercontent.com/xtuaok/ACT_EnmityPlugin/master/install.png)
+
+その他設定は miniparse や spelltimer オーバーレイとほぼ変わりません。  
 
 見た目のカスタマイズは`resources\enmity.html`ファイルを編集することで可能です。  
 その際ファイル名を変更しておけば、アップデートの時誤って上書きされることを防げます。  
