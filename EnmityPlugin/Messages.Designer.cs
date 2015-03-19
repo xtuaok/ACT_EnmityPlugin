@@ -79,6 +79,15 @@ namespace Tamagawa.EnmityPlugin {
         }
         
         /// <summary>
+        ///   Failed to signature scan. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string FailedToSigScan {
+            get {
+                return ResourceManager.GetString("FailedToSigScan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   New release of EnmityPlugin is available! に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string NewVersionIsAvailable {

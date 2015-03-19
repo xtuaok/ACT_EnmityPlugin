@@ -13,6 +13,17 @@ using RainbowMage.OverlayPlugin;
 
 namespace Tamagawa.EnmityPlugin
 {
+    [Serializable()]
+    internal class ScanFailedException : Exception
+    {
+        private string message;
+        public ScanFailedException() : base() { message = "Failed to signature scan"; }
+        public ScanFailedException(string message) : base(message) { }
+        public ScanFailedException(string message, System.Exception inner) : base(message, inner) { }
+        protected ScanFailedException(System.Runtime.Serialization.SerializationInfo info,
+            System.Runtime.Serialization.StreamingContext context) { }
+    }
+
     public class EnmityOverlay : OverlayBase<EnmityOverlayConfig>
     {
         private static string charmapSignature = "FFFFFFFF????????DB0FC93FDB0F49416F12833A00000000????????DB0FC93FDB0F49416F12833A00000000";
@@ -51,8 +62,9 @@ namespace Tamagawa.EnmityPlugin
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                Log(LogLevel.Error, ex.ToString());
                 pid = 0;
             }
         }
@@ -86,6 +98,10 @@ namespace Tamagawa.EnmityPlugin
             }
             Log(LogLevel.Debug, "Charmap Address: 0x{0:X}, HateStructure: 0x{1:X}", (int)charmapAddress, (int)hateAddress);
             Log(LogLevel.Debug, "Target Address: 0x{0:X}", (int)targetAddress);
+            if (targetAddress == IntPtr.Zero)
+            {
+                throw new ScanFailedException();
+            }
         }
 
         //public override void Navigate(string url)

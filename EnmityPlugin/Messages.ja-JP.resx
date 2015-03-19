@@ -123,6 +123,9 @@
   <data name="ErrorTitle" xml:space="preserve">
     <value>エラー</value>
   </data>
+  <data name="FailedToSigScan" xml:space="preserve">
+    <value>メモリのシグネチャ検索に失敗しました.</value>
+  </data>
   <data name="NewVersionIsAvailable" xml:space="preserve">
     <value>EnmityPluginの新しいバージョンが入手可能です！</value>
   </data>
