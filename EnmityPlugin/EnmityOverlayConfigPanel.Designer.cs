@@ -51,6 +51,8 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.checkEnmityEnableGlobalHotkey = new System.Windows.Forms.CheckBox();
             this.textEnmityGlobalHotkey = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.checkLock = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudEnmityMaxFrameRate)).BeginInit();
             this.panel3.SuspendLayout();
@@ -63,20 +65,22 @@
             // tableLayoutPanel7
             // 
             resources.ApplyResources(this.tableLayoutPanel7, "tableLayoutPanel7");
-            this.tableLayoutPanel7.Controls.Add(this.label11, 1, 6);
-            this.tableLayoutPanel7.Controls.Add(this.label14, 0, 5);
-            this.tableLayoutPanel7.Controls.Add(this.nudEnmityMaxFrameRate, 1, 5);
+            this.tableLayoutPanel7.Controls.Add(this.label11, 1, 7);
+            this.tableLayoutPanel7.Controls.Add(this.label14, 0, 6);
+            this.tableLayoutPanel7.Controls.Add(this.nudEnmityMaxFrameRate, 1, 6);
             this.tableLayoutPanel7.Controls.Add(this.label15, 0, 1);
             this.tableLayoutPanel7.Controls.Add(this.label16, 0, 0);
-            this.tableLayoutPanel7.Controls.Add(this.label17, 0, 2);
+            this.tableLayoutPanel7.Controls.Add(this.label17, 0, 3);
             this.tableLayoutPanel7.Controls.Add(this.checkEnmityVisible, 1, 0);
             this.tableLayoutPanel7.Controls.Add(this.checkEnmityClickThru, 1, 1);
-            this.tableLayoutPanel7.Controls.Add(this.panel3, 1, 7);
-            this.tableLayoutPanel7.Controls.Add(this.tableLayoutPanel9, 1, 2);
-            this.tableLayoutPanel7.Controls.Add(this.label18, 0, 3);
-            this.tableLayoutPanel7.Controls.Add(this.nudEnmityScanInterval, 1, 3);
-            this.tableLayoutPanel7.Controls.Add(this.label1, 0, 4);
-            this.tableLayoutPanel7.Controls.Add(this.tableLayoutPanel1, 1, 4);
+            this.tableLayoutPanel7.Controls.Add(this.panel3, 1, 8);
+            this.tableLayoutPanel7.Controls.Add(this.tableLayoutPanel9, 1, 3);
+            this.tableLayoutPanel7.Controls.Add(this.label18, 0, 4);
+            this.tableLayoutPanel7.Controls.Add(this.nudEnmityScanInterval, 1, 4);
+            this.tableLayoutPanel7.Controls.Add(this.label1, 0, 5);
+            this.tableLayoutPanel7.Controls.Add(this.tableLayoutPanel1, 1, 5);
+            this.tableLayoutPanel7.Controls.Add(this.label2, 0, 2);
+            this.tableLayoutPanel7.Controls.Add(this.checkLock, 1, 2);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             // 
             // label11
@@ -237,6 +241,18 @@
             this.textEnmityGlobalHotkey.Name = "textEnmityGlobalHotkey";
             this.textEnmityGlobalHotkey.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textEnmityGlobalHotkey_KeyDown);
             // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // checkLock
+            // 
+            resources.ApplyResources(this.checkLock, "checkLock");
+            this.checkLock.Name = "checkLock";
+            this.checkLock.UseVisualStyleBackColor = true;
+            this.checkLock.CheckedChanged += new System.EventHandler(this.checkLock_CheckedChanged);
+            // 
             // EnmityOverlayConfigPanel
             // 
             resources.ApplyResources(this, "$this");
@@ -282,5 +298,7 @@
         private System.Windows.Forms.CheckBox checkEnmityEnableGlobalHotkey;
         private System.Windows.Forms.TextBox textEnmityGlobalHotkey;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox checkLock;
     }
 }

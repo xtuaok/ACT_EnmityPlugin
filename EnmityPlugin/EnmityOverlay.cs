@@ -16,7 +16,7 @@ namespace Tamagawa.EnmityPlugin
     [Serializable()]
     internal class ScanFailedException : Exception
     {
-        private string message;
+        private string message = String.Empty;
         public ScanFailedException() : base() { message = "Failed to signature scan"; }
         public ScanFailedException(string message) : base(message) { }
         public ScanFailedException(string message, System.Exception inner) : base(message, inner) { }

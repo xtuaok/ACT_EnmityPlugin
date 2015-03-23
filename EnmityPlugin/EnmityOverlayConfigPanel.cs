@@ -33,6 +33,7 @@ namespace Tamagawa.EnmityPlugin
         {
             this.checkEnmityVisible.Checked = this.config.IsVisible;
             this.checkEnmityClickThru.Checked = this.config.IsClickThru;
+            this.checkLock.Checked = this.config.IsLocked;
             this.textEnmityUrl.Text = this.config.Url;
             this.nudEnmityMaxFrameRate.Value = this.config.MaxFrameRate;
             this.nudEnmityScanInterval.Value = this.config.ScanInterval;
@@ -55,6 +56,13 @@ namespace Tamagawa.EnmityPlugin
                 this.InvokeIfRequired(() =>
                 {
                     this.checkEnmityClickThru.Checked = e.IsClickThru;
+                });
+            };
+            this.config.LockChanged += (o, e) =>
+            {
+                this.InvokeIfRequired(() =>
+                {
+                    this.checkLock.Checked = e.IsLocked;
                 });
             };
             this.config.UrlChanged += (o, e) =>
@@ -132,6 +140,11 @@ namespace Tamagawa.EnmityPlugin
         private void checkEnmityClickThru_CheckedChanged(object sender, EventArgs e)
         {
             this.config.IsClickThru = this.checkEnmityClickThru.Checked;
+        }
+
+        private void checkLock_CheckedChanged(object sender, EventArgs e)
+        {
+            this.config.IsLocked = this.checkLock.Checked;
         }
 
         private void textEnmityUrl_TextChanged(object sender, EventArgs e)

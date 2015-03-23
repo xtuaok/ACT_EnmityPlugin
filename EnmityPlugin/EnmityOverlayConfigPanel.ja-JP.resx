@@ -117,18 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>441, 223</value>
-  </data>
   <data name="label11.Text" xml:space="preserve">
     <value>※最大フレームレートおよびホットキーの変更を有効にするためにはプラグインの再起動が必要です</value>
   </data>
   <data name="label14.Text" xml:space="preserve">
     <value>最大フレームレート</value>
-  </data>
-  <data name="nudEnmityMaxFrameRate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>445, 19</value>
   </data>
   <data name="label15.Text" xml:space="preserve">
     <value>クリックを透過させる</value>
@@ -139,64 +132,27 @@
   <data name="label17.Text" xml:space="preserve">
     <value>表示するURL</value>
   </data>
-  <data name="checkEnmityVisible.Size" type="System.Drawing.Size, System.Drawing">
-    <value>441, 16</value>
-  </data>
-  <data name="checkEnmityClickThru.Size" type="System.Drawing.Size, System.Drawing">
-    <value>441, 16</value>
-  </data>
-  <data name="buttonEnmityReloadBrowser.Location" type="System.Drawing.Point, System.Drawing">
-    <value>223, 3</value>
-  </data>
-  <data name="buttonEnmityReloadBrowser.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 45</value>
-  </data>
   <data name="buttonEnmityReloadBrowser.Text" xml:space="preserve">
     <value>オーバーレイの表示をリロード</value>
-  </data>
-  <data name="buttonEnmityCopyActXiv.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 45</value>
   </data>
   <data name="buttonEnmityCopyActXiv.Text" xml:space="preserve">
     <value>ActXiv変数をクリップボードにコピー</value>
   </data>
-  <data name="tableLayoutPanel8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>441, 51</value>
-  </data>
-  <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>158, 358</value>
-  </data>
-  <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>441, 51</value>
-  </data>
-  <data name="textEnmityUrl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>408, 19</value>
-  </data>
-  <data name="buttonEnmitySelectFile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>408, 0</value>
-  </data>
-  <data name="tableLayoutPanel9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>445, 20</value>
-  </data>
   <data name="label18.Text" xml:space="preserve">
     <value>スキャン間隔 (ミリ秒)</value>
-  </data>
-  <data name="nudEnmityScanInterval.Size" type="System.Drawing.Size, System.Drawing">
-    <value>445, 19</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>グローバルホットキーを使用</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="textEnmityGlobalHotkey.Size" type="System.Drawing.Size, System.Drawing">
     <value>200, 19</value>
   </data>
-  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>447, 22</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>移動とリサイズを制限する</value>
   </data>
-  <data name="tableLayoutPanel7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="tableLayoutPanel7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>602, 412</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tableLayoutPanel7.RowCount" type="System.Int32, mscorlib">
+    <value>9</value>
   </data>
 </root>
