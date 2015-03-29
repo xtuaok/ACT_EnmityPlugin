@@ -47,7 +47,7 @@ namespace Tamagawa.EnmityPlugin
         {
             try
             {
-                if (FFXIVPluginHelper.Instance != null)
+                if (FFXIVPluginHelper.Instance != null && FFXIVPluginHelper.GetFFXIVProcess != null)
                 {
                     if (pid != FFXIVPluginHelper.GetFFXIVProcess.Id)
                     {
@@ -60,6 +60,10 @@ namespace Tamagawa.EnmityPlugin
                             suppress_log = false;
                         }
                     }
+                }
+                else
+                {
+                    pid = 0;
                 }
             }
             catch (Exception ex)
@@ -308,19 +312,8 @@ namespace Tamagawa.EnmityPlugin
 
         protected override void InitializeTimer()
         {
-            timer = new System.Timers.Timer();
+            base.InitializeTimer();
             timer.Interval = this.Config.ScanInterval;
-            timer.Elapsed += (o, e) =>
-            {
-                try
-                {
-                    Update();
-                }
-                catch (Exception ex)
-                {
-                    Log(LogLevel.Error, "Update: {0}", ex.ToString());
-                }
-            };
         }
 
         ///
