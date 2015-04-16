@@ -151,7 +151,7 @@
 		}
 	};	
 	function setLanguage(langKey) {
-		if(languages[langKey] == null || typeof(languages[langKey]) === 'undefined') {
+	    if(typeof(languages[langKey]) === 'undefined' || languages[langKey] == null) {
 			langauge = languages['eng'];
 		} else {
 			language = languages[langKey];
