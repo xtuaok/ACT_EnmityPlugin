@@ -156,7 +156,7 @@ namespace Tamagawa.EnmityPlugin
             /// Overlay に渡すオブジェクト
             EnmityObject enmity = new EnmityObject();
             enmity.Entries = new List<EnmityEntry>();
-
+            enmity.Language = System.Globalization.CultureInfo.DefaultThreadCurrentUICulture.ThreeLetterISOLanguageName.ToLower();
             uint currentTarget;
             uint currentTargetID;
 
@@ -392,6 +392,7 @@ namespace Tamagawa.EnmityPlugin
         {
             public TargetInfo Target;
             public List<EnmityEntry> Entries;
+            public String Language;
         }
     }
 }
