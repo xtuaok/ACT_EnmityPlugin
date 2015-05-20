@@ -130,13 +130,40 @@
       color: #FFFF00;
       text-shadow: -1px 0 2px #594709, 0 1px 2px #594709, 1px 0 2px #594709, 0 -1px 2px #594709;
     }
+	#wrapper {
+        background: rgba(0, 0, 0, 0.80);
+        box-shadow: 0 0 8px 8px rgba(0, 0, 0, 0.80);
+        border-radius: 4px;
+        margin: 10px;
+	    padding: 0 0 20 0;
+	}
   </style>
   <script>
+	var language = null;
+	var languages = {
+		'jpn': {
+			target: "ターゲット",
+			distance: "距離"
+		},
+		'eng': {
+			target: "Target",
+			distance: "Distance"
+		}
+	};	
+	function setLanguage(langKey) {
+	    if(typeof(languages[langKey]) === 'undefined' || languages[langKey] == null) {
+			langauge = languages['eng'];
+		} else {
+			language = languages[langKey];
+		}
+	}
+	var DEBUG = false;
     //
     // プラグイン側から以下のような ActXiv オブジェクトとしてデータが提供される
     //
     // ダミーデータ(デバッグ用)
     var ActXivDebug = {
+	  "Language": "jpn",
       "Enmity": {
         "Target": { 'Name': 'マンドラゴラ・プライム', 'HPPercent': 17.74, 'CurrentHP': 221004, 'MaxHP': 1245321, 'Distance': 3.02, 'EffectiveDistance': 2, 'HorizontalDistance': 2.32 },
         // "Target": null,
@@ -155,11 +182,11 @@
 
     // ターゲット情報の定義
     // テンプレート文字列
-    var targetDefine =
-        "<div class='box'>" +
+    var targetDefine = function(target) {
+		var ret = "<div class='box'>" +
           "<div id='target_hp_gauge' style='width: {HPPercent}%'></div>" +
           "<div id='target_name_plate'>" +
-            "<span class='target_header'>ターゲット: </span> " +
+            "<span class='target_header'>" + language.target + ": </span> " +
             "<span id='target_name' class='target_body'>{Name}</span>" +
           "</div>" +
         "</div>" +
@@ -167,14 +194,17 @@
           "<span>HP: </span>" +
           "<span class='target_body'>{HPPercent}% ({CurrentHP}/{MaxHP})</span>" +
           "<div style='float: right'>" +
-            "<span>距離: </span>" +
+            "<span>" + language.distance + ": </span>" +
             "<span class='target_body'>{Distance}m ({EffectiveDistance}m)</span>" +
           "</div>" +
         "</div>";
+		return ret.replace(/{(.+?)}/g, function (_, key) { return key in target ? target[key] : ""; });
+	};
 
     // なにもターゲットしてない時のテンプレート
-    var noTargetDefine =
-         "<div id='target_name_plate'>ターゲット: <span class='target_body'>No target</span></div>";
+    var noTargetDefine = function() {
+         "<div id='target_name_plate'>" + language.target + ": <span class='target_body'>No target</span></div>";
+	 };
 
     // 関数にする場合のサンプル
     var _targetDefine = function (target) {
@@ -303,6 +333,7 @@
 
     // 表示要素の更新
     function update(data) {
+	  setLanguage(data.Language);
       updateTarget(data);
       updateEnmityList(data);
       applyEffect(data);
@@ -375,18 +406,24 @@
         body.appendChild(box);
       });
     }
+
+	if(DEBUG) {
+		window.addEventListener('load', function() {
+			update(ActXivDebug);
+		});
+	}
   </script>
 </head>
 <body>
-
+<div id="wrapper">
   <div id="target">
-    No data to show.
-    <!-- ここにターゲット情報が入る -->
+	No data to show.
+	<!-- ここにターゲット情報が入る -->
   </div>
 
   <div id="enmityList">
     <!-- ここに敵視のエントリの情報が入る -->
   </div>
-
+</div>
 </body>
 </html>
