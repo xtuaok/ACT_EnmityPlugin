@@ -86,6 +86,9 @@
       <HintPath>..\Thirdparty\OverlayPlugin\HtmlRenderer.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="OverlayPlugin">
+      <HintPath>..\Thirdparty\OverlayPlugin\OverlayPlugin.dll</HintPath>
+    </Reference>
     <Reference Include="OverlayPlugin.Common">
       <HintPath>..\Thirdparty\OverlayPlugin\OverlayPlugin.Common.dll</HintPath>
       <Private>False</Private>
