@@ -26,14 +26,17 @@ namespace Tamagawa.EnmityPlugin
 
     public class EnmityOverlay : OverlayBase<EnmityOverlayConfig>
     {
-        private static string charmapSignature = "FFFFFFFF????????DB0FC93FDB0F49416F12833A00000000????????DB0FC93FDB0F49416F12833A00000000";
-        private static int charmapOffset = 44;
-        private static string targetSignature = "403F00000000000000000000000000000000????0000????000000000000??000000????????DB0FC93FDB0F49416F12833A";
-        private static int targetOffset = 218;
+        private static string charmapSignature64 = "f680d2340000027404b001eb35488d05";
+        private static string charmapSignature32 = "81feffff0000743581fe58010000732d8b3cb5";
+        private static int charmapOffset = 0;
+        private static string targetSignature64 = "f30f5ec6f30f11442420e80191ffff488b05";
+        private static string targetSignature32 = "750e85d2750ab9";
+        private static int targetOffset = 88;
         private static int pid = 0;
         private IntPtr charmapAddress = IntPtr.Zero;
         private IntPtr targetAddress = IntPtr.Zero;
         private IntPtr hateAddress = IntPtr.Zero;
+
         private bool suppress_log = false;
 
         public EnmityOverlay(EnmityOverlayConfig config) : base(config, config.Name)
@@ -78,30 +81,45 @@ namespace Tamagawa.EnmityPlugin
         /// </summary>
         private void getPointerAddress()
         {
+            string charmapSignature = charmapSignature32;
+            string targetSignature = targetSignature32;
+            int hateOffset = 19188;
+            bool bRIP = false;
+
+            if (FFXIVPluginHelper.GetFFXIVClientMode == FFXIV_ACT_Plugin.FFXIVClientMode.FFXIV_64)
+            {
+                bRIP = true;
+                hateOffset = -132592;
+                targetOffset = 144;
+                targetSignature = targetSignature64;
+                charmapSignature = charmapSignature64;
+            }
+
             /// CHARMAP
-            List<IntPtr> list = FFXIVPluginHelper.SigScan(charmapSignature, charmapOffset);
+            List<IntPtr> list = FFXIVPluginHelper.SigScan(charmapSignature, 0, bRIP);
             if (list == null || list.Count == 0)
             {
                 charmapAddress = IntPtr.Zero;
             }
             if (list.Count == 1)
             {
-                charmapAddress = list[0];
-                hateAddress = charmapAddress - 120664; // patch >= 2.51
+                charmapAddress = list[0] + charmapOffset;
+                hateAddress = charmapAddress + hateOffset; // patch >= 3.0
             }
 
             /// TARGET
-            list = FFXIVPluginHelper.SigScan(targetSignature, targetOffset);
+            list = FFXIVPluginHelper.SigScan(targetSignature, 0, bRIP);
             if (list == null || list.Count == 0)
             {
                 targetAddress = IntPtr.Zero;
             }
             if (list.Count == 1)
             {
-                targetAddress = list[0];
+                targetAddress = list[0] + targetOffset;
             }
-            Log(LogLevel.Debug, "Charmap Address: 0x{0:X}, HateStructure: 0x{1:X}", (int)charmapAddress, (int)hateAddress);
-            Log(LogLevel.Debug, "Target Address: 0x{0:X}", (int)targetAddress);
+
+            Log(LogLevel.Debug, "Charmap Address: 0x{0:X}, HateStructure: 0x{1:X}", charmapAddress.ToInt64(), hateAddress.ToInt64());
+            Log(LogLevel.Debug, "Target Address: 0x{0:X}", targetAddress.ToInt64());
             if (targetAddress == IntPtr.Zero)
             {
                 throw new ScanFailedException();
@@ -156,8 +174,15 @@ namespace Tamagawa.EnmityPlugin
             /// Overlay に渡すオブジェクト
             EnmityObject enmity = new EnmityObject();
             enmity.Entries = new List<EnmityEntry>();
-            enmity.Language = System.Globalization.CultureInfo.DefaultThreadCurrentUICulture.ThreeLetterISOLanguageName.ToLower();
-            uint currentTarget;
+            if (System.Globalization.CultureInfo.DefaultThreadCurrentUICulture != null)
+            {
+                enmity.Language = System.Globalization.CultureInfo.DefaultThreadCurrentUICulture.ThreeLetterISOLanguageName.ToLower();
+            }
+            else
+            {
+                enmity.Language = System.Globalization.CultureInfo.CurrentUICulture.ThreeLetterISOLanguageName.ToLower();
+            }
+            IntPtr currentTarget;
             uint currentTargetID;
 
             //// なんかプロセスがおかしいとき
@@ -176,14 +201,14 @@ namespace Tamagawa.EnmityPlugin
                 return serializer.Serialize(enmity);
             }
 
-            var targetInfoSource = FFXIVPluginHelper.GetByteArray((uint)targetAddress.ToInt64(), 128);
+            var targetInfoSource = FFXIVPluginHelper.GetByteArray(targetAddress, 128);
             unsafe
             {
-                fixed (byte* p = &targetInfoSource[0x0]) currentTarget = *(uint*)p;
+                fixed (byte* p = &targetInfoSource[0x0]) currentTarget = *(IntPtr*)p;
                 fixed (byte* p = &targetInfoSource[0x5C]) currentTargetID = *(uint*)p;
             }
             /// なにもターゲットしてない
-            if (currentTarget <= 0)
+            if (currentTarget.ToInt64() <= 0)
             {
                 enmity.Target = null;
                 return serializer.Serialize(enmity);
@@ -192,7 +217,7 @@ namespace Tamagawa.EnmityPlugin
             try
             {
                 /// 自キャラ
-                var address = FFXIVPluginHelper.GetUInt32((uint)charmapAddress.ToInt64());
+                IntPtr address = (IntPtr)FFXIVPluginHelper.GetUInt32(charmapAddress);
                 var source =  FFXIVPluginHelper.GetByteArray(address, 0x3F40);
                 TargetInfo mypc = FFXIVPluginHelper.GetTargetInfoFromByteArray(source);
 
@@ -210,7 +235,7 @@ namespace Tamagawa.EnmityPlugin
                     List<Combatant> combatantList = FFXIVPluginHelper.GetCombatantList();
 
                     /// 一度に全部読む
-                    byte[] buffer = FFXIVPluginHelper.GetByteArray((uint)hateAddress.ToInt64(), 16 * 72);
+                    byte[] buffer = FFXIVPluginHelper.GetByteArray(hateAddress, 16 * 72);
                     uint TopEnmity = 0;
                     ///
                     for (int i = 0; i < 16; i++ )

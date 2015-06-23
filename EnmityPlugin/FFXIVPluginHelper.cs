@@ -72,6 +72,33 @@ namespace Tamagawa.EnmityPlugin
             }
         }
 
+        public static FFXIV_ACT_Plugin.FFXIVClientMode GetFFXIVClientMode
+        {
+            get
+            {
+                try
+                {
+                    FieldInfo fi = _plugin.pluginObj.GetType().GetField("_Memory", BindingFlags.GetField | BindingFlags.NonPublic | BindingFlags.Instance);
+                    var memory = fi.GetValue(_plugin.pluginObj);
+                    if (memory == null) return FFXIV_ACT_Plugin.FFXIVClientMode.Unknown;
+
+                    fi = memory.GetType().GetField("_config", BindingFlags.GetField | BindingFlags.NonPublic | BindingFlags.Instance);
+                    var config = fi.GetValue(memory);
+                    if (config == null) return FFXIV_ACT_Plugin.FFXIVClientMode.Unknown;
+
+                    fi = config.GetType().GetField("ClientMode", BindingFlags.GetField | BindingFlags.Public | BindingFlags.Instance);
+                    var clientMode = fi.GetValue(config);
+                    if (clientMode == null) return FFXIV_ACT_Plugin.FFXIVClientMode.Unknown;
+
+                    return (FFXIV_ACT_Plugin.FFXIVClientMode)clientMode;
+                }
+                catch
+                {
+                    return FFXIV_ACT_Plugin.FFXIVClientMode.Unknown;
+                }
+            }
+        }
+
         private static object GetScanCombatants()
         {
             FieldInfo fi = _plugin.pluginObj.GetType().GetField("_Memory", BindingFlags.GetField | BindingFlags.NonPublic | BindingFlags.Instance);
@@ -148,11 +175,11 @@ namespace Tamagawa.EnmityPlugin
             fixed (byte* p = &source[0x74]) target.ID = *(uint*)p;
 
             target.Type = (TargetType)source[0x8A];
-            target.EffectiveDistance = source[0x90];
-
-            fixed (byte* p = &source[0xA0]) target.X = *(float*)p;
-            fixed (byte* p = &source[0xA4]) target.Z = *(float*)p;
-            fixed (byte* p = &source[0xA8]) target.Y = *(float*)p;
+            target.EffectiveDistance = source[0x91];
+            int offset = (GetFFXIVClientMode == FFXIV_ACT_Plugin.FFXIVClientMode.FFXIV_64) ? 176 : 160;
+            fixed (byte* p = &source[offset]) target.X = *(float*)p;
+            fixed (byte* p = &source[offset + 4]) target.Z = *(float*)p;
+            fixed (byte* p = &source[offset + 8]) target.Y = *(float*)p;
 
             if (target.Type != TargetType.PC && target.Type != TargetType.Monster)
             {
@@ -160,20 +187,21 @@ namespace Tamagawa.EnmityPlugin
             }
             else
             {
-                fixed (byte* p = &source[0x1548]) target.CurrentHP = *(int*)p;
-                fixed (byte* p = &source[0x154C]) target.MaxHP = *(int*)p;
-                fixed (byte* p = &source[0x1550]) target.CurrentMP = *(int*)p;
-                fixed (byte* p = &source[0x1554]) target.MaxMP = *(int*)p;
+                int num = (GetFFXIVClientMode == FFXIV_ACT_Plugin.FFXIVClientMode.FFXIV_64) ? 5872 : 5312;
+                fixed (byte* p = &source[num+8]) target.CurrentHP = *(int*)p;
+                fixed (byte* p = &source[num+12]) target.MaxHP = *(int*)p;
+                fixed (byte* p = &source[num+16]) target.CurrentMP = *(int*)p;
+                fixed (byte* p = &source[num+20]) target.MaxMP = *(int*)p;
             }
             return target;
         }
 
-        private static bool Peek(uint address, byte[] buffer)
+        private static bool Peek(IntPtr address, byte[] buffer)
         {
             Process process = GetFFXIVProcess;
             IntPtr zero = IntPtr.Zero;
             IntPtr nSize = new IntPtr(buffer.Length);
-            return NativeMethods.ReadProcessMemory(process.Handle, new IntPtr(address), buffer, nSize, ref zero);
+            return NativeMethods.ReadProcessMemory(process.Handle, address, buffer, nSize, ref zero);
         }
 
         public static string GetStringFromBytes(byte[] source, int offset = 0, int size = 256)
@@ -199,7 +227,7 @@ namespace Tamagawa.EnmityPlugin
         /// <param name="address"></param>
         /// <param name="length"></param>
         /// <returns></returns>
-        public static byte[] GetByteArray(uint address, int length)
+        public static byte[] GetByteArray(IntPtr address, int length)
         {
             var data = new byte[length];
             Peek(address, data);
@@ -211,11 +239,11 @@ namespace Tamagawa.EnmityPlugin
         /// <param name="address"></param>
         /// <param name="offset"></param>
         /// <returns></returns>
-        public unsafe static int GetInt32(uint address, uint offset = 0)
+        public unsafe static int GetInt32(IntPtr address, int offset = 0)
         {
             int ret;
             var value = new byte[4];
-            Peek(address + offset, value);
+            Peek(IntPtr.Add(address,  offset), value);
             fixed (byte* p = &value[0]) ret = *(int*)p;
             return ret;
         }
@@ -225,11 +253,11 @@ namespace Tamagawa.EnmityPlugin
         /// <param name="address"></param>
         /// <param name="offset"></param>
         /// <returns></returns>
-        public unsafe static uint GetUInt32(uint address, uint offset = 0)
+        public unsafe static uint GetUInt32(IntPtr address, int offset = 0)
         {
             uint ret;
             var value = new byte[4];
-            Peek(address + offset, value);
+            Peek(IntPtr.Add(address, offset), value);
             fixed (byte* p = &value[0]) ret = *(uint*)p;
             return ret;
         }
@@ -237,7 +265,7 @@ namespace Tamagawa.EnmityPlugin
         //
         // Signature Sscan
         // 
-        public static List<IntPtr> SigScan(string pattern, int offset = 0)
+        public static List<IntPtr> SigScan(string pattern, int offset = 0, bool bRIP = false)
         {
             IntPtr arg_05_0 = IntPtr.Zero;
             if (pattern == null || pattern.Length % 2 != 0)
@@ -299,8 +327,23 @@ namespace Tamagawa.EnmityPlugin
                         }
                         if (num3 == array.Length)
                         {
-                            IntPtr item = new IntPtr(num2 + offset);
-                            item = new IntPtr(intPtr2.ToInt64() + item.ToInt64());
+                            IntPtr item;
+                            if (bRIP)
+                            {
+                                item = new IntPtr(BitConverter.ToInt32(array2, num2 + array.Length + offset));
+						    	item = new IntPtr(intPtr2.ToInt64() + (long)num2 + (long)array.Length + 4L + item.ToInt64());
+						
+                            }
+                            else if (GetFFXIVClientMode == FFXIV_ACT_Plugin.FFXIVClientMode.FFXIV_64)
+                            {
+                                item = new IntPtr(BitConverter.ToInt64(array2, num2 + array.Length + offset));
+                                item = new IntPtr(item.ToInt64());
+                            }
+                            else
+                            {
+                                item = new IntPtr(BitConverter.ToInt32(array2, num2 + array.Length + offset));
+                                item = new IntPtr(item.ToInt64());
+                            }
                             list.Add(item);
                         }
                         num2++;
@@ -327,7 +370,7 @@ namespace Tamagawa.EnmityPlugin
     {
         public string Name;
         public uint ID;
-        public int EffectiveDistance;
+        public short EffectiveDistance;
         public string Distance;
         public string HorizontalDistance;
         public float X;
