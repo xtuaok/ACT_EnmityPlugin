@@ -33,6 +33,13 @@ namespace Tamagawa.EnmityPlugin
             }
         }
 
+        public enum FFXIVClientMode
+        {
+            Unknown = 0,
+            FFXIV_32 = 1,
+            FFXIV_64 = 2,
+        }
+
         public static Version GetVersion
         {
             get
@@ -72,7 +79,7 @@ namespace Tamagawa.EnmityPlugin
             }
         }
 
-        public static FFXIV_ACT_Plugin.FFXIVClientMode GetFFXIVClientMode
+        public static FFXIVClientMode GetFFXIVClientMode
         {
             get
             {
@@ -80,21 +87,21 @@ namespace Tamagawa.EnmityPlugin
                 {
                     FieldInfo fi = _plugin.pluginObj.GetType().GetField("_Memory", BindingFlags.GetField | BindingFlags.NonPublic | BindingFlags.Instance);
                     var memory = fi.GetValue(_plugin.pluginObj);
-                    if (memory == null) return FFXIV_ACT_Plugin.FFXIVClientMode.Unknown;
+                    if (memory == null) return FFXIVClientMode.Unknown;
 
                     fi = memory.GetType().GetField("_config", BindingFlags.GetField | BindingFlags.NonPublic | BindingFlags.Instance);
                     var config = fi.GetValue(memory);
-                    if (config == null) return FFXIV_ACT_Plugin.FFXIVClientMode.Unknown;
+                    if (config == null) return FFXIVClientMode.Unknown;
 
                     fi = config.GetType().GetField("ClientMode", BindingFlags.GetField | BindingFlags.Public | BindingFlags.Instance);
                     var clientMode = fi.GetValue(config);
-                    if (clientMode == null) return FFXIV_ACT_Plugin.FFXIVClientMode.Unknown;
+                    if (clientMode == null) return FFXIVClientMode.Unknown;
 
-                    return (FFXIV_ACT_Plugin.FFXIVClientMode)clientMode;
+                    return (FFXIVClientMode)clientMode;
                 }
                 catch
                 {
-                    return FFXIV_ACT_Plugin.FFXIVClientMode.Unknown;
+                    return FFXIVClientMode.Unknown;
                 }
             }
         }
@@ -176,7 +183,7 @@ namespace Tamagawa.EnmityPlugin
 
             target.Type = (TargetType)source[0x8A];
             target.EffectiveDistance = source[0x91];
-            int offset = (GetFFXIVClientMode == FFXIV_ACT_Plugin.FFXIVClientMode.FFXIV_64) ? 176 : 160;
+            int offset = (GetFFXIVClientMode == FFXIVPluginHelper.FFXIVClientMode.FFXIV_64) ? 176 : 160;
             fixed (byte* p = &source[offset]) target.X = *(float*)p;
             fixed (byte* p = &source[offset + 4]) target.Z = *(float*)p;
             fixed (byte* p = &source[offset + 8]) target.Y = *(float*)p;
@@ -187,7 +194,7 @@ namespace Tamagawa.EnmityPlugin
             }
             else
             {
-                int num = (GetFFXIVClientMode == FFXIV_ACT_Plugin.FFXIVClientMode.FFXIV_64) ? 5872 : 5312;
+                int num = (GetFFXIVClientMode == FFXIVPluginHelper.FFXIVClientMode.FFXIV_64) ? 5872 : 5312;
                 fixed (byte* p = &source[num+8]) target.CurrentHP = *(int*)p;
                 fixed (byte* p = &source[num+12]) target.MaxHP = *(int*)p;
                 fixed (byte* p = &source[num+16]) target.CurrentMP = *(int*)p;
@@ -334,7 +341,7 @@ namespace Tamagawa.EnmityPlugin
 						    	item = new IntPtr(intPtr2.ToInt64() + (long)num2 + (long)array.Length + 4L + item.ToInt64());
 						
                             }
-                            else if (GetFFXIVClientMode == FFXIV_ACT_Plugin.FFXIVClientMode.FFXIV_64)
+                            else if (GetFFXIVClientMode == FFXIVPluginHelper.FFXIVClientMode.FFXIV_64)
                             {
                                 item = new IntPtr(BitConverter.ToInt64(array2, num2 + array.Length + offset));
                                 item = new IntPtr(item.ToInt64());

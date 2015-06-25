@@ -86,7 +86,7 @@ namespace Tamagawa.EnmityPlugin
             int hateOffset = 19188;
             bool bRIP = false;
 
-            if (FFXIVPluginHelper.GetFFXIVClientMode == FFXIV_ACT_Plugin.FFXIVClientMode.FFXIV_64)
+            if (FFXIVPluginHelper.GetFFXIVClientMode == FFXIVPluginHelper.FFXIVClientMode.FFXIV_64)
             {
                 bRIP = true;
                 hateOffset = 25312;
