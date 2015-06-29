@@ -26,12 +26,17 @@ namespace Tamagawa.EnmityPlugin
 
     public class EnmityOverlay : OverlayBase<EnmityOverlayConfig>
     {
-        private static string charmapSignature64 = "48c1e8033dffff0000742b3da80100007324488d0d";
-        private static string charmapSignature32 = "81feffff0000743581fe58010000732d8b3cb5";
-        private static int charmapOffset = 0;
-        private static string targetSignature64 = "f30f5ec6f30f11442420e80191ffff488b05";
-        private static string targetSignature32 = "750e85d2750ab9";
-        private static int targetOffset = 88;
+        private const string charmapSignature32 = "81feffff0000743581fe58010000732d8b3cb5";
+        private const string charmapSignature64 = "48c1e8033dffff0000742b3da80100007324488d0d";
+        private const string targetSignature32  = "750e85d2750ab9";
+        private const string targetSignature64  = "b094????????????04000000????????5094????????????0000";
+        private const int charmapOffset32 = 0;
+        private const int charmapOffset64 = 0;
+        private const int targetOffset32  = 88;
+        private const int targetOffset64  = 114;
+        private const int hateOffset32    = 19188; // TODO: should be more stable
+        private const int hateOffset64    = 25312; // TODO: should be more stable
+
         private int pid = 0;
         private IntPtr charmapAddress = IntPtr.Zero;
         private IntPtr targetAddress = IntPtr.Zero;
@@ -83,15 +88,18 @@ namespace Tamagawa.EnmityPlugin
         {
             string charmapSignature = charmapSignature32;
             string targetSignature = targetSignature32;
-            int hateOffset = 19188;
+            int targetOffset = targetOffset32;
+            int hateOffset = hateOffset32;
+            int charmapOffset = charmapOffset32;
             bool bRIP = false;
 
             if (FFXIVPluginHelper.GetFFXIVClientMode == FFXIVPluginHelper.FFXIVClientMode.FFXIV_64)
             {
                 bRIP = true;
-                hateOffset = 25312;
-                targetOffset = 144;
-                targetSignature = targetSignature64;
+                hateOffset       = hateOffset64;
+                targetOffset     = targetOffset64;
+                charmapOffset    = charmapOffset64;
+                targetSignature  = targetSignature64;
                 charmapSignature = charmapSignature64;
             }
 
@@ -120,7 +128,6 @@ namespace Tamagawa.EnmityPlugin
 
             Log(LogLevel.Debug, "Charmap Address: 0x{0:X}, HateStructure: 0x{1:X}", charmapAddress.ToInt64(), hateAddress.ToInt64());
             Log(LogLevel.Debug, "Target Address: 0x{0:X}", targetAddress.ToInt64());
-            // ID for check : 269991985
             if (targetAddress == IntPtr.Zero)
             {
                 throw new ScanFailedException();
@@ -246,7 +253,9 @@ namespace Tamagawa.EnmityPlugin
                         {
                             ID = _id,
                             Enmity = _enmity,
-                            isMe = false
+                            isMe = false,
+                            Name = "Unknown",
+                            Job = 0
                         };
                         if (entry.ID > 0)
                         {
