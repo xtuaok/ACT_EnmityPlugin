@@ -114,6 +114,10 @@ namespace Tamagawa.EnmityPlugin
                 charmapAddress = list[0] + charmapOffset;
                 hateAddress = charmapAddress + hateOffset; // patch >= 3.0
             }
+            if (charmapAddress == IntPtr.Zero)
+            {
+                throw new ScanFailedException();
+            }
 
             /// TARGET
             list = FFXIVPluginHelper.SigScan(targetSignature, 0, bRIP);
@@ -125,13 +129,13 @@ namespace Tamagawa.EnmityPlugin
             {
                 targetAddress = list[0] + targetOffset;
             }
-
-            Log(LogLevel.Debug, "Charmap Address: 0x{0:X}, HateStructure: 0x{1:X}", charmapAddress.ToInt64(), hateAddress.ToInt64());
-            Log(LogLevel.Debug, "Target Address: 0x{0:X}", targetAddress.ToInt64());
             if (targetAddress == IntPtr.Zero)
             {
                 throw new ScanFailedException();
             }
+
+            Log(LogLevel.Debug, "Charmap Address: 0x{0:X}, HateStructure: 0x{1:X}", charmapAddress.ToInt64(), hateAddress.ToInt64());
+            Log(LogLevel.Debug, "Target Address: 0x{0:X}", targetAddress.ToInt64());
         }
 
         //public override void Navigate(string url)
@@ -189,7 +193,7 @@ namespace Tamagawa.EnmityPlugin
             if (pid == 0)
             {
                 enmity.Target = new TargetInfo{
-                    Name = "FFXIV process is not available.",
+                    Name = "Failed to scan memory.",
                     ID = 0,
                     MaxHP = 0,
                     CurrentHP = 0,
