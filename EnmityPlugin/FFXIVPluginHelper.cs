@@ -338,8 +338,7 @@ namespace Tamagawa.EnmityPlugin
                             if (bRIP)
                             {
                                 item = new IntPtr(BitConverter.ToInt32(array2, num2 + array.Length + offset));
-						    	item = new IntPtr(intPtr2.ToInt64() + (long)num2 + (long)array.Length + 4L + item.ToInt64());
-						
+                                item = new IntPtr(intPtr2.ToInt64() + (long)num2 + (long)array.Length + 4L + item.ToInt64());
                             }
                             else if (GetFFXIVClientMode == FFXIVPluginHelper.FFXIVClientMode.FFXIV_64)
                             {
