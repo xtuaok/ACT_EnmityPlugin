@@ -112,7 +112,7 @@ namespace Tamagawa.EnmityPlugin
             if (list.Count == 1)
             {
                 charmapAddress = list[0] + charmapOffset;
-                hateAddress = charmapAddress + hateOffset; // patch >= 3.0
+                hateAddress = charmapAddress + hateOffset;
             }
             if (charmapAddress == IntPtr.Zero)
             {
@@ -134,8 +134,14 @@ namespace Tamagawa.EnmityPlugin
                 throw new ScanFailedException();
             }
 
-            Log(LogLevel.Debug, "Charmap Address: 0x{0:X}, HateStructure: 0x{1:X}", charmapAddress.ToInt64(), hateAddress.ToInt64());
-            Log(LogLevel.Debug, "Target Address: 0x{0:X}", targetAddress.ToInt64());
+            { 
+                LogLevel level = LogLevel.Debug;
+                if (Name.Equals("EnmityDebug")) {
+                    level = LogLevel.Info;
+                }
+                Log(level, "Charmap Address: 0x{0:X}, HateStructure: 0x{1:X}", charmapAddress.ToInt64(), hateAddress.ToInt64());
+                Log(level, "Target Address: 0x{0:X}", targetAddress.ToInt64());
+            }
         }
 
         //public override void Navigate(string url)
@@ -187,7 +193,6 @@ namespace Tamagawa.EnmityPlugin
             EnmityObject enmity = new EnmityObject();
             enmity.Entries = new List<EnmityEntry>();
             IntPtr currentTarget;
-            uint currentTargetID;
 
             //// なんかプロセスがおかしいとき
             if (pid == 0)
@@ -206,10 +211,13 @@ namespace Tamagawa.EnmityPlugin
             }
 
             var targetInfoSource = FFXIVPluginHelper.GetByteArray(targetAddress, 128);
-            unsafe
+            if (FFXIVPluginHelper.GetFFXIVClientMode == FFXIVPluginHelper.FFXIVClientMode.FFXIV_64)
             {
-                fixed (byte* p = &targetInfoSource[0x0]) currentTarget = *(IntPtr*)p;
-                fixed (byte* p = &targetInfoSource[0x5C]) currentTargetID = *(uint*)p;
+                currentTarget = new IntPtr(BitConverter.ToInt64(targetInfoSource, 0));
+            }
+            else
+            {
+                currentTarget = new IntPtr(BitConverter.ToInt32(targetInfoSource, 0));
             }
             /// なにもターゲットしてない
             if (currentTarget.ToInt64() <= 0)
