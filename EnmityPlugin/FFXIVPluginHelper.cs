@@ -99,101 +99,91 @@ namespace Tamagawa.EnmityPlugin
             }
         }
 
-        private static object GetScanCombatants()
+        public static List<Combatant> GetCombatantList(IntPtr charmapAddress)
         {
-            FieldInfo fi = _plugin.pluginObj.GetType().GetField("_Memory", BindingFlags.GetField | BindingFlags.NonPublic | BindingFlags.Instance);
-            var memory = fi.GetValue(_plugin.pluginObj);
-            if (memory == null) return null;
-
-            fi = memory.GetType().GetField("_config", BindingFlags.GetField | BindingFlags.NonPublic | BindingFlags.Instance);
-            var config = fi.GetValue(memory);
-            if (config == null) return null;
-
-            fi = config.GetType().GetField("ScanCombatants", BindingFlags.GetField | BindingFlags.NonPublic | BindingFlags.Instance);
-            var scanCombatants = fi.GetValue(config);
-            if (scanCombatants == null) return null;
-
-            return scanCombatants;
-        }
-
-        public static List<Combatant> GetCombatantList()
-        {
+            FFXIVClientMode mode = GetFFXIVClientMode;
+            int num = 344;
             List<Combatant> result = new List<Combatant>();
-            try
+
+            int sz = (mode == FFXIVClientMode.FFXIV_64) ? 8 : 4;
+            byte[] source = GetByteArray(charmapAddress, sz * num);
+            if (source == null || source.Length == 0) { return result; }
+            unsafe
             {
-                var scanCombatants = GetScanCombatants();
-                if (scanCombatants == null) return null;
-
-                var item = scanCombatants.GetType().InvokeMember("GetCombatantList", BindingFlags.Public | BindingFlags.Instance | BindingFlags.InvokeMethod, null, scanCombatants, null);
-                FieldInfo fi = item.GetType().GetField("_items", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.GetField);
-
-                Type[] nestedType = item.GetType().GetNestedTypes(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public);
-                object tmp = fi.GetValue(item);
-                if (tmp.GetType().IsArray)
+                for (int i = 0; i < num; i++)
                 {
-                    foreach (object temp in (Array)tmp)
+                    IntPtr p;
+                    if (mode == FFXIVClientMode.FFXIV_64)
                     {
-                        if (temp == null) break;
+                        fixed (byte* bp = source) p = new IntPtr(*(Int64*)&bp[i * sz]);
+                    }
+                    else
+                    {
+                        fixed (byte* bp = source) p = new IntPtr(*(Int32*)&bp[i * sz]);
+                    }
 
-                        Combatant combatant = new Combatant();
-
-                        fi = temp.GetType().GetField("ID", BindingFlags.Public | BindingFlags.Instance);
-                        combatant.ID = (uint)fi.GetValue(temp);
-                        fi = temp.GetType().GetField("OwnerID", BindingFlags.Public | BindingFlags.Instance);
-                        combatant.OwnerID = (uint)fi.GetValue(temp);
-                        fi = temp.GetType().GetField("Job", BindingFlags.Public | BindingFlags.Instance);
-                        combatant.Job = (int)fi.GetValue(temp);
-                        fi = temp.GetType().GetField("Name", BindingFlags.Public | BindingFlags.Instance);
-                        combatant.Name = (string)fi.GetValue(temp);
-                        fi = temp.GetType().GetField("CurrentTP", BindingFlags.Public | BindingFlags.Instance);
-                        combatant.CurrentTP = (int)fi.GetValue(temp);
-                        fi = temp.GetType().GetField("CurrentHP", BindingFlags.Public | BindingFlags.Instance);
-                        combatant.CurrentHP = (int)fi.GetValue(temp);
-                        fi = temp.GetType().GetField("MaxHP", BindingFlags.Public | BindingFlags.Instance);
-                        combatant.MaxHP = (int)fi.GetValue(temp);
-
-                        result.Add(combatant);
+                    if (!(p == IntPtr.Zero))
+                    {
+                        byte[] c = GetByteArray(p, 0x3F40);
+                        Combatant combatant = GetCombatantFromByteArray(c);
+                        if (combatant.type != TargetType.PC && combatant.type != TargetType.Monster)
+                        {
+                            continue;
+                        }
+                        if (combatant.ID != 0 && combatant.ID != 3758096384u && !result.Exists((Combatant x) => x.ID == combatant.ID))
+                        {
+                            result.Add(combatant);
+                        }
                     }
                 }
             }
-            catch { }
             return result;
         }
 
-        // <summary>
-        // ターゲットの情報(とりあえず必要なものだけ)
-        // </summary>
-        //
-        //
-        public unsafe static TargetInfo GetTargetInfoFromByteArray(byte[] source)
+        public unsafe static Combatant GetCombatantFromByteArray(byte[] source)
         {
-
-            TargetInfo target = new TargetInfo();
-
-            target.Name = FFXIVPluginHelper.GetStringFromBytes(source, 48);
-
-            fixed (byte* p = &source[0x74]) target.ID = *(uint*)p;
-
-            target.Type = (TargetType)source[0x8A];
-            target.EffectiveDistance = source[0x91];
-            int offset = (GetFFXIVClientMode == FFXIVPluginHelper.FFXIVClientMode.FFXIV_64) ? 176 : 160;
-            fixed (byte* p = &source[offset]) target.X = *(float*)p;
-            fixed (byte* p = &source[offset + 4]) target.Z = *(float*)p;
-            fixed (byte* p = &source[offset + 8]) target.Y = *(float*)p;
-
-            if (target.Type != TargetType.PC && target.Type != TargetType.Monster)
+            int offset = 0;
+            Combatant combatant = new Combatant();
+            fixed (byte* p = source)
             {
-                target.CurrentHP = target.MaxHP = target.CurrentMP = target.MaxMP = 0;
+                combatant.Name    = FFXIVPluginHelper.GetStringFromBytes(source, 48);
+                combatant.ID      = *(uint*)&p[0x74];
+                combatant.OwnerID = *(uint*)&p[0x84];
+                if (combatant.OwnerID == 3758096384u)
+                {
+                    combatant.OwnerID = 0u;
+                }
+                combatant.type = (TargetType)p[0x8A];
+                combatant.EffectiveDistance = p[0x91];
+
+                offset = (GetFFXIVClientMode == FFXIVClientMode.FFXIV_64) ? 176 : 160;
+                combatant.PosX = *(Single*)&p[offset];
+                combatant.PosZ = *(Single*)&p[offset + 4];
+                combatant.PosY = *(Single*)&p[offset + 8];
+
+                if (combatant.type == TargetType.PC || combatant.type == TargetType.Monster)
+                {
+                    offset = (GetFFXIVClientMode == FFXIVClientMode.FFXIV_64) ? 5872 : 5312;
+                    combatant.Job       = p[offset];
+                    combatant.Level     = p[offset + 1];
+                    combatant.CurrentHP = *(int*)&p[offset + 8];
+                    combatant.MaxHP     = *(int*)&p[offset + 12];
+                    combatant.CurrentMP = *(int*)&p[offset + 16];
+                    combatant.MaxMP     = *(int*)&p[offset + 20];
+                    combatant.CurrentTP = *(short*)&p[offset + 24];
+                    combatant.MaxTP     = 1000;
+                }
+                else
+                {
+                    combatant.CurrentHP =
+                    combatant.MaxHP     =
+                    combatant.CurrentMP =
+                    combatant.MaxMP     =
+                    combatant.MaxTP     =
+                    combatant.CurrentTP = 0;
+                }
             }
-            else
-            {
-                int num = (GetFFXIVClientMode == FFXIVPluginHelper.FFXIVClientMode.FFXIV_64) ? 5872 : 5312;
-                fixed (byte* p = &source[num+8]) target.CurrentHP = *(int*)p;
-                fixed (byte* p = &source[num+12]) target.MaxHP = *(int*)p;
-                fixed (byte* p = &source[num+16]) target.CurrentMP = *(int*)p;
-                fixed (byte* p = &source[num+20]) target.MaxMP = *(int*)p;
-            }
-            return target;
+            return combatant;
         }
 
         private static bool Peek(IntPtr address, byte[] buffer)
@@ -356,28 +346,39 @@ namespace Tamagawa.EnmityPlugin
 
     public enum TargetType : byte
     {
-        Unknown = 0x0,
-        PC = 0x01,
-        Monster = 0x02,
-        NPC = 0x03,
+        Unknown   = 0x00,
+        PC        = 0x01,
+        Monster   = 0x02,
+        NPC       = 0x03,
         Aetheryte = 0x05,
         Gathering = 0x06,
-        Minion = 0x09
+        Minion    = 0x09
     }
 
-    public class TargetInfo
+    public class Combatant
     {
-        public string Name;
         public uint ID;
-        public short EffectiveDistance;
-        public string Distance;
-        public string HorizontalDistance;
-        public float X;
-        public float Y;
-        public float Z;
-        public TargetType Type;
+        public uint OwnerID;
+        public int Order;
+        public TargetType type;
+        public byte Job;
+        public byte Level;
+        public string Name;
+
         public int CurrentHP;
         public int MaxHP;
+        public int CurrentMP;
+        public int MaxMP;
+        public short MaxTP;
+        public short CurrentTP;
+
+        public Single PosX;
+        public Single PosY;
+        public Single PosZ;
+        public byte EffectiveDistance;
+        public string Distance;
+        public string HorizontalDistance;
+
         public string HPPercent
         {
             get
@@ -393,36 +394,20 @@ namespace Tamagawa.EnmityPlugin
                 }
             }
         }
-        public int CurrentMP;
-        public int MaxMP;
-        public float GetDistanceTo(TargetInfo target)
+
+        public float GetDistanceTo(Combatant target)
         {
-            var distanceX = (float)Math.Abs(X - target.X);
-            var distanceY = (float)Math.Abs(Y - target.Y);
-            var distanceZ = (float)Math.Abs(Z - target.Z);
+            var distanceX = (float)Math.Abs(PosX - target.PosX);
+            var distanceY = (float)Math.Abs(PosY - target.PosY);
+            var distanceZ = (float)Math.Abs(PosZ - target.PosZ);
             return (float)Math.Sqrt((distanceX * distanceX) + (distanceY * distanceY) + (distanceZ * distanceZ));
         }
-        public float GetHorizontalDistanceTo(TargetInfo target)
+
+        public float GetHorizontalDistanceTo(Combatant target)
         {
-            var distanceX = (float)Math.Abs(X - target.X);
-            var distanceY = (float)Math.Abs(Y - target.Y);
+            var distanceX = (float)Math.Abs(PosX - target.PosX);
+            var distanceY = (float)Math.Abs(PosY - target.PosY);
             return (float)Math.Sqrt((distanceX * distanceX) + (distanceY * distanceY));
         }
-    }
-
-    public class Combatant
-    {
-        public uint ID;
-        public uint OwnerID;
-        public int Order;
-        public byte type;
-        public int Job;
-        public int Level;
-        public string Name;
-        public int CurrentHP;
-        public int MaxHP;
-        public int CurrentMP;
-        public int MaxMP;
-        public int CurrentTP;
     }
 }

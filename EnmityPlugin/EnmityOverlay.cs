@@ -197,7 +197,7 @@ namespace Tamagawa.EnmityPlugin
             //// なんかプロセスがおかしいとき
             if (pid == 0)
             {
-                enmity.Target = new TargetInfo{
+                enmity.Target = new Combatant() {
                     Name = "Failed to scan memory.",
                     ID = 0,
                     MaxHP = 0,
@@ -205,19 +205,22 @@ namespace Tamagawa.EnmityPlugin
                     Distance = "0.00",
                     EffectiveDistance = 0,
                     HorizontalDistance = "0.00"
-
                 };
                 return serializer.Serialize(enmity);
             }
 
             var targetInfoSource = FFXIVPluginHelper.GetByteArray(targetAddress, 128);
-            if (FFXIVPluginHelper.GetFFXIVClientMode == FFXIVPluginHelper.FFXIVClientMode.FFXIV_64)
+            unsafe
             {
-                currentTarget = new IntPtr(BitConverter.ToInt64(targetInfoSource, 0));
-            }
-            else
-            {
-                currentTarget = new IntPtr(BitConverter.ToInt32(targetInfoSource, 0));
+                if (FFXIVPluginHelper.GetFFXIVClientMode == FFXIVPluginHelper.FFXIVClientMode.FFXIV_64)
+                {
+                    fixed (byte* bp = targetInfoSource) currentTarget = new IntPtr(*(Int64*)bp);
+                }
+                else
+                {
+                    fixed (byte* bp = targetInfoSource) currentTarget = new IntPtr(*(Int32*)bp);
+
+                }
             }
             /// なにもターゲットしてない
             if (currentTarget.ToInt64() <= 0)
@@ -231,20 +234,20 @@ namespace Tamagawa.EnmityPlugin
                 /// 自キャラ
                 IntPtr address = (IntPtr)FFXIVPluginHelper.GetUInt32(charmapAddress);
                 var source =  FFXIVPluginHelper.GetByteArray(address, 0x3F40);
-                TargetInfo mypc = FFXIVPluginHelper.GetTargetInfoFromByteArray(source);
+                Combatant mypc = FFXIVPluginHelper.GetCombatantFromByteArray(source);
 
                 /// カレントターゲット
                 source = FFXIVPluginHelper.GetByteArray(currentTarget, 0x3F40);
-                enmity.Target = FFXIVPluginHelper.GetTargetInfoFromByteArray(source);
+                enmity.Target = FFXIVPluginHelper.GetCombatantFromByteArray(source);
 
                 /// 距離計算
                 enmity.Target.Distance = mypc.GetDistanceTo(enmity.Target).ToString("0.00");
                 enmity.Target.HorizontalDistance = mypc.GetHorizontalDistanceTo(enmity.Target).ToString("0.00");
 
-                if (enmity.Target.Type == TargetType.Monster)
+                if (enmity.Target.type == TargetType.Monster)
                 {
                     /// 周辺の戦闘キャラリスト(IDからNameを取得するため)
-                    List<Combatant> combatantList = FFXIVPluginHelper.GetCombatantList();
+                    List<Combatant> combatantList = FFXIVPluginHelper.GetCombatantList(charmapAddress);
 
                     /// 一度に全部読む
                     byte[] buffer = FFXIVPluginHelper.GetByteArray(hateAddress, 16 * 72);
@@ -258,24 +261,27 @@ namespace Tamagawa.EnmityPlugin
 
                         unsafe
                         {
-                            fixed (byte* bp = &buffer[p]) _id = *(uint*)bp;
-                            fixed (byte* bp = &buffer[p+4]) _enmity = *(uint*)bp;
+                            fixed (byte* bp = buffer)
+                            {
+                                _id     = *(uint*)&bp[p];
+                                _enmity = *(uint*)&bp[p+4];
+                            }
                         }
                         var entry = new EnmityEntry()
                         {
-                            ID = _id,
+                            ID     = _id,
                             Enmity = _enmity,
-                            isMe = false,
-                            Name = "Unknown",
-                            Job = 0
+                            isMe   = false,
+                            Name   = "Unknown",
+                            Job    = 0x00
                         };
                         if (entry.ID > 0)
                         {
                             Combatant c = combatantList.Find(x => x.ID == entry.ID);
                             if (c != null)
                             {
-                                entry.Name = c.Name;
-                                entry.Job = c.Job;
+                                entry.Name    = c.Name;
+                                entry.Job     = c.Job;
                                 entry.OwnerID = c.OwnerID;
                             }
                             if (entry.ID == mypc.ID)
@@ -405,7 +411,7 @@ namespace Tamagawa.EnmityPlugin
             public uint Enmity;
             public bool isMe;
             public int HateRate;
-            public int Job;
+            public byte Job;
             public string JobName
             {
                 get
@@ -432,7 +438,7 @@ namespace Tamagawa.EnmityPlugin
         //// JSON用オブジェクト
         private class EnmityObject
         {
-            public TargetInfo Target;
+            public Combatant Target;
             public List<EnmityEntry> Entries;
         }
     }
