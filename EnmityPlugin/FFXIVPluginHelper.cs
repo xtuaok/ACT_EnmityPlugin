@@ -83,26 +83,19 @@ namespace Tamagawa.EnmityPlugin
         {
             get
             {
-                try
+                Process p = GetFFXIVProcess;
+                if (p != null)
                 {
-                    FieldInfo fi = _plugin.pluginObj.GetType().GetField("_Memory", BindingFlags.GetField | BindingFlags.NonPublic | BindingFlags.Instance);
-                    var memory = fi.GetValue(_plugin.pluginObj);
-                    if (memory == null) return FFXIVClientMode.Unknown;
-
-                    fi = memory.GetType().GetField("_config", BindingFlags.GetField | BindingFlags.NonPublic | BindingFlags.Instance);
-                    var config = fi.GetValue(memory);
-                    if (config == null) return FFXIVClientMode.Unknown;
-
-                    fi = config.GetType().GetField("ClientMode", BindingFlags.GetField | BindingFlags.Public | BindingFlags.Instance);
-                    var clientMode = fi.GetValue(config);
-                    if (clientMode == null) return FFXIVClientMode.Unknown;
-
-                    return (FFXIVClientMode)clientMode;
+                    if (p.ProcessName == "ffxiv")
+                    {
+                        return FFXIVClientMode.FFXIV_32;
+                    }
+                    else if (p.ProcessName == "ffxiv_dx11")
+                    {
+                        return FFXIVClientMode.FFXIV_64;
+                    }
                 }
-                catch
-                {
-                    return FFXIVClientMode.Unknown;
-                }
+                return FFXIVClientMode.Unknown;
             }
         }
 
