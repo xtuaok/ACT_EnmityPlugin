@@ -123,8 +123,14 @@
   <data name="ErrorTitle" xml:space="preserve">
     <value>エラー</value>
   </data>
+  <data name="FailedToScan" xml:space="preserve">
+    <value>メモリスキャンに失敗しました.</value>
+  </data>
   <data name="FailedToSigScan" xml:space="preserve">
     <value>メモリのシグネチャ検索に失敗しました.</value>
+  </data>
+  <data name="FFXIVPluginNotLoaded" xml:space="preserve">
+    <value>FFXIV Plugin がロードされていません.</value>
   </data>
   <data name="NewVersionIsAvailable" xml:space="preserve">
     <value>EnmityPluginの新しいバージョンが入手可能です！</value>

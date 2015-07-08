@@ -146,7 +146,7 @@ namespace Tamagawa.EnmityPlugin
             Combatant combatant = new Combatant();
             fixed (byte* p = source)
             {
-                combatant.Name    = FFXIVPluginHelper.GetStringFromBytes(source, 48);
+                combatant.Name    = GetStringFromBytes(source, 48);
                 combatant.ID      = *(uint*)&p[0x74];
                 combatant.OwnerID = *(uint*)&p[0x84];
                 if (combatant.OwnerID == 3758096384u)

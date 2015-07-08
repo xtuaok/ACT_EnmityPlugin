@@ -17,10 +17,20 @@ namespace Tamagawa.EnmityPlugin
     internal class ScanFailedException : Exception
     {
         private string message = String.Empty;
-        public ScanFailedException() : base() { message = "Failed to signature scan"; }
+        public ScanFailedException() : base(Messages.FailedToSigScan) { }
         public ScanFailedException(string message) : base(message) { }
         public ScanFailedException(string message, System.Exception inner) : base(message, inner) { }
         protected ScanFailedException(System.Runtime.Serialization.SerializationInfo info,
+            System.Runtime.Serialization.StreamingContext context) { }
+    }
+
+    internal class FFXIVPluginException : Exception
+    {
+        private string message = String.Empty;
+        public FFXIVPluginException() : base(Messages.FFXIVPluginNotLoaded) { }
+        public FFXIVPluginException(string message) : base(message) { }
+        public FFXIVPluginException(string message, System.Exception inner) : base(message, inner) { }
+        protected FFXIVPluginException(System.Runtime.Serialization.SerializationInfo info,
             System.Runtime.Serialization.StreamingContext context) { }
     }
 
@@ -71,12 +81,15 @@ namespace Tamagawa.EnmityPlugin
                 }
                 else
                 {
-                    pid = 0;
+                    throw new FFXIVPluginException();
                 }
             }
             catch (Exception ex)
             {
-                Log(LogLevel.Error, ex.ToString());
+                if (suppress_log == false)
+                {
+                    Log(LogLevel.Error, ex.Message);
+                }
                 pid = 0;
             }
         }
