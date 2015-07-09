@@ -118,777 +118,909 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="buttonEnmitySelectFile.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="tableLayoutPanel7.ColumnCount" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="&gt;&gt;label14.Name" xml:space="preserve">
-    <value>label14</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="buttonEnmityReloadBrowser.Location" type="System.Drawing.Point, System.Drawing">
-    <value>223, 3</value>
+  <data name="label_Process.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="label11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label16.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label14.Text" xml:space="preserve">
-    <value>Max. framerate</value>
-  </data>
-  <data name="label1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="label_Process.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="tableLayoutPanel7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>602, 412</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label_Process.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 3</value>
   </data>
-  <data name="label11.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="label_Process.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 22</value>
   </data>
-  <data name="textEnmityGlobalHotkey.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 1</value>
+  <data name="label_Process.TabIndex" type="System.Int32, mscorlib">
+    <value>99</value>
   </data>
-  <data name="&gt;&gt;textEnmityUrl.Name" xml:space="preserve">
-    <value>textEnmityUrl</value>
+  <data name="label_Process.Text" xml:space="preserve">
+    <value>Process</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="nudEnmityScanInterval.Size" type="System.Drawing.Size, System.Drawing">
-    <value>445, 19</value>
-  </data>
-  <data name="label16.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;label17.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label17.Parent" xml:space="preserve">
-    <value>tableLayoutPanel7</value>
-  </data>
-  <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>155, 108</value>
-  </data>
-  <data name="checkEnmityClickThru.Size" type="System.Drawing.Size, System.Drawing">
-    <value>441, 16</value>
-  </data>
-  <data name="checkEnmityClickThru.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;checkLock.Parent" xml:space="preserve">
-    <value>tableLayoutPanel7</value>
-  </data>
-  <data name="label15.Text" xml:space="preserve">
-    <value>Enable clickthru</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel8.Name" xml:space="preserve">
-    <value>tableLayoutPanel8</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>158, 152</value>
-  </data>
-  <data name="buttonEnmityCopyActXiv.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 45</value>
-  </data>
-  <data name="&gt;&gt;checkEnmityVisible.Name" xml:space="preserve">
-    <value>checkEnmityVisible</value>
-  </data>
-  <data name="&gt;&gt;buttonEnmityReloadBrowser.Name" xml:space="preserve">
-    <value>buttonEnmityReloadBrowser</value>
-  </data>
-  <data name="&gt;&gt;label16.Parent" xml:space="preserve">
-    <value>tableLayoutPanel7</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel8.Parent" xml:space="preserve">
-    <value>panel3</value>
-  </data>
-  <data name="&gt;&gt;buttonEnmityReloadBrowser.Parent" xml:space="preserve">
-    <value>tableLayoutPanel8</value>
-  </data>
-  <data name="&gt;&gt;label15.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel7.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="buttonEnmityCopyActXiv.Text" xml:space="preserve">
-    <value>Copy the update variable to clipboard</value>
-  </data>
-  <data name="tableLayoutPanel9.RowCount" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;buttonEnmitySelectFile.Parent" xml:space="preserve">
-    <value>tableLayoutPanel9</value>
-  </data>
-  <data name="label15.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;nudEnmityScanInterval.Name" xml:space="preserve">
-    <value>nudEnmityScanInterval</value>
-  </data>
-  <data name="&gt;&gt;checkEnmityEnableGlobalHotkey.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="label14.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+  <data name="label_Process.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
-  <data name="&gt;&gt;textEnmityGlobalHotkey.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;label_Process.Name" xml:space="preserve">
+    <value>label_Process</value>
   </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>12</value>
+  <data name="&gt;&gt;label_Process.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label16.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="checkEnmityEnableGlobalHotkey.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="checkEnmityClickThru.Location" type="System.Drawing.Point, System.Drawing">
-    <value>158, 25</value>
-  </data>
-  <data name="buttonEnmitySelectFile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;buttonEnmityCopyActXiv.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="buttonEnmityReloadBrowser.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;panel3.Parent" xml:space="preserve">
+  <data name="&gt;&gt;label_Process.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
   </data>
-  <data name="checkLock.TabIndex" type="System.Int32, mscorlib">
-    <value>25</value>
+  <data name="&gt;&gt;label_Process.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="tableLayoutPanel9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>156, 65</value>
-  </data>
-  <data name="&gt;&gt;label18.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="label17.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label18.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
-  </data>
-  <data name="textEnmityUrl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>408, 19</value>
-  </data>
-  <data name="buttonEnmitySelectFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 19</value>
-  </data>
-  <data name="&gt;&gt;label11.Name" xml:space="preserve">
-    <value>label11</value>
-  </data>
-  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkEnmityEnableGlobalHotkey.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel7.Name" xml:space="preserve">
-    <value>tableLayoutPanel7</value>
-  </data>
-  <data name="&gt;&gt;panel3.Name" xml:space="preserve">
-    <value>panel3</value>
-  </data>
-  <data name="buttonEnmityCopyActXiv.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
+  <data name="table_Process.ColumnCount" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="buttonEnmityCopyActXiv.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="comboProcessList.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="textEnmityGlobalHotkey.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+  <data name="comboProcessList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 2</value>
   </data>
-  <data name="buttonEnmitySelectFile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>408, 0</value>
+  <data name="comboProcessList.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 1, 0</value>
   </data>
-  <data name="textEnmityGlobalHotkey.Size" type="System.Drawing.Size, System.Drawing">
-    <value>129, 19</value>
+  <data name="comboProcessList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 20</value>
   </data>
-  <data name="nudEnmityMaxFrameRate.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
+  <data name="comboProcessList.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="&gt;&gt;label16.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;comboProcessList.Name" xml:space="preserve">
+    <value>comboProcessList</value>
   </data>
-  <data name="tableLayoutPanel9.ColumnCount" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;comboProcessList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboProcessList.Parent" xml:space="preserve">
+    <value>table_Process</value>
+  </data>
+  <data name="&gt;&gt;comboProcessList.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="buttonRefreshProcessList.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="buttonRefreshProcessList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>127, 1</value>
+  </data>
+  <data name="buttonRefreshProcessList.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 0</value>
+  </data>
+  <data name="buttonRefreshProcessList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 21</value>
+  </data>
+  <data name="buttonRefreshProcessList.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="nudEnmityMaxFrameRate.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="buttonRefreshProcessList.Text" xml:space="preserve">
+    <value>Refresh List</value>
   </data>
-  <data name="&gt;&gt;textEnmityUrl.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;buttonRefreshProcessList.Name" xml:space="preserve">
+    <value>buttonRefreshProcessList</value>
   </data>
-  <data name="&gt;&gt;label18.Parent" xml:space="preserve">
-    <value>tableLayoutPanel7</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="label16.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="checkEnmityClickThru.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tableLayoutPanel9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>445, 20</value>
-  </data>
-  <data name="&gt;&gt;buttonEnmityCopyActXiv.Name" xml:space="preserve">
-    <value>buttonEnmityCopyActXiv</value>
-  </data>
-  <data name="&gt;&gt;label14.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label16.Name" xml:space="preserve">
-    <value>label16</value>
-  </data>
-  <data name="checkLock.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label17.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="tableLayoutPanel8.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="checkEnmityEnableGlobalHotkey.Size" type="System.Drawing.Size, System.Drawing">
-    <value>15, 16</value>
-  </data>
-  <data name="&gt;&gt;textEnmityGlobalHotkey.Name" xml:space="preserve">
-    <value>textEnmityGlobalHotkey</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="tableLayoutPanel9.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="label15.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;textEnmityUrl.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="nudEnmityScanInterval.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 108</value>
-  </data>
-  <data name="label14.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label16.Text" xml:space="preserve">
-    <value>Show overlay</value>
-  </data>
-  <data name="tableLayoutPanel8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>441, 51</value>
-  </data>
-  <data name="&gt;&gt;nudEnmityScanInterval.Parent" xml:space="preserve">
-    <value>tableLayoutPanel7</value>
-  </data>
-  <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="tableLayoutPanel9.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
-  </data>
-  <data name="&gt;&gt;label17.Name" xml:space="preserve">
-    <value>label17</value>
-  </data>
-  <data name="&gt;&gt;buttonEnmityReloadBrowser.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;nudEnmityScanInterval.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="nudEnmityMaxFrameRate.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;buttonEnmityCopyActXiv.Type" xml:space="preserve">
+  <data name="&gt;&gt;buttonRefreshProcessList.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="tableLayoutPanel8.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="&gt;&gt;buttonRefreshProcessList.Parent" xml:space="preserve">
+    <value>table_Process</value>
+  </data>
+  <data name="&gt;&gt;buttonRefreshProcessList.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="table_Process.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="&gt;&gt;nudEnmityScanInterval.ZOrder" xml:space="preserve">
-    <value>11</value>
+  <data name="table_Process.Location" type="System.Drawing.Point, System.Drawing">
+    <value>158, 3</value>
   </data>
-  <data name="&gt;&gt;label11.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="table_Process.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel9.Parent" xml:space="preserve">
-    <value>tableLayoutPanel7</value>
+  <data name="table_Process.RowCount" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="buttonEnmityCopyActXiv.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+  <data name="table_Process.Size" type="System.Drawing.Size, System.Drawing">
+    <value>441, 22</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel1.Type" xml:space="preserve">
+  <data name="table_Process.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;table_Process.Name" xml:space="preserve">
+    <value>table_Process</value>
+  </data>
+  <data name="&gt;&gt;table_Process.Type" xml:space="preserve">
     <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label18.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+  <data name="&gt;&gt;table_Process.Parent" xml:space="preserve">
+    <value>tableLayoutPanel7</value>
+  </data>
+  <data name="&gt;&gt;table_Process.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="table_Process.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="comboProcessList" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="buttonRefreshProcessList" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="label_ShowOverlay.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label_ShowOverlay.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="label_ShowOverlay.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label_ShowOverlay.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="label_ShowOverlay.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 22</value>
+  </data>
+  <data name="label_ShowOverlay.TabIndex" type="System.Int32, mscorlib">
+    <value>99</value>
+  </data>
+  <data name="label_ShowOverlay.Text" xml:space="preserve">
+    <value>Show overlay</value>
+  </data>
+  <data name="label_ShowOverlay.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 20</value>
+  <data name="&gt;&gt;label_ShowOverlay.Name" xml:space="preserve">
+    <value>label_ShowOverlay</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;label_ShowOverlay.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_ShowOverlay.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
   </data>
-  <data name="tableLayoutPanel8.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="buttonEnmityReloadBrowser" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="buttonEnmityCopyActXiv" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50,Percent,50" /&gt;&lt;Rows Styles="Percent,50,Absolute,51" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  <data name="&gt;&gt;label_ShowOverlay.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
-  <data name="nudEnmityMaxFrameRate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>445, 19</value>
-  </data>
-  <data name="buttonEnmitySelectFile.Text" xml:space="preserve">
-    <value>...</value>
-  </data>
-  <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="checkEnmityEnableGlobalHotkey" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="textEnmityGlobalHotkey" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
-  <data name="&gt;&gt;checkLock.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="label18.Text" xml:space="preserve">
-    <value>Scan interval (msec)</value>
-  </data>
-  <data name="tableLayoutPanel7.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label11" Row="7" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label14" Row="6" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="nudEnmityMaxFrameRate" Row="6" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label15" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label16" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label17" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="checkEnmityVisible" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="checkEnmityClickThru" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="panel3" Row="8" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel9" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label18" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="nudEnmityScanInterval" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label1" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel1" Row="5" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label2" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="checkLock" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,155,Percent,100" /&gt;&lt;Rows Styles="Absolute,22,Absolute,22,Absolute,20,Absolute,22,Absolute,22,Absolute,22,Absolute,22,Percent,100,Absolute,57" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
-  <data name="&gt;&gt;checkEnmityClickThru.Name" xml:space="preserve">
-    <value>checkEnmityClickThru</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>tableLayoutPanel7</value>
-  </data>
-  <data name="textEnmityGlobalHotkey.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
+  <data name="checkEnmityVisible.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="checkEnmityVisible.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
-    <value>tableLayoutPanel7</value>
-  </data>
-  <data name="checkEnmityClickThru.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;nudEnmityMaxFrameRate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="checkEnmityVisible.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="checkEnmityVisible.Location" type="System.Drawing.Point, System.Drawing">
-    <value>158, 3</value>
+    <value>161, 28</value>
   </data>
-  <data name="textEnmityGlobalHotkey.Text" xml:space="preserve">
-    <value>None</value>
+  <data name="checkEnmityVisible.Size" type="System.Drawing.Size, System.Drawing">
+    <value>435, 16</value>
   </data>
-  <data name="&gt;&gt;checkEnmityEnableGlobalHotkey.Type" xml:space="preserve">
+  <data name="checkEnmityVisible.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;checkEnmityVisible.Name" xml:space="preserve">
+    <value>checkEnmityVisible</value>
+  </data>
+  <data name="&gt;&gt;checkEnmityVisible.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label15.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="&gt;&gt;checkEnmityVisible.Parent" xml:space="preserve">
+    <value>tableLayoutPanel7</value>
   </data>
-  <data name="&gt;&gt;buttonEnmitySelectFile.Name" xml:space="preserve">
-    <value>buttonEnmitySelectFile</value>
+  <data name="&gt;&gt;checkEnmityVisible.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
-  <data name="label14.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
+  <data name="label_Clickthru.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="label17.Text" xml:space="preserve">
-    <value>URL</value>
+  <data name="label_Clickthru.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="label17.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="label_Clickthru.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;checkLock.Type" xml:space="preserve">
+  <data name="label_Clickthru.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 47</value>
+  </data>
+  <data name="label_Clickthru.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 22</value>
+  </data>
+  <data name="label_Clickthru.TabIndex" type="System.Int32, mscorlib">
+    <value>99</value>
+  </data>
+  <data name="label_Clickthru.Text" xml:space="preserve">
+    <value>Enable clickthru</value>
+  </data>
+  <data name="label_Clickthru.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;label_Clickthru.Name" xml:space="preserve">
+    <value>label_Clickthru</value>
+  </data>
+  <data name="&gt;&gt;label_Clickthru.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_Clickthru.Parent" xml:space="preserve">
+    <value>tableLayoutPanel7</value>
+  </data>
+  <data name="&gt;&gt;label_Clickthru.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="checkEnmityClickThru.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkEnmityClickThru.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="checkEnmityClickThru.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkEnmityClickThru.Location" type="System.Drawing.Point, System.Drawing">
+    <value>161, 50</value>
+  </data>
+  <data name="checkEnmityClickThru.Size" type="System.Drawing.Size, System.Drawing">
+    <value>435, 16</value>
+  </data>
+  <data name="checkEnmityClickThru.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;checkEnmityClickThru.Name" xml:space="preserve">
+    <value>checkEnmityClickThru</value>
+  </data>
+  <data name="&gt;&gt;checkEnmityClickThru.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkEnmityClickThru.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
   </data>
-  <data name="&gt;&gt;buttonEnmityCopyActXiv.Parent" xml:space="preserve">
-    <value>tableLayoutPanel8</value>
+  <data name="&gt;&gt;checkEnmityClickThru.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
-  <data name="buttonEnmityCopyActXiv.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+  <data name="label_LockOverlay.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="nudEnmityScanInterval.Location" type="System.Drawing.Point, System.Drawing">
-    <value>156, 87</value>
+  <data name="label_LockOverlay.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="&gt;&gt;nudEnmityMaxFrameRate.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="label_LockOverlay.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 69</value>
   </data>
-  <data name="buttonEnmityReloadBrowser.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+  <data name="label_LockOverlay.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>No</value>
+  </data>
+  <data name="label_LockOverlay.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 22</value>
+  </data>
+  <data name="label_LockOverlay.TabIndex" type="System.Int32, mscorlib">
+    <value>99</value>
+  </data>
+  <data name="label_LockOverlay.Text" xml:space="preserve">
+    <value>Lock overlay</value>
+  </data>
+  <data name="label_LockOverlay.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;label_LockOverlay.Name" xml:space="preserve">
+    <value>label_LockOverlay</value>
+  </data>
+  <data name="&gt;&gt;label_LockOverlay.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_LockOverlay.Parent" xml:space="preserve">
+    <value>tableLayoutPanel7</value>
+  </data>
+  <data name="&gt;&gt;label_LockOverlay.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="checkLock.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="checkLock.Location" type="System.Drawing.Point, System.Drawing">
-    <value>158, 47</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
-  <data name="tableLayoutPanel8.ColumnCount" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label2.TabIndex" type="System.Int32, mscorlib">
-    <value>24</value>
-  </data>
-  <data name="label17.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tableLayoutPanel7.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="textEnmityUrl.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="label18.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label17.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label14.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="&gt;&gt;checkLock.Name" xml:space="preserve">
-    <value>checkLock</value>
-  </data>
-  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>602, 412</value>
+    <value>161, 72</value>
   </data>
   <data name="checkLock.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 14</value>
   </data>
-  <data name="buttonEnmityReloadBrowser.Text" xml:space="preserve">
-    <value>Reload overlay</value>
+  <data name="checkLock.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
-  <data name="checkEnmityClickThru.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;checkLock.Name" xml:space="preserve">
+    <value>checkLock</value>
   </data>
-  <data name="&gt;&gt;checkEnmityVisible.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="label11.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tableLayoutPanel7.ColumnCount" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel9.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="textEnmityGlobalHotkey.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="&gt;&gt;checkEnmityVisible.Type" xml:space="preserve">
+  <data name="&gt;&gt;checkLock.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="nudEnmityScanInterval.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
-  </data>
-  <data name="&gt;&gt;nudEnmityMaxFrameRate.Parent" xml:space="preserve">
+  <data name="&gt;&gt;checkLock.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
   </data>
-  <data name="buttonEnmityReloadBrowser.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="&gt;&gt;checkLock.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="label_URL.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label_URL.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="label15.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
+  <data name="label_URL.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="label_URL.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 91</value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>tableLayoutPanel7</value>
-  </data>
-  <data name="panel3.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;label18.Name" xml:space="preserve">
-    <value>label18</value>
-  </data>
-  <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>158, 358</value>
-  </data>
-  <data name="label11.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Lock overlay</value>
-  </data>
-  <data name="label1.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="label_URL.Size" type="System.Drawing.Size, System.Drawing">
     <value>149, 22</value>
   </data>
-  <data name="label2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="label_URL.TabIndex" type="System.Int32, mscorlib">
+    <value>99</value>
   </data>
-  <data name="&gt;&gt;label15.Parent" xml:space="preserve">
-    <value>tableLayoutPanel7</value>
+  <data name="label_URL.Text" xml:space="preserve">
+    <value>URL</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel1.ZOrder" xml:space="preserve">
-    <value>13</value>
+  <data name="label_URL.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
   </data>
-  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>447, 22</value>
+  <data name="&gt;&gt;label_URL.Name" xml:space="preserve">
+    <value>label_URL</value>
   </data>
-  <data name="tableLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
-  </data>
-  <data name="nudEnmityMaxFrameRate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>156, 131</value>
-  </data>
-  <data name="textEnmityUrl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="&gt;&gt;label18.Type" xml:space="preserve">
+  <data name="&gt;&gt;label_URL.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="tableLayoutPanel8.RowCount" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="&gt;&gt;label_URL.Parent" xml:space="preserve">
+    <value>tableLayoutPanel7</value>
   </data>
-  <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 22</value>
+  <data name="&gt;&gt;label_URL.ZOrder" xml:space="preserve">
+    <value>8</value>
   </data>
-  <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 0</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
-  </data>
-  <data name="&gt;&gt;textEnmityGlobalHotkey.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="panel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="label18.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 86</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 12</value>
+  <data name="table_URL.ColumnCount" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
   <data name="textEnmityUrl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel8.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="textEnmityUrl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 1</value>
   </data>
-  <data name="label14.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="textEnmityUrl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Enable Global Hotkey</value>
+  <data name="textEnmityUrl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>400, 19</value>
   </data>
-  <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
-  </data>
-  <data name="tableLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="tableLayoutPanel9.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="textEnmityUrl" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="buttonEnmitySelectFile" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100,Absolute,37" /&gt;&lt;Rows Styles="Percent,100,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkEnmityVisible.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="tableLayoutPanel8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="buttonEnmityReloadBrowser.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 45</value>
-  </data>
-  <data name="checkEnmityVisible.Size" type="System.Drawing.Size, System.Drawing">
-    <value>441, 16</value>
-  </data>
-  <data name="checkEnmityVisible.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;checkEnmityClickThru.ZOrder" xml:space="preserve">
+  <data name="textEnmityUrl.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
-  <data name="label18.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="&gt;&gt;textEnmityUrl.Name" xml:space="preserve">
+    <value>textEnmityUrl</value>
   </data>
-  <data name="label2.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
+  <data name="&gt;&gt;textEnmityUrl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="buttonEnmitySelectFile.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 1</value>
+  <data name="&gt;&gt;textEnmityUrl.Parent" xml:space="preserve">
+    <value>table_URL</value>
   </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 44</value>
-  </data>
-  <data name="&gt;&gt;checkEnmityEnableGlobalHotkey.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;textEnmityUrl.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;checkEnmityEnableGlobalHotkey.Name" xml:space="preserve">
-    <value>checkEnmityEnableGlobalHotkey</value>
+  <data name="buttonEnmitySelectFile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 64</value>
+  <data name="buttonEnmitySelectFile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>402, 0</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel7.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="buttonEnmitySelectFile.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
   </data>
-  <data name="textEnmityUrl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="buttonEnmitySelectFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 19</value>
   </data>
-  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>441, 203</value>
+  <data name="buttonEnmitySelectFile.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
   </data>
-  <data name="&gt;&gt;checkEnmityClickThru.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="buttonEnmitySelectFile.Text" xml:space="preserve">
+    <value>...</value>
   </data>
-  <data name="&gt;&gt;nudEnmityMaxFrameRate.Name" xml:space="preserve">
-    <value>nudEnmityMaxFrameRate</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel9.Name" xml:space="preserve">
-    <value>tableLayoutPanel9</value>
-  </data>
-  <data name="&gt;&gt;textEnmityGlobalHotkey.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="checkEnmityEnableGlobalHotkey.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="tableLayoutPanel7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="&gt;&gt;buttonEnmitySelectFile.Name" xml:space="preserve">
+    <value>buttonEnmitySelectFile</value>
   </data>
   <data name="&gt;&gt;buttonEnmitySelectFile.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
-  </data>
-  <data name="label15.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>441, 51</value>
-  </data>
-  <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 130</value>
-  </data>
-  <data name="&gt;&gt;buttonEnmityReloadBrowser.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="nudEnmityScanInterval.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="&gt;&gt;buttonEnmitySelectFile.Parent" xml:space="preserve">
+    <value>table_URL</value>
   </data>
   <data name="&gt;&gt;buttonEnmitySelectFile.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="table_URL.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="table_URL.Location" type="System.Drawing.Point, System.Drawing">
+    <value>159, 92</value>
+  </data>
+  <data name="table_URL.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
+  </data>
+  <data name="table_URL.RowCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="table_URL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>439, 20</value>
+  </data>
+  <data name="table_URL.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;table_URL.Name" xml:space="preserve">
+    <value>table_URL</value>
+  </data>
+  <data name="&gt;&gt;table_URL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;table_URL.Parent" xml:space="preserve">
+    <value>tableLayoutPanel7</value>
+  </data>
+  <data name="&gt;&gt;table_URL.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="table_URL.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="textEnmityUrl" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="buttonEnmitySelectFile" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100,Absolute,37" /&gt;&lt;Rows Styles="Percent,100,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="label_ScanInterval.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label_ScanInterval.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="label_ScanInterval.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 113</value>
+  </data>
+  <data name="label_ScanInterval.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 22</value>
+  </data>
+  <data name="label_ScanInterval.TabIndex" type="System.Int32, mscorlib">
+    <value>99</value>
+  </data>
+  <data name="label_ScanInterval.Text" xml:space="preserve">
+    <value>Scan interval (msec)</value>
+  </data>
+  <data name="label_ScanInterval.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;label_ScanInterval.Name" xml:space="preserve">
+    <value>label_ScanInterval</value>
+  </data>
+  <data name="&gt;&gt;label_ScanInterval.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_ScanInterval.Parent" xml:space="preserve">
+    <value>tableLayoutPanel7</value>
+  </data>
+  <data name="&gt;&gt;label_ScanInterval.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="nudEnmityScanInterval.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="nudEnmityScanInterval.Location" type="System.Drawing.Point, System.Drawing">
+    <value>159, 114</value>
+  </data>
+  <data name="nudEnmityScanInterval.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
+  </data>
+  <data name="nudEnmityScanInterval.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 19</value>
+  </data>
+  <data name="nudEnmityScanInterval.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="nudEnmityScanInterval.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;nudEnmityScanInterval.Name" xml:space="preserve">
+    <value>nudEnmityScanInterval</value>
+  </data>
+  <data name="&gt;&gt;nudEnmityScanInterval.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;nudEnmityScanInterval.Parent" xml:space="preserve">
+    <value>tableLayoutPanel7</value>
+  </data>
+  <data name="&gt;&gt;nudEnmityScanInterval.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="label_Hotkey.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label_Hotkey.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="label_Hotkey.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 135</value>
+  </data>
+  <data name="label_Hotkey.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 22</value>
+  </data>
+  <data name="label_Hotkey.TabIndex" type="System.Int32, mscorlib">
+    <value>99</value>
+  </data>
+  <data name="label_Hotkey.Text" xml:space="preserve">
+    <value>Enable Global Hotkey</value>
+  </data>
+  <data name="label_Hotkey.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;label_Hotkey.Name" xml:space="preserve">
+    <value>label_Hotkey</value>
+  </data>
+  <data name="&gt;&gt;label_Hotkey.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_Hotkey.Parent" xml:space="preserve">
+    <value>tableLayoutPanel7</value>
+  </data>
+  <data name="&gt;&gt;label_Hotkey.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="table_Hotkey.ColumnCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="checkEnmityEnableGlobalHotkey.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="checkEnmityEnableGlobalHotkey.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
   </data>
-  <data name="&gt;&gt;textEnmityUrl.Parent" xml:space="preserve">
-    <value>tableLayoutPanel9</value>
+  <data name="checkEnmityEnableGlobalHotkey.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
   </data>
-  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
+  <data name="checkEnmityEnableGlobalHotkey.Size" type="System.Drawing.Size, System.Drawing">
+    <value>15, 16</value>
   </data>
-  <data name="&gt;&gt;panel3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="checkEnmityEnableGlobalHotkey.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>EnmityOverlayConfigPanel</value>
+  <data name="&gt;&gt;checkEnmityEnableGlobalHotkey.Name" xml:space="preserve">
+    <value>checkEnmityEnableGlobalHotkey</value>
   </data>
-  <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
+  <data name="&gt;&gt;checkEnmityEnableGlobalHotkey.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;checkEnmityVisible.Parent" xml:space="preserve">
+  <data name="&gt;&gt;checkEnmityEnableGlobalHotkey.Parent" xml:space="preserve">
+    <value>table_Hotkey</value>
+  </data>
+  <data name="&gt;&gt;checkEnmityEnableGlobalHotkey.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="textEnmityGlobalHotkey.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="textEnmityGlobalHotkey.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 1</value>
+  </data>
+  <data name="textEnmityGlobalHotkey.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
+  </data>
+  <data name="textEnmityGlobalHotkey.Size" type="System.Drawing.Size, System.Drawing">
+    <value>129, 19</value>
+  </data>
+  <data name="textEnmityGlobalHotkey.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="textEnmityGlobalHotkey.Text" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="&gt;&gt;textEnmityGlobalHotkey.Name" xml:space="preserve">
+    <value>textEnmityGlobalHotkey</value>
+  </data>
+  <data name="&gt;&gt;textEnmityGlobalHotkey.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textEnmityGlobalHotkey.Parent" xml:space="preserve">
+    <value>table_Hotkey</value>
+  </data>
+  <data name="&gt;&gt;textEnmityGlobalHotkey.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="table_Hotkey.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="table_Hotkey.Location" type="System.Drawing.Point, System.Drawing">
+    <value>158, 135</value>
+  </data>
+  <data name="table_Hotkey.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="table_Hotkey.RowCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="table_Hotkey.Size" type="System.Drawing.Size, System.Drawing">
+    <value>441, 22</value>
+  </data>
+  <data name="table_Hotkey.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;table_Hotkey.Name" xml:space="preserve">
+    <value>table_Hotkey</value>
+  </data>
+  <data name="&gt;&gt;table_Hotkey.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;table_Hotkey.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
   </data>
-  <data name="label2.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
-    <value>No</value>
+  <data name="&gt;&gt;table_Hotkey.ZOrder" xml:space="preserve">
+    <value>13</value>
   </data>
-  <data name="label11.Text" xml:space="preserve">
+  <data name="table_Hotkey.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="checkEnmityEnableGlobalHotkey" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="textEnmityGlobalHotkey" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="label_Framerate.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label_Framerate.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="label_Framerate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label_Framerate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 157</value>
+  </data>
+  <data name="label_Framerate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 22</value>
+  </data>
+  <data name="label_Framerate.TabIndex" type="System.Int32, mscorlib">
+    <value>99</value>
+  </data>
+  <data name="label_Framerate.Text" xml:space="preserve">
+    <value>Max. framerate</value>
+  </data>
+  <data name="label_Framerate.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;label_Framerate.Name" xml:space="preserve">
+    <value>label_Framerate</value>
+  </data>
+  <data name="&gt;&gt;label_Framerate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_Framerate.Parent" xml:space="preserve">
+    <value>tableLayoutPanel7</value>
+  </data>
+  <data name="&gt;&gt;label_Framerate.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="nudEnmityMaxFrameRate.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="nudEnmityMaxFrameRate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>159, 158</value>
+  </data>
+  <data name="nudEnmityMaxFrameRate.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
+  </data>
+  <data name="nudEnmityMaxFrameRate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 19</value>
+  </data>
+  <data name="nudEnmityMaxFrameRate.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="nudEnmityMaxFrameRate.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;nudEnmityMaxFrameRate.Name" xml:space="preserve">
+    <value>nudEnmityMaxFrameRate</value>
+  </data>
+  <data name="&gt;&gt;nudEnmityMaxFrameRate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;nudEnmityMaxFrameRate.Parent" xml:space="preserve">
+    <value>tableLayoutPanel7</value>
+  </data>
+  <data name="&gt;&gt;nudEnmityMaxFrameRate.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="label_Help.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label_Help.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="label_Help.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label_Help.Location" type="System.Drawing.Point, System.Drawing">
+    <value>161, 179</value>
+  </data>
+  <data name="label_Help.Size" type="System.Drawing.Size, System.Drawing">
+    <value>435, 173</value>
+  </data>
+  <data name="label_Help.TabIndex" type="System.Int32, mscorlib">
+    <value>99</value>
+  </data>
+  <data name="label_Help.Text" xml:space="preserve">
     <value>※You need to restart this plugin to apply this framerate or hotkey setting.</value>
+  </data>
+  <data name="&gt;&gt;label_Help.Name" xml:space="preserve">
+    <value>label_Help</value>
+  </data>
+  <data name="&gt;&gt;label_Help.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_Help.Parent" xml:space="preserve">
+    <value>tableLayoutPanel7</value>
+  </data>
+  <data name="&gt;&gt;label_Help.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="tableLayoutPanel8.ColumnCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="buttonEnmityCopyActXiv.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonEnmityCopyActXiv.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonEnmityCopyActXiv.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="buttonEnmityCopyActXiv.Size" type="System.Drawing.Size, System.Drawing">
+    <value>211, 45</value>
+  </data>
+  <data name="buttonEnmityCopyActXiv.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="buttonEnmityCopyActXiv.Text" xml:space="preserve">
+    <value>Copy the update variable to clipboard</value>
+  </data>
+  <data name="&gt;&gt;buttonEnmityCopyActXiv.Name" xml:space="preserve">
+    <value>buttonEnmityCopyActXiv</value>
+  </data>
+  <data name="&gt;&gt;buttonEnmityCopyActXiv.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonEnmityCopyActXiv.Parent" xml:space="preserve">
+    <value>tableLayoutPanel8</value>
+  </data>
+  <data name="&gt;&gt;buttonEnmityCopyActXiv.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="buttonEnmityReloadBrowser.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonEnmityReloadBrowser.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonEnmityReloadBrowser.Location" type="System.Drawing.Point, System.Drawing">
+    <value>220, 3</value>
+  </data>
+  <data name="buttonEnmityReloadBrowser.Size" type="System.Drawing.Size, System.Drawing">
+    <value>212, 45</value>
+  </data>
+  <data name="buttonEnmityReloadBrowser.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="buttonEnmityReloadBrowser.Text" xml:space="preserve">
+    <value>Reload overlay</value>
+  </data>
+  <data name="&gt;&gt;buttonEnmityReloadBrowser.Name" xml:space="preserve">
+    <value>buttonEnmityReloadBrowser</value>
+  </data>
+  <data name="&gt;&gt;buttonEnmityReloadBrowser.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonEnmityReloadBrowser.Parent" xml:space="preserve">
+    <value>tableLayoutPanel8</value>
+  </data>
+  <data name="&gt;&gt;buttonEnmityReloadBrowser.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tableLayoutPanel8.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tableLayoutPanel8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tableLayoutPanel8.RowCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tableLayoutPanel8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>435, 51</value>
+  </data>
+  <data name="tableLayoutPanel8.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel8.Name" xml:space="preserve">
+    <value>tableLayoutPanel8</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel8.Type" xml:space="preserve">
     <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label15.Name" xml:space="preserve">
-    <value>label15</value>
+  <data name="&gt;&gt;tableLayoutPanel8.Parent" xml:space="preserve">
+    <value>panel_Buttons</value>
   </data>
-  <data name="tableLayoutPanel9.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+  <data name="&gt;&gt;tableLayoutPanel8.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="tableLayoutPanel7.RowCount" type="System.Int32, mscorlib">
-    <value>8</value>
+  <data name="tableLayoutPanel8.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="buttonEnmityCopyActXiv" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="buttonEnmityReloadBrowser" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50,Percent,50" /&gt;&lt;Rows Styles="Percent,50,Absolute,51" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
-  <data name="label16.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="panel_Buttons.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+  <data name="panel_Buttons.Location" type="System.Drawing.Point, System.Drawing">
+    <value>161, 355</value>
+  </data>
+  <data name="panel_Buttons.Size" type="System.Drawing.Size, System.Drawing">
+    <value>435, 51</value>
+  </data>
+  <data name="panel_Buttons.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;panel_Buttons.Name" xml:space="preserve">
+    <value>panel_Buttons</value>
+  </data>
+  <data name="&gt;&gt;panel_Buttons.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel_Buttons.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
+  </data>
+  <data name="&gt;&gt;panel_Buttons.ZOrder" xml:space="preserve">
+    <value>17</value>
   </data>
   <data name="tableLayoutPanel7.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="tableLayoutPanel7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
-  <data name="checkEnmityVisible.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="tableLayoutPanel7.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tableLayoutPanel7.RowCount" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="tableLayoutPanel7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>602, 412</value>
+  </data>
+  <data name="tableLayoutPanel7.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel7.Name" xml:space="preserve">
+    <value>tableLayoutPanel7</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel7.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel7.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanel7.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label_Process" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="table_Process" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label_ShowOverlay" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="checkEnmityVisible" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label_Clickthru" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="checkEnmityClickThru" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label_LockOverlay" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="checkLock" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label_URL" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="table_URL" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label_ScanInterval" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="nudEnmityScanInterval" Row="5" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label_Hotkey" Row="6" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="table_Hotkey" Row="6" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label_Framerate" Row="7" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="nudEnmityMaxFrameRate" Row="7" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label_Help" Row="8" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="panel_Buttons" Row="9" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,155,Percent,100" /&gt;&lt;Rows Styles="Absolute,22,Absolute,22,Absolute,22,Absolute,22,Absolute,22,Absolute,22,Absolute,22,Absolute,22,Percent,100,Absolute,57" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>ja-JP</value>
-  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 12</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>602, 412</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>EnmityOverlayConfigPanel</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

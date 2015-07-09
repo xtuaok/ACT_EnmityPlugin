@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Globalization;
 using System.Threading;
 using RainbowMage.OverlayPlugin;
+using System.Diagnostics;
 
 namespace Tamagawa.EnmityPlugin
 {
@@ -27,6 +28,8 @@ namespace Tamagawa.EnmityPlugin
 
             SetupControlProperties();
             SetupConfigEventHandlers();
+            RefreshProcessList();
+            this.comboProcessList.SelectedItem = "Automatic";
         }
 
         private void SetupControlProperties()
@@ -257,5 +260,41 @@ namespace Tamagawa.EnmityPlugin
             return key;
         }
 
+        /// <summary>
+        /// Refresh Process list
+        /// </summary>
+        private void RefreshProcessList()
+        {
+            this.comboProcessList.Items.Clear();
+            this.comboProcessList.Items.Add("Automatic");
+            IList<Process> fFXIVProcessList = FFXIVProcessHelper.GetFFXIVProcessList();
+            foreach (Process current in fFXIVProcessList)
+            {
+                this.comboProcessList.Items.Add(current.Id.ToString());
+            }
+        }
+
+        private void buttonRefreshProcessList_Click(object sender, EventArgs e)
+        {
+            object selectedItem = this.comboProcessList.SelectedItem;
+            this.RefreshProcessList();
+            if (this.comboProcessList.Items.Contains(selectedItem))
+            {
+                this.comboProcessList.SelectedItem = selectedItem;
+                return;
+            }
+            this.comboProcessList.SelectedItem = "Automatic";
+        }
+
+        private void comboProcessList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.overlay != null)
+            {
+                string s = ((string)this.comboProcessList.SelectedItem) ?? "";
+                int processID = 0;
+                int.TryParse(s, out processID);
+                this.overlay.changeProcessId(processID);
+            }
+        }
     }
 }

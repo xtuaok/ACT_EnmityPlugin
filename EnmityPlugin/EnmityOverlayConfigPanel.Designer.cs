@@ -30,104 +30,98 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EnmityOverlayConfigPanel));
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.nudEnmityMaxFrameRate = new System.Windows.Forms.NumericUpDown();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
+            this.label_Process = new System.Windows.Forms.Label();
+            this.table_Process = new System.Windows.Forms.TableLayoutPanel();
+            this.comboProcessList = new System.Windows.Forms.ComboBox();
+            this.buttonRefreshProcessList = new System.Windows.Forms.Button();
+            this.label_ShowOverlay = new System.Windows.Forms.Label();
             this.checkEnmityVisible = new System.Windows.Forms.CheckBox();
+            this.label_Clickthru = new System.Windows.Forms.Label();
             this.checkEnmityClickThru = new System.Windows.Forms.CheckBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
-            this.buttonEnmityReloadBrowser = new System.Windows.Forms.Button();
-            this.buttonEnmityCopyActXiv = new System.Windows.Forms.Button();
-            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.label_LockOverlay = new System.Windows.Forms.Label();
+            this.checkLock = new System.Windows.Forms.CheckBox();
+            this.label_URL = new System.Windows.Forms.Label();
+            this.table_URL = new System.Windows.Forms.TableLayoutPanel();
             this.textEnmityUrl = new System.Windows.Forms.TextBox();
             this.buttonEnmitySelectFile = new System.Windows.Forms.Button();
-            this.label18 = new System.Windows.Forms.Label();
+            this.label_ScanInterval = new System.Windows.Forms.Label();
             this.nudEnmityScanInterval = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label_Hotkey = new System.Windows.Forms.Label();
+            this.table_Hotkey = new System.Windows.Forms.TableLayoutPanel();
             this.checkEnmityEnableGlobalHotkey = new System.Windows.Forms.CheckBox();
             this.textEnmityGlobalHotkey = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.checkLock = new System.Windows.Forms.CheckBox();
+            this.label_Framerate = new System.Windows.Forms.Label();
+            this.nudEnmityMaxFrameRate = new System.Windows.Forms.NumericUpDown();
+            this.label_Help = new System.Windows.Forms.Label();
+            this.panel_Buttons = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonEnmityCopyActXiv = new System.Windows.Forms.Button();
+            this.buttonEnmityReloadBrowser = new System.Windows.Forms.Button();
             this.tableLayoutPanel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudEnmityMaxFrameRate)).BeginInit();
-            this.panel3.SuspendLayout();
-            this.tableLayoutPanel8.SuspendLayout();
-            this.tableLayoutPanel9.SuspendLayout();
+            this.table_Process.SuspendLayout();
+            this.table_URL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudEnmityScanInterval)).BeginInit();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.table_Hotkey.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudEnmityMaxFrameRate)).BeginInit();
+            this.panel_Buttons.SuspendLayout();
+            this.tableLayoutPanel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel7
             // 
             resources.ApplyResources(this.tableLayoutPanel7, "tableLayoutPanel7");
-            this.tableLayoutPanel7.Controls.Add(this.label11, 1, 7);
-            this.tableLayoutPanel7.Controls.Add(this.label14, 0, 6);
-            this.tableLayoutPanel7.Controls.Add(this.nudEnmityMaxFrameRate, 1, 6);
-            this.tableLayoutPanel7.Controls.Add(this.label15, 0, 1);
-            this.tableLayoutPanel7.Controls.Add(this.label16, 0, 0);
-            this.tableLayoutPanel7.Controls.Add(this.label17, 0, 3);
-            this.tableLayoutPanel7.Controls.Add(this.checkEnmityVisible, 1, 0);
-            this.tableLayoutPanel7.Controls.Add(this.checkEnmityClickThru, 1, 1);
-            this.tableLayoutPanel7.Controls.Add(this.panel3, 1, 8);
-            this.tableLayoutPanel7.Controls.Add(this.tableLayoutPanel9, 1, 3);
-            this.tableLayoutPanel7.Controls.Add(this.label18, 0, 4);
-            this.tableLayoutPanel7.Controls.Add(this.nudEnmityScanInterval, 1, 4);
-            this.tableLayoutPanel7.Controls.Add(this.label1, 0, 5);
-            this.tableLayoutPanel7.Controls.Add(this.tableLayoutPanel1, 1, 5);
-            this.tableLayoutPanel7.Controls.Add(this.label2, 0, 2);
-            this.tableLayoutPanel7.Controls.Add(this.checkLock, 1, 2);
+            this.tableLayoutPanel7.Controls.Add(this.label_Process, 0, 0);
+            this.tableLayoutPanel7.Controls.Add(this.table_Process, 1, 0);
+            this.tableLayoutPanel7.Controls.Add(this.label_ShowOverlay, 0, 1);
+            this.tableLayoutPanel7.Controls.Add(this.checkEnmityVisible, 1, 1);
+            this.tableLayoutPanel7.Controls.Add(this.label_Clickthru, 0, 2);
+            this.tableLayoutPanel7.Controls.Add(this.checkEnmityClickThru, 1, 2);
+            this.tableLayoutPanel7.Controls.Add(this.label_LockOverlay, 0, 3);
+            this.tableLayoutPanel7.Controls.Add(this.checkLock, 1, 3);
+            this.tableLayoutPanel7.Controls.Add(this.label_URL, 0, 4);
+            this.tableLayoutPanel7.Controls.Add(this.table_URL, 1, 4);
+            this.tableLayoutPanel7.Controls.Add(this.label_ScanInterval, 0, 5);
+            this.tableLayoutPanel7.Controls.Add(this.nudEnmityScanInterval, 1, 5);
+            this.tableLayoutPanel7.Controls.Add(this.label_Hotkey, 0, 6);
+            this.tableLayoutPanel7.Controls.Add(this.table_Hotkey, 1, 6);
+            this.tableLayoutPanel7.Controls.Add(this.label_Framerate, 0, 7);
+            this.tableLayoutPanel7.Controls.Add(this.nudEnmityMaxFrameRate, 1, 7);
+            this.tableLayoutPanel7.Controls.Add(this.label_Help, 1, 8);
+            this.tableLayoutPanel7.Controls.Add(this.panel_Buttons, 1, 9);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             // 
-            // label11
+            // label_Process
             // 
-            resources.ApplyResources(this.label11, "label11");
-            this.label11.Name = "label11";
+            resources.ApplyResources(this.label_Process, "label_Process");
+            this.label_Process.Name = "label_Process";
             // 
-            // label14
+            // table_Process
             // 
-            resources.ApplyResources(this.label14, "label14");
-            this.label14.Name = "label14";
+            resources.ApplyResources(this.table_Process, "table_Process");
+            this.table_Process.Controls.Add(this.comboProcessList, 0, 0);
+            this.table_Process.Controls.Add(this.buttonRefreshProcessList, 1, 0);
+            this.table_Process.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.table_Process.Name = "table_Process";
             // 
-            // nudEnmityMaxFrameRate
+            // comboProcessList
             // 
-            resources.ApplyResources(this.nudEnmityMaxFrameRate, "nudEnmityMaxFrameRate");
-            this.nudEnmityMaxFrameRate.Maximum = new decimal(new int[] {
-            60,
-            0,
-            0,
-            0});
-            this.nudEnmityMaxFrameRate.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudEnmityMaxFrameRate.Name = "nudEnmityMaxFrameRate";
-            this.nudEnmityMaxFrameRate.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudEnmityMaxFrameRate.ValueChanged += new System.EventHandler(this.nudEnmityMaxFrameRate_ValueChanged);
+            resources.ApplyResources(this.comboProcessList, "comboProcessList");
+            this.comboProcessList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboProcessList.FormattingEnabled = true;
+            this.comboProcessList.Name = "comboProcessList";
+            this.comboProcessList.SelectedIndexChanged += new System.EventHandler(this.comboProcessList_SelectedIndexChanged);
             // 
-            // label15
+            // buttonRefreshProcessList
             // 
-            resources.ApplyResources(this.label15, "label15");
-            this.label15.Name = "label15";
+            resources.ApplyResources(this.buttonRefreshProcessList, "buttonRefreshProcessList");
+            this.buttonRefreshProcessList.Name = "buttonRefreshProcessList";
+            this.buttonRefreshProcessList.UseVisualStyleBackColor = true;
+            this.buttonRefreshProcessList.Click += new System.EventHandler(this.buttonRefreshProcessList_Click);
             // 
-            // label16
+            // label_ShowOverlay
             // 
-            resources.ApplyResources(this.label16, "label16");
-            this.label16.Name = "label16";
-            // 
-            // label17
-            // 
-            resources.ApplyResources(this.label17, "label17");
-            this.label17.Name = "label17";
+            resources.ApplyResources(this.label_ShowOverlay, "label_ShowOverlay");
+            this.label_ShowOverlay.Name = "label_ShowOverlay";
             // 
             // checkEnmityVisible
             // 
@@ -136,6 +130,11 @@
             this.checkEnmityVisible.UseVisualStyleBackColor = true;
             this.checkEnmityVisible.CheckedChanged += new System.EventHandler(this.checkEnmityVisible_CheckedChanged);
             // 
+            // label_Clickthru
+            // 
+            resources.ApplyResources(this.label_Clickthru, "label_Clickthru");
+            this.label_Clickthru.Name = "label_Clickthru";
+            // 
             // checkEnmityClickThru
             // 
             resources.ApplyResources(this.checkEnmityClickThru, "checkEnmityClickThru");
@@ -143,39 +142,29 @@
             this.checkEnmityClickThru.UseVisualStyleBackColor = true;
             this.checkEnmityClickThru.CheckedChanged += new System.EventHandler(this.checkEnmityClickThru_CheckedChanged);
             // 
-            // panel3
+            // label_LockOverlay
             // 
-            resources.ApplyResources(this.panel3, "panel3");
-            this.panel3.Controls.Add(this.tableLayoutPanel8);
-            this.panel3.Name = "panel3";
+            resources.ApplyResources(this.label_LockOverlay, "label_LockOverlay");
+            this.label_LockOverlay.Name = "label_LockOverlay";
             // 
-            // tableLayoutPanel8
+            // checkLock
             // 
-            resources.ApplyResources(this.tableLayoutPanel8, "tableLayoutPanel8");
-            this.tableLayoutPanel8.Controls.Add(this.buttonEnmityReloadBrowser, 1, 0);
-            this.tableLayoutPanel8.Controls.Add(this.buttonEnmityCopyActXiv, 0, 0);
-            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            resources.ApplyResources(this.checkLock, "checkLock");
+            this.checkLock.Name = "checkLock";
+            this.checkLock.UseVisualStyleBackColor = true;
+            this.checkLock.CheckedChanged += new System.EventHandler(this.checkLock_CheckedChanged);
             // 
-            // buttonEnmityReloadBrowser
+            // label_URL
             // 
-            resources.ApplyResources(this.buttonEnmityReloadBrowser, "buttonEnmityReloadBrowser");
-            this.buttonEnmityReloadBrowser.Name = "buttonEnmityReloadBrowser";
-            this.buttonEnmityReloadBrowser.UseVisualStyleBackColor = true;
-            this.buttonEnmityReloadBrowser.Click += new System.EventHandler(this.buttonEnmityReloadBrowser_Click);
+            resources.ApplyResources(this.label_URL, "label_URL");
+            this.label_URL.Name = "label_URL";
             // 
-            // buttonEnmityCopyActXiv
+            // table_URL
             // 
-            resources.ApplyResources(this.buttonEnmityCopyActXiv, "buttonEnmityCopyActXiv");
-            this.buttonEnmityCopyActXiv.Name = "buttonEnmityCopyActXiv";
-            this.buttonEnmityCopyActXiv.UseVisualStyleBackColor = true;
-            this.buttonEnmityCopyActXiv.Click += new System.EventHandler(this.buttonEnmityCopyActXiv_Click);
-            // 
-            // tableLayoutPanel9
-            // 
-            resources.ApplyResources(this.tableLayoutPanel9, "tableLayoutPanel9");
-            this.tableLayoutPanel9.Controls.Add(this.textEnmityUrl, 0, 0);
-            this.tableLayoutPanel9.Controls.Add(this.buttonEnmitySelectFile, 1, 0);
-            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
+            resources.ApplyResources(this.table_URL, "table_URL");
+            this.table_URL.Controls.Add(this.textEnmityUrl, 0, 0);
+            this.table_URL.Controls.Add(this.buttonEnmitySelectFile, 1, 0);
+            this.table_URL.Name = "table_URL";
             // 
             // textEnmityUrl
             // 
@@ -190,10 +179,10 @@
             this.buttonEnmitySelectFile.UseVisualStyleBackColor = true;
             this.buttonEnmitySelectFile.Click += new System.EventHandler(this.buttonEnmitySelectFile_Click);
             // 
-            // label18
+            // label_ScanInterval
             // 
-            resources.ApplyResources(this.label18, "label18");
-            this.label18.Name = "label18";
+            resources.ApplyResources(this.label_ScanInterval, "label_ScanInterval");
+            this.label_ScanInterval.Name = "label_ScanInterval";
             // 
             // nudEnmityScanInterval
             // 
@@ -216,17 +205,17 @@
             0});
             this.nudEnmityScanInterval.ValueChanged += new System.EventHandler(this.nudEnmityScanInterval_ValueChanged);
             // 
-            // label1
+            // label_Hotkey
             // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
+            resources.ApplyResources(this.label_Hotkey, "label_Hotkey");
+            this.label_Hotkey.Name = "label_Hotkey";
             // 
-            // tableLayoutPanel1
+            // table_Hotkey
             // 
-            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
-            this.tableLayoutPanel1.Controls.Add(this.checkEnmityEnableGlobalHotkey, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.textEnmityGlobalHotkey, 1, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            resources.ApplyResources(this.table_Hotkey, "table_Hotkey");
+            this.table_Hotkey.Controls.Add(this.checkEnmityEnableGlobalHotkey, 0, 0);
+            this.table_Hotkey.Controls.Add(this.textEnmityGlobalHotkey, 1, 0);
+            this.table_Hotkey.Name = "table_Hotkey";
             // 
             // checkEnmityEnableGlobalHotkey
             // 
@@ -241,17 +230,63 @@
             this.textEnmityGlobalHotkey.Name = "textEnmityGlobalHotkey";
             this.textEnmityGlobalHotkey.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textEnmityGlobalHotkey_KeyDown);
             // 
-            // label2
+            // label_Framerate
             // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
+            resources.ApplyResources(this.label_Framerate, "label_Framerate");
+            this.label_Framerate.Name = "label_Framerate";
             // 
-            // checkLock
+            // nudEnmityMaxFrameRate
             // 
-            resources.ApplyResources(this.checkLock, "checkLock");
-            this.checkLock.Name = "checkLock";
-            this.checkLock.UseVisualStyleBackColor = true;
-            this.checkLock.CheckedChanged += new System.EventHandler(this.checkLock_CheckedChanged);
+            resources.ApplyResources(this.nudEnmityMaxFrameRate, "nudEnmityMaxFrameRate");
+            this.nudEnmityMaxFrameRate.Maximum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.nudEnmityMaxFrameRate.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudEnmityMaxFrameRate.Name = "nudEnmityMaxFrameRate";
+            this.nudEnmityMaxFrameRate.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.nudEnmityMaxFrameRate.ValueChanged += new System.EventHandler(this.nudEnmityMaxFrameRate_ValueChanged);
+            // 
+            // label_Help
+            // 
+            resources.ApplyResources(this.label_Help, "label_Help");
+            this.label_Help.Name = "label_Help";
+            // 
+            // panel_Buttons
+            // 
+            this.panel_Buttons.Controls.Add(this.tableLayoutPanel8);
+            resources.ApplyResources(this.panel_Buttons, "panel_Buttons");
+            this.panel_Buttons.Name = "panel_Buttons";
+            // 
+            // tableLayoutPanel8
+            // 
+            resources.ApplyResources(this.tableLayoutPanel8, "tableLayoutPanel8");
+            this.tableLayoutPanel8.Controls.Add(this.buttonEnmityCopyActXiv, 0, 0);
+            this.tableLayoutPanel8.Controls.Add(this.buttonEnmityReloadBrowser, 1, 0);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            // 
+            // buttonEnmityCopyActXiv
+            // 
+            resources.ApplyResources(this.buttonEnmityCopyActXiv, "buttonEnmityCopyActXiv");
+            this.buttonEnmityCopyActXiv.Name = "buttonEnmityCopyActXiv";
+            this.buttonEnmityCopyActXiv.UseVisualStyleBackColor = true;
+            this.buttonEnmityCopyActXiv.Click += new System.EventHandler(this.buttonEnmityCopyActXiv_Click);
+            // 
+            // buttonEnmityReloadBrowser
+            // 
+            resources.ApplyResources(this.buttonEnmityReloadBrowser, "buttonEnmityReloadBrowser");
+            this.buttonEnmityReloadBrowser.Name = "buttonEnmityReloadBrowser";
+            this.buttonEnmityReloadBrowser.UseVisualStyleBackColor = true;
+            this.buttonEnmityReloadBrowser.Click += new System.EventHandler(this.buttonEnmityReloadBrowser_Click);
             // 
             // EnmityOverlayConfigPanel
             // 
@@ -262,14 +297,15 @@
             this.Name = "EnmityOverlayConfigPanel";
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudEnmityMaxFrameRate)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.tableLayoutPanel8.ResumeLayout(false);
-            this.tableLayoutPanel9.ResumeLayout(false);
-            this.tableLayoutPanel9.PerformLayout();
+            this.table_Process.ResumeLayout(false);
+            this.table_URL.ResumeLayout(false);
+            this.table_URL.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudEnmityScanInterval)).EndInit();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.table_Hotkey.ResumeLayout(false);
+            this.table_Hotkey.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudEnmityMaxFrameRate)).EndInit();
+            this.panel_Buttons.ResumeLayout(false);
+            this.tableLayoutPanel8.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -277,28 +313,32 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label_Help;
+        private System.Windows.Forms.Label label_Framerate;
         private System.Windows.Forms.NumericUpDown nudEnmityMaxFrameRate;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label_Clickthru;
+        private System.Windows.Forms.Label label_ShowOverlay;
+        private System.Windows.Forms.Label label_URL;
         private System.Windows.Forms.CheckBox checkEnmityVisible;
         private System.Windows.Forms.CheckBox checkEnmityClickThru;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel_Buttons;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.Button buttonEnmityReloadBrowser;
         private System.Windows.Forms.Button buttonEnmityCopyActXiv;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
+        private System.Windows.Forms.TableLayoutPanel table_URL;
         private System.Windows.Forms.TextBox textEnmityUrl;
         private System.Windows.Forms.Button buttonEnmitySelectFile;
-        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label_ScanInterval;
         private System.Windows.Forms.NumericUpDown nudEnmityScanInterval;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label_Hotkey;
         private System.Windows.Forms.CheckBox checkEnmityEnableGlobalHotkey;
         private System.Windows.Forms.TextBox textEnmityGlobalHotkey;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TableLayoutPanel table_Hotkey;
+        private System.Windows.Forms.Label label_LockOverlay;
         private System.Windows.Forms.CheckBox checkLock;
+        private System.Windows.Forms.Label label_Process;
+        private System.Windows.Forms.TableLayoutPanel table_Process;
+        private System.Windows.Forms.ComboBox comboProcessList;
+        private System.Windows.Forms.Button buttonRefreshProcessList;
     }
 }

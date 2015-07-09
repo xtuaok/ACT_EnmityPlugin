@@ -122,7 +122,9 @@
       <DependentUpon>EnmityOverlayConfigPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="EnmityOverlayConfig.cs" />
-    <Compile Include="FFXIVPluginHelper.cs" />
+    <Compile Include="FFXIVMemory.cs" />
+    <Compile Include="FFXIVObject.cs" />
+    <Compile Include="FFXIVProcessHelper.cs" />
     <Compile Include="Messages.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

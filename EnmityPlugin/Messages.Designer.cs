@@ -88,20 +88,11 @@ namespace Tamagawa.EnmityPlugin {
         }
         
         /// <summary>
-        ///   Failed to signature scan. に類似しているローカライズされた文字列を検索します。
+        ///   Failed to signature scan ({0}). に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string FailedToSigScan {
             get {
                 return ResourceManager.GetString("FailedToSigScan", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   FFXIV Plugin is not loaded. に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        internal static string FFXIVPluginNotLoaded {
-            get {
-                return ResourceManager.GetString("FFXIVPluginNotLoaded", resourceCulture);
             }
         }
         

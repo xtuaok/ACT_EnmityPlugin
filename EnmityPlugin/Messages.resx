@@ -127,10 +127,7 @@
     <value>Failed to memory scan.</value>
   </data>
   <data name="FailedToSigScan" xml:space="preserve">
-    <value>Failed to signature scan.</value>
-  </data>
-  <data name="FFXIVPluginNotLoaded" xml:space="preserve">
-    <value>FFXIV Plugin is not loaded.</value>
+    <value>Failed to signature scan ({0}).</value>
   </data>
   <data name="NewVersionIsAvailable" xml:space="preserve">
     <value>New release of EnmityPlugin is available!</value>
