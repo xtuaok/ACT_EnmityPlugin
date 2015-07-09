@@ -87,7 +87,14 @@ namespace Tamagawa.EnmityPlugin
                 message += Environment.NewLine;
                 message +=Messages.OpenSiteNow;
                 var updateDialog = new UpdateDialog();
-//                updateDialog.StartPosition = FormStartPosition.CenterParent;
+                if (Advanced_Combat_Tracker.FormActMain.ActiveForm != null)
+                {
+                    updateDialog.StartPosition = FormStartPosition.CenterParent;
+                }
+                else
+                {
+                    updateDialog.StartPosition = FormStartPosition.CenterScreen;
+                }
                 updateDialog.setDialogMessage(message);
                 var result = updateDialog.ShowDialog();
                 switch (result)
