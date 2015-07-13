@@ -15,12 +15,14 @@ namespace Tamagawa.EnmityPlugin
         private const string charmapSignature64 = "48c1e8033dffff0000742b3da80100007324488d0d";
         private const string targetSignature32  = "750e85d2750ab9";
         private const string targetSignature64  = "4883C4205FC3483935285729017520483935";
+        private const string enmitySignature32  = "568B353484????33C085F67E45578B7D0CBA";
+        private const string enmitySignature64  = "004533C94863DA4C8BD94585D27E47488D05";
         private const int charmapOffset32 = 0;
         private const int charmapOffset64 = 0;
         private const int targetOffset32  = 88;
         private const int targetOffset64  = 0;
-        private const int hateOffset32    = 19188; // TODO: should be more stable
-        private const int hateOffset64    = 25312; // TODO: should be more stable
+        private const int enmityOffset32 = 0;
+        private const int enmityOffset64 = 0;
 
         private EnmityOverlay _overlay;
         private Process _process;
@@ -28,7 +30,7 @@ namespace Tamagawa.EnmityPlugin
 
         private IntPtr charmapAddress = IntPtr.Zero;
         private IntPtr targetAddress = IntPtr.Zero;
-        private IntPtr hateAddress = IntPtr.Zero;
+        private IntPtr enmityAddress = IntPtr.Zero;
 
         public FFXIVMemory(EnmityOverlay overlay, Process process)
         {
@@ -77,7 +79,7 @@ namespace Tamagawa.EnmityPlugin
                 return false;
             }
             if (charmapAddress == IntPtr.Zero ||
-                hateAddress == IntPtr.Zero ||
+                enmityAddress == IntPtr.Zero ||
                 targetAddress == IntPtr.Zero)
             {
                 return getPointerAddress();
@@ -93,19 +95,22 @@ namespace Tamagawa.EnmityPlugin
             bool success = true;
             string charmapSignature = charmapSignature32;
             string targetSignature = targetSignature32;
+            string enmitySignature = enmitySignature32;
             int targetOffset = targetOffset32;
-            int hateOffset = hateOffset32;
             int charmapOffset = charmapOffset32;
+            int enmityOffset = enmityOffset32;
+
             bool bRIP = false;
 
             if (_mode == FFXIVClientMode.FFXIV_64)
             {
                 bRIP = true;
-                hateOffset = hateOffset64;
                 targetOffset = targetOffset64;
                 charmapOffset = charmapOffset64;
                 targetSignature = targetSignature64;
                 charmapSignature = charmapSignature64;
+                enmitySignature = enmitySignature64;
+                enmityOffset = enmityOffset64;
             }
 
             /// CHARMAP
@@ -117,12 +122,26 @@ namespace Tamagawa.EnmityPlugin
             if (list.Count == 1)
             {
                 charmapAddress = list[0] + charmapOffset;
-                hateAddress = charmapAddress + hateOffset;
             }
             if (charmapAddress == IntPtr.Zero)
             {
                 _overlay.LogError(Messages.FailedToSigScan, "CombatantList");
-                hateAddress = IntPtr.Zero;
+                success = false;
+            }
+
+            // ENMITY
+            list = SigScan(enmitySignature, 0, bRIP);
+            if (list == null || list.Count == 0)
+            {
+                enmityAddress = IntPtr.Zero;
+            }
+            if (list.Count == 1)
+            {
+                enmityAddress = list[0] + enmityOffset;
+            }
+            if (enmityAddress == IntPtr.Zero)
+            {
+                _overlay.LogError(Messages.FailedToSigScan, "Enmity");
                 success = false;
             }
 
@@ -142,8 +161,8 @@ namespace Tamagawa.EnmityPlugin
                 success = false;
             }
 
-            _overlay.LogDebug("charmapAddress: 0x{0:X}, enmityAddress: 0x{1:X}",
-                charmapAddress.ToInt64(), hateAddress.ToInt64());
+            _overlay.LogDebug("charmapAddress: 0x{0:X}", charmapAddress.ToInt64());
+            _overlay.LogDebug("enmityAddress: 0x{0:X}", enmityAddress.ToInt64());
             _overlay.LogDebug("targetAddress: 0x{0:X}", targetAddress.ToInt64());
 
             if (success)
@@ -302,7 +321,7 @@ namespace Tamagawa.EnmityPlugin
             Combatant mychar = GetSelfCombatant();
 
             /// 一度に全部読む
-            byte[] buffer = GetByteArray(hateAddress, 16 * 72);
+            byte[] buffer = GetByteArray(enmityAddress, 16 * 72);
             uint TopEnmity = 0;
             ///
             for (int i = 0; i < 16; i++)
