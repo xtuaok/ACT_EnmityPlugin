@@ -15,4 +15,13 @@ namespace Tamagawa.EnmityPlugin
             this.NewScanInterval = newScanInterval;
         }
     }
+
+    public class FollowFFXIVPluginChangedEventArgs : EventArgs
+    {
+        public bool NewFollowFFXIVPlugin { get; private set; }
+        public FollowFFXIVPluginChangedEventArgs(bool newValue)
+        {
+            this.NewFollowFFXIVPlugin = newValue;
+        }
+    }
 }

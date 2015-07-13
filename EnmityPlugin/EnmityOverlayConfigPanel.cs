@@ -43,6 +43,7 @@ namespace Tamagawa.EnmityPlugin
             this.checkEnmityEnableGlobalHotkey.Checked = this.config.GlobalHotkeyEnabled;
             this.textEnmityGlobalHotkey.Enabled = this.checkEnmityEnableGlobalHotkey.Checked;
             this.textEnmityGlobalHotkey.Text = GetHotkeyString(this.config.GlobalHotkeyModifiers, this.config.GlobalHotkey);
+            this.checkFollowFFXIVPlugin.Checked = this.config.FollowFFXIVPlugin;
         }
 
         private void SetupConfigEventHandlers()
@@ -109,6 +110,13 @@ namespace Tamagawa.EnmityPlugin
                 this.InvokeIfRequired(() =>
                 {
                     this.textEnmityGlobalHotkey.Text = GetHotkeyString(e.NewHotkey, this.config.GlobalHotkey);
+                });
+            };
+            this.config.FollowFFXIVPluginChanged += (o, e) =>
+            {
+                this.InvokeIfRequired(() =>
+                {
+                    this.checkFollowFFXIVPlugin.Checked = e.NewFollowFFXIVPlugin;
                 });
             };
         }
@@ -205,6 +213,21 @@ namespace Tamagawa.EnmityPlugin
             var key = RemoveModifiers(e.KeyCode, e.Modifiers);
             this.config.GlobalHotkey = key;
             this.config.GlobalHotkeyModifiers = e.Modifiers;
+        }
+
+        private void checkFollowFFXIVPlugin_CheckedChanged(object sender, EventArgs e)
+        {
+            this.config.FollowFFXIVPlugin = this.checkFollowFFXIVPlugin.Checked;
+            if (this.config.FollowFFXIVPlugin)
+            {
+                this.comboProcessList.Enabled = false;
+                this.buttonRefreshProcessList.Enabled = false;
+            }
+            else
+            {
+                this.comboProcessList.Enabled = true;
+                this.buttonRefreshProcessList.Enabled = true;
+            }
         }
 
         /// <summary>

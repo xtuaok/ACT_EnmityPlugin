@@ -34,7 +34,21 @@ namespace Tamagawa.EnmityPlugin
         public void changeProcessId(int processId)
         {
             _lock.WaitOne();
-            Process p = FFXIVProcessHelper.GetFFXIVProcess(processId);
+
+            Process p = null;
+
+            if (Config.FollowFFXIVPlugin)
+            {
+                if (FFXIVPluginHelper.Instance != null)
+                {
+                    p = FFXIVPluginHelper.GetFFXIVProcess;
+                }
+            }
+            else
+            {
+                p = FFXIVProcessHelper.GetFFXIVProcess(processId);
+            }
+
             if (_memory == null && p != null)
             {
                 _memory = new FFXIVMemory(this, p);
@@ -77,6 +91,19 @@ namespace Tamagawa.EnmityPlugin
         {
             try
             {
+                if (Config.FollowFFXIVPlugin)
+                {
+                    Process p = null;
+                    if (FFXIVPluginHelper.Instance != null)
+                    {
+                        p = FFXIVPluginHelper.GetFFXIVProcess;
+                        if (p == null || (_memory != null && _memory.process.Id != p.Id))
+                        {
+                            _memory = null;
+                        }
+                    }
+                }
+
                 if (_memory == null)
                 {
                     changeProcessId(0);

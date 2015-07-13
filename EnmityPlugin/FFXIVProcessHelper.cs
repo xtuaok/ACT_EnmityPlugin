@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using Advanced_Combat_Tracker;
+using System.Reflection;
 
 namespace Tamagawa.EnmityPlugin
 {
@@ -51,4 +53,56 @@ namespace Tamagawa.EnmityPlugin
             return result;
         }
     }
+
+    public static class FFXIVPluginHelper
+     {
+        private static ActPluginData _plugin;
+
+        public static object Instance
+        {
+            get
+            {
+                if (_plugin == null && ActGlobals.oFormActMain.Visible)
+                {
+                    foreach (ActPluginData plugin in ActGlobals.oFormActMain.ActPlugins)
+                    {
+                        if (plugin.pluginFile.Name == "FFXIV_ACT_Plugin.dll" && plugin.lblPluginStatus.Text == "FFXIV Plugin Started.")
+                        {
+                            _plugin = plugin;
+                            break;
+                        }
+                    }
+                }
+                return _plugin;
+            }
+        }
+
+        public static Process GetFFXIVProcess
+        {
+            get
+            {
+                try
+                {
+                    FieldInfo fi = _plugin.pluginObj.GetType().GetField("_Memory", BindingFlags.GetField | BindingFlags.NonPublic | BindingFlags.Instance);
+                    var memory = fi.GetValue(_plugin.pluginObj);
+                    if (memory == null) return null;
+
+                    fi = memory.GetType().GetField("_config", BindingFlags.GetField | BindingFlags.NonPublic | BindingFlags.Instance);
+                    var config = fi.GetValue(memory);
+                    if (config == null) return null;
+
+                    fi = config.GetType().GetField("Process", BindingFlags.GetField | BindingFlags.Public | BindingFlags.Instance);
+                    var process = fi.GetValue(config);
+                    if (process == null) return null;
+
+                    return (Process)process;
+                }
+                catch
+                {
+                    return null;
+                }
+            }
+        }
+     }
 }
+

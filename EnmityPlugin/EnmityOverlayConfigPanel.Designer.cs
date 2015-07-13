@@ -34,6 +34,7 @@
             this.table_Process = new System.Windows.Forms.TableLayoutPanel();
             this.comboProcessList = new System.Windows.Forms.ComboBox();
             this.buttonRefreshProcessList = new System.Windows.Forms.Button();
+            this.checkFollowFFXIVPlugin = new System.Windows.Forms.CheckBox();
             this.label_ShowOverlay = new System.Windows.Forms.Label();
             this.checkEnmityVisible = new System.Windows.Forms.CheckBox();
             this.label_Clickthru = new System.Windows.Forms.Label();
@@ -100,6 +101,7 @@
             resources.ApplyResources(this.table_Process, "table_Process");
             this.table_Process.Controls.Add(this.comboProcessList, 0, 0);
             this.table_Process.Controls.Add(this.buttonRefreshProcessList, 1, 0);
+            this.table_Process.Controls.Add(this.checkFollowFFXIVPlugin, 2, 0);
             this.table_Process.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
             this.table_Process.Name = "table_Process";
             // 
@@ -117,6 +119,13 @@
             this.buttonRefreshProcessList.Name = "buttonRefreshProcessList";
             this.buttonRefreshProcessList.UseVisualStyleBackColor = true;
             this.buttonRefreshProcessList.Click += new System.EventHandler(this.buttonRefreshProcessList_Click);
+            // 
+            // checkFollowFFXIVPlugin
+            // 
+            resources.ApplyResources(this.checkFollowFFXIVPlugin, "checkFollowFFXIVPlugin");
+            this.checkFollowFFXIVPlugin.Name = "checkFollowFFXIVPlugin";
+            this.checkFollowFFXIVPlugin.UseVisualStyleBackColor = true;
+            this.checkFollowFFXIVPlugin.CheckedChanged += new System.EventHandler(this.checkFollowFFXIVPlugin_CheckedChanged);
             // 
             // label_ShowOverlay
             // 
@@ -263,8 +272,8 @@
             // 
             // panel_Buttons
             // 
-            this.panel_Buttons.Controls.Add(this.tableLayoutPanel8);
             resources.ApplyResources(this.panel_Buttons, "panel_Buttons");
+            this.panel_Buttons.Controls.Add(this.tableLayoutPanel8);
             this.panel_Buttons.Name = "panel_Buttons";
             // 
             // tableLayoutPanel8
@@ -298,6 +307,7 @@
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
             this.table_Process.ResumeLayout(false);
+            this.table_Process.PerformLayout();
             this.table_URL.ResumeLayout(false);
             this.table_URL.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudEnmityScanInterval)).EndInit();
@@ -340,5 +350,6 @@
         private System.Windows.Forms.TableLayoutPanel table_Process;
         private System.Windows.Forms.ComboBox comboProcessList;
         private System.Windows.Forms.Button buttonRefreshProcessList;
+        private System.Windows.Forms.CheckBox checkFollowFFXIVPlugin;
     }
 }

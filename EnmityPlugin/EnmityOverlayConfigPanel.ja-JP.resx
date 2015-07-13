@@ -120,31 +120,6 @@
   <data name="label_Process.Text" xml:space="preserve">
     <value>プロセス選択</value>
   </data>
-  <data name="label_ShowOverlay.Text" xml:space="preserve">
-    <value>オーバーレイを表示する</value>
-  </data>
-  <data name="label_Clickthru.Text" xml:space="preserve">
-    <value>クリックを透過させる</value>
-  </data>
-  <data name="label_LockOverlay.Text" xml:space="preserve">
-    <value>移動とリサイズを制限する</value>
-  </data>
-  <data name="label_ScanInterval.Text" xml:space="preserve">
-    <value>スキャン間隔 (ミリ秒)</value>
-  </data>
-  <data name="label_Hotkey.Text" xml:space="preserve">
-    <value>グローバルホットキーを使用</value>
-  </data>
-  <data name="label_Framerate.Text" xml:space="preserve">
-    <value>最大フレームレート</value>
-  </data>
-  <data name="label_Help.Text" xml:space="preserve">
-    <value>※最大フレームレートおよびホットキーの変更を有効にするためにはプラグインの再起動が必要です</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="tableLayoutPanel7.RowCount" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="comboProcessList.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
@@ -156,6 +131,7 @@
   <data name="comboProcessList.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 1</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="buttonRefreshProcessList.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -174,13 +150,46 @@
   <data name="buttonRefreshProcessList.Text" xml:space="preserve">
     <value>更新</value>
   </data>
+  <data name="checkFollowFFXIVPlugin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>187, 3</value>
+  </data>
+  <data name="checkFollowFFXIVPlugin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 16</value>
+  </data>
+  <data name="checkFollowFFXIVPlugin.Text" xml:space="preserve">
+    <value>FFXIVプラグインの設定に従う</value>
+  </data>
+  <data name="label_ShowOverlay.Text" xml:space="preserve">
+    <value>オーバーレイを表示する</value>
+  </data>
+  <data name="label_Clickthru.Text" xml:space="preserve">
+    <value>クリックを透過させる</value>
+  </data>
+  <data name="label_LockOverlay.Text" xml:space="preserve">
+    <value>移動とリサイズを制限する</value>
+  </data>
+  <data name="label_ScanInterval.Text" xml:space="preserve">
+    <value>スキャン間隔 (ミリ秒)</value>
+  </data>
+  <data name="label_Hotkey.Text" xml:space="preserve">
+    <value>グローバルホットキーを使用</value>
+  </data>
   <data name="textEnmityGlobalHotkey.Size" type="System.Drawing.Size, System.Drawing">
     <value>200, 19</value>
+  </data>
+  <data name="label_Framerate.Text" xml:space="preserve">
+    <value>最大フレームレート</value>
+  </data>
+  <data name="label_Help.Text" xml:space="preserve">
+    <value>※最大フレームレートおよびホットキーの変更を有効にするためにはプラグインの再起動が必要です</value>
   </data>
   <data name="buttonEnmityCopyActXiv.Text" xml:space="preserve">
     <value>ActXiv変数をクリップボードにコピー</value>
   </data>
   <data name="buttonEnmityReloadBrowser.Text" xml:space="preserve">
     <value>オーバーレイの表示をリロード</value>
+  </data>
+  <data name="tableLayoutPanel7.RowCount" type="System.Int32, mscorlib">
+    <value>10</value>
   </data>
 </root>
