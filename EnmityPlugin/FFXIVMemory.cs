@@ -6,11 +6,30 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using Advanced_Combat_Tracker;
 using System.Runtime.InteropServices;
+using System.Threading;
 
 namespace Tamagawa.EnmityPlugin
 {
-    public class FFXIVMemory
+    public class FFXIVMemory : IDisposable
     {
+        private Thread _thread;
+        private List<Combatant> _Combatants = new List<Combatant>();
+        internal List<Combatant> Combatants
+        {
+            get
+            {
+                return this._Combatants;
+            }
+        }
+        private object _CombatantsLock = new object();
+        internal object CombatantsLock
+        {
+            get
+            {
+                return this._CombatantsLock;
+            }
+        }
+
         private const string charmapSignature32 = "81feffff0000743581fe58010000732d8b3cb5";
         private const string charmapSignature64 = "48c1e8033dffff0000742b3da80100007324488d0d";
         private const string targetSignature32  = "750e85d2750ab9";
@@ -49,8 +68,41 @@ namespace Tamagawa.EnmityPlugin
                 _mode = FFXIVClientMode.Unknown;
             }
             overlay.LogInfo("Attached process: {0} ({1})",
-                process.Id, _mode == FFXIVClientMode.FFXIV_32 ? "dx9" : "dx11");
-            getPointerAddress();
+                process.Id, (_mode == FFXIVClientMode.FFXIV_32 ? "dx9" : "dx11"));
+
+            this.getPointerAddress();
+
+            _thread = new Thread(new ThreadStart(doScanCombatants));
+            _thread.IsBackground = true;
+            _thread.Start();
+
+        }
+
+        public void Dispose()
+        {
+            _overlay.LogDebug("FFXIVMemory Instance disposed");
+            _thread.Abort();
+        }
+
+        private void doScanCombatants()
+        {
+            List<Combatant> c;
+            while (true)
+            {
+                Thread.Sleep(200);
+
+                if (!this.validateProcess())
+                {
+                    Thread.Sleep(1000);
+                    return;
+                }
+
+                c = this._getCombatantList();
+                lock (CombatantsLock)
+                {
+                    this._Combatants = c;
+                }
+            }
         }
 
         public enum FFXIVClientMode
@@ -221,9 +273,57 @@ namespace Tamagawa.EnmityPlugin
         }
 
         /// <summary>
+        /// サークルターゲット情報を取得
+        /// </summary>
+        public Combatant GetCircleCombatant()
+        {
+            Combatant self = null;
+            int offset = _mode == FFXIVClientMode.FFXIV_64 ? 0x08 : 0x04;
+            IntPtr address = (IntPtr)GetUInt32(targetAddress + offset);
+            if (address.ToInt64() > 0)
+            {
+                byte[] source = GetByteArray(address, 0x3F40);
+                self = GetCombatantFromByteArray(source);
+            }
+            return self;
+        }
+
+        /// <summary>
+        /// フォーカスターゲット情報を取得
+        /// </summary>
+        public Combatant GetFocusCombatant()
+        {
+            Combatant self = null;
+            int offset = _mode == FFXIVClientMode.FFXIV_64 ? 0x70 : 0x48;
+            IntPtr address = (IntPtr)GetUInt32(targetAddress + offset);
+            if (address.ToInt64() > 0)
+            {
+                byte[] source = GetByteArray(address, 0x3F40);
+                self = GetCombatantFromByteArray(source);
+            }
+            return self;
+        }
+
+        /// <summary>
+        /// ホバーターゲット情報を取得
+        /// </summary>
+        public Combatant GetHoverCombatant()
+        {
+            Combatant self = null;
+            int offset = _mode == FFXIVClientMode.FFXIV_64 ? 0x30 : 0x18;
+            IntPtr address = (IntPtr)GetUInt32(targetAddress + offset);
+            if (address.ToInt64() > 0)
+            {
+                byte[] source = GetByteArray(address, 0x3F40);
+                self = GetCombatantFromByteArray(source);
+            }
+            return self;
+        }
+
+        /// <summary>
         /// 周辺のキャラ情報を取得
         /// </summary>
-        public unsafe List<Combatant> GetCombatantList()
+        private unsafe List<Combatant> _getCombatantList()
         {
             int num = 344;
             List<Combatant> result = new List<Combatant>();
@@ -286,6 +386,14 @@ namespace Tamagawa.EnmityPlugin
                 combatant.PosZ = *(Single*)&p[offset + 4];
                 combatant.PosY = *(Single*)&p[offset + 8];
 
+                offset = (_mode == FFXIVClientMode.FFXIV_64) ? 448 : 392;
+                combatant.TargetID = *(uint*)&p[offset];
+                if (combatant.TargetID == 3758096384u)
+                {
+                    offset = (_mode == FFXIVClientMode.FFXIV_64) ? 2448 : 2520;
+                    combatant.TargetID = *(uint*)&p[offset];
+                }
+
                 if (combatant.type == ObjectType.PC || combatant.type == ObjectType.Monster)
                 {
                     offset = (_mode == FFXIVClientMode.FFXIV_64) ? 5872 : 5312;
@@ -319,7 +427,7 @@ namespace Tamagawa.EnmityPlugin
             short num = 0;
             uint topEnmity = 0;
             List<EnmityEntry> result = new List<EnmityEntry>();
-            List<Combatant> combatantList = GetCombatantList();
+            List<Combatant> combatantList = Combatants;
             Combatant mychar = GetSelfCombatant();
 
             /// 一度に全部読む

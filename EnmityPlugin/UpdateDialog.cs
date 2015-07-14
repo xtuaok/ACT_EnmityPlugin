@@ -18,7 +18,7 @@ namespace Tamagawa.EnmityPlugin
         private Button buttonLater;
         private Button buttonIgnore;
         private SplitContainer splitContainer1;
-    
+
         public UpdateDialog()
         {
             InitializeComponent();

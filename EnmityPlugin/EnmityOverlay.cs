@@ -34,7 +34,6 @@ namespace Tamagawa.EnmityPlugin
         {
             lock (_lock)
             {
-
                 Process p = null;
 
                 if (Config.FollowFFXIVPlugin)
@@ -56,6 +55,7 @@ namespace Tamagawa.EnmityPlugin
                 }
                 else if (_memory != null && p == null)
                 {
+                    _memory.Dispose();
                     _memory = null;
                 }
             }
@@ -97,6 +97,7 @@ namespace Tamagawa.EnmityPlugin
                         p = FFXIVPluginHelper.GetFFXIVProcess;
                         if (p == null || (_memory != null && _memory.process.Id != p.Id))
                         {
+                            if (_memory != null) _memory.Dispose();
                             _memory = null;
                         }
                     }
@@ -121,6 +122,7 @@ namespace Tamagawa.EnmityPlugin
                 }
                 else
                 {
+                    _memory.Dispose();
                     _memory = null;
                 }
             }
@@ -130,7 +132,6 @@ namespace Tamagawa.EnmityPlugin
                 {
                     LogError(ex.Message);
                 }
-                _memory = null;
             }
         }
 
@@ -176,12 +177,15 @@ namespace Tamagawa.EnmityPlugin
         {
             // シリアライザ
             var serializer = new JavaScriptSerializer();
+
+            // キャラリスト
+            List<Combatant> combatants;
+            // 自キャラ
+            Combatant mychar;
+
             // Overlay に渡すオブジェクト
             EnmityObject enmity = new EnmityObject();
             enmity.Entries = new List<EnmityEntry>();
-
-            Combatant target;
-            Combatant mychar;
 
             // なんかプロセスがおかしいとき
             if (_memory == null || _memory.validateProcess() == false)
@@ -197,32 +201,54 @@ namespace Tamagawa.EnmityPlugin
                 };
                 return serializer.Serialize(enmity);
             }
-
-            target = _memory.GetTargetCombatant();
-            if (target == null)
-            {
-                // なにもターゲットしてない
-                enmity.Target = null;
-                return serializer.Serialize(enmity);
-            }
-            enmity.Target = target;
-
             try
             {
+                combatants = _memory.Combatants;
+
                 // 自キャラ
                 mychar = _memory.GetSelfCombatant();
 
-                // 距離計算
-                enmity.Target.Distance = mychar.GetDistanceTo(enmity.Target).ToString("0.00");
-                enmity.Target.HorizontalDistance = mychar.GetHorizontalDistanceTo(enmity.Target).ToString("0.00");
+                // 各種ターゲット
+                enmity.Target = _memory.GetTargetCombatant();
+                enmity.Focus = _memory.GetFocusCombatant();
+                enmity.Hover = _memory.GetHoverCombatant();
+                enmity.Circle = _memory.GetCircleCombatant();
 
-                if (enmity.Target.type == ObjectType.Monster)
+                // ターゲット
+                if (enmity.Target != null)
                 {
-                    // 周辺の戦闘キャラリスト(IDからNameを取得するため)
-                    List<Combatant> combatantList = _memory.GetCombatantList();
-                    List<EnmityEntry> entries = _memory.GetEnmityEntryList();
+                    if (enmity.Target.TargetID > 0)
+                    {
+                        enmity.TargetOfTarget = combatants.FirstOrDefault((Combatant x) => x.ID == (enmity.Target.TargetID));
+                    }
+                    // 距離計算
+                    enmity.Target.Distance = mychar.GetDistanceTo(enmity.Target).ToString("0.00");
+                    enmity.Target.HorizontalDistance = mychar.GetHorizontalDistanceTo(enmity.Target).ToString("0.00");
+                    if (enmity.Target.type == ObjectType.Monster)
+                    {
+                        enmity.Entries = _memory.GetEnmityEntryList();
+                    }
+                }
 
-                    enmity.Entries = entries;
+                if (enmity.Focus != null)
+                {
+                    enmity.Focus.Distance = mychar.GetDistanceTo(enmity.Focus).ToString("0.00");
+                    enmity.Focus.HorizontalDistance = mychar.GetHorizontalDistanceTo(enmity.Focus).ToString("0.00");
+                }
+                if (enmity.Circle != null)
+                {
+                    enmity.Circle.Distance = mychar.GetDistanceTo(enmity.Circle).ToString("0.00");
+                    enmity.Circle.HorizontalDistance = mychar.GetHorizontalDistanceTo(enmity.Circle).ToString("0.00");
+                }
+                if (enmity.Hover != null)
+                {
+                    enmity.Hover.Distance = mychar.GetDistanceTo(enmity.Hover).ToString("0.00");
+                    enmity.Hover.HorizontalDistance = mychar.GetHorizontalDistanceTo(enmity.Hover).ToString("0.00");
+                }
+                if (enmity.TargetOfTarget != null)
+                {
+                    enmity.TargetOfTarget.Distance = mychar.GetDistanceTo(enmity.TargetOfTarget).ToString("0.00");
+                    enmity.TargetOfTarget.HorizontalDistance = mychar.GetHorizontalDistanceTo(enmity.TargetOfTarget).ToString("0.00");
                 }
             }
             catch (Exception ex)
@@ -287,6 +313,10 @@ namespace Tamagawa.EnmityPlugin
         private class EnmityObject
         {
             public Combatant Target;
+            public Combatant Focus;
+            public Combatant Hover;
+            public Combatant Circle;
+            public Combatant TargetOfTarget;
             public List<EnmityEntry> Entries;
         }
     }

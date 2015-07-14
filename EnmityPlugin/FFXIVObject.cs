@@ -24,6 +24,8 @@ namespace Tamagawa.EnmityPlugin
         public uint OwnerID;
         public int Order;
         public ObjectType type;
+        public uint TargetID;
+
         public byte Job;
         public byte Level;
         public string Name;
