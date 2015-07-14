@@ -10,7 +10,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using RainbowMage.OverlayPlugin;
-using System.Threading;
 
 namespace Tamagawa.EnmityPlugin
 {
@@ -21,7 +20,7 @@ namespace Tamagawa.EnmityPlugin
         private FFXIVMemory _memory = null;
         private bool suppress_log = false;
         private bool isDebug = false;
-        private Mutex _lock = new Mutex();
+        private object _lock = new object();
 
         public EnmityOverlay(EnmityOverlayConfig config) : base(config, config.Name)
         {
@@ -33,33 +32,33 @@ namespace Tamagawa.EnmityPlugin
 
         public void changeProcessId(int processId)
         {
-            _lock.WaitOne();
-
-            Process p = null;
-
-            if (Config.FollowFFXIVPlugin)
+            lock (_lock)
             {
-                if (FFXIVPluginHelper.Instance != null)
+
+                Process p = null;
+
+                if (Config.FollowFFXIVPlugin)
                 {
-                    p = FFXIVPluginHelper.GetFFXIVProcess;
+                    if (FFXIVPluginHelper.Instance != null)
+                    {
+                        p = FFXIVPluginHelper.GetFFXIVProcess;
+                    }
+                }
+                else
+                {
+                    p = FFXIVProcessHelper.GetFFXIVProcess(processId);
+                }
+
+                if ((_memory == null && p != null) ||
+                    (_memory != null && p != null && p.Id != _memory.process.Id))
+                {
+                    _memory = new FFXIVMemory(this, p);
+                }
+                else if (_memory != null && p == null)
+                {
+                    _memory = null;
                 }
             }
-            else
-            {
-                p = FFXIVProcessHelper.GetFFXIVProcess(processId);
-            }
-
-            if ((_memory == null && p != null) ||
-                (_memory != null && p != null && p.Id != _memory.process.Id))
-            {
-                _memory = new FFXIVMemory(this, p);
-            }
-            else if (_memory != null && p == null)
-            {
-                _memory.Dispose();
-                _memory = null;
-            }
-            _lock.ReleaseMutex();
         }
 
         public void LogDebug(string format, params object[] args)
