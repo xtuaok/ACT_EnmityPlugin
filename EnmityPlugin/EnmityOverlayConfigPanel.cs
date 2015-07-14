@@ -178,7 +178,7 @@ namespace Tamagawa.EnmityPlugin
             var json = this.overlay.CreateJsonData();
             if (!string.IsNullOrWhiteSpace(json))
             {
-                Clipboard.SetText("var ActXiv = " + json + ";");
+                Clipboard.SetText("var ActXiv = { 'Enmity': " + json + " };\n");
             }
         }
 
