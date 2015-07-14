@@ -49,15 +49,14 @@ namespace Tamagawa.EnmityPlugin
                 p = FFXIVProcessHelper.GetFFXIVProcess(processId);
             }
 
-            if (_memory == null && p != null)
+            if ((_memory == null && p != null) ||
+                (_memory != null && p != null && p.Id != _memory.process.Id))
             {
                 _memory = new FFXIVMemory(this, p);
             }
-            else if (p != null && p.Id != _memory.process.Id) {
-                _memory = new FFXIVMemory(this, p);
-            }
-            else if (p == null) 
+            else if (_memory != null && p == null)
             {
+                _memory.Dispose();
                 _memory = null;
             }
             _lock.ReleaseMutex();
