@@ -221,6 +221,7 @@ namespace Tamagawa.EnmityPlugin
                 enmity.Focus = _memory.GetFocusCombatant();
                 enmity.Hover = _memory.GetHoverCombatant();
                 enmity.Anchor = _memory.GetAnchorCombatant();
+                enmity.AggroList = _memory.GetAggroList();
 
                 // ターゲット
                 if (enmity.Target != null)
@@ -326,6 +327,7 @@ namespace Tamagawa.EnmityPlugin
             public Combatant Anchor;
             public Combatant TargetOfTarget;
             public List<EnmityEntry> Entries;
+            public List<AggroEntry> AggroList;
         }
     }
 }

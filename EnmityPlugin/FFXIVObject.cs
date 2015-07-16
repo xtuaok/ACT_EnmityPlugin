@@ -149,4 +149,31 @@ namespace Tamagawa.EnmityPlugin
             }
         }
     }
+  
+    //// 敵視リストエントリ
+    public class AggroEntry
+    {
+        public uint ID;
+        public string Name;
+        public int HateRate;
+
+        public int CurrentHP;
+        public int MaxHP;
+
+        public string HPPercent
+        {
+            get
+            {
+                try
+                {
+                    if (MaxHP == 0) return "0.00";
+                    return (Convert.ToDouble(CurrentHP) / Convert.ToDouble(MaxHP) * 100).ToString("0.00");
+                }
+                catch
+                {
+                    return "0.00";
+                }
+            }
+        }
+    }
 }

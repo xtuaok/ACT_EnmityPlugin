@@ -36,6 +36,8 @@ namespace Tamagawa.EnmityPlugin
         private const string targetSignature64  = "4883C4205FC3483935285729017520483935";
         private const string enmitySignature32  = "E8D1A73300B9";
         private const string enmitySignature64  = "9F3C00488D0DA5DF3C01E840EE3F00488D0D";
+        private const string aggroSignature32   = "E86DCB2D00B9";
+        private const string aggroSignature64   = "83EC28E8275179003D000000E07412488D0D";
         private const int charmapOffset32 = 0;
         private const int charmapOffset64 = 0;
         private const int targetOffset32  = 88;
@@ -50,6 +52,7 @@ namespace Tamagawa.EnmityPlugin
         private IntPtr charmapAddress = IntPtr.Zero;
         private IntPtr targetAddress = IntPtr.Zero;
         private IntPtr enmityAddress = IntPtr.Zero;
+        private IntPtr aggroAddress = IntPtr.Zero;
 
         public FFXIVMemory(EnmityOverlay overlay, Process process)
         {
@@ -148,6 +151,7 @@ namespace Tamagawa.EnmityPlugin
             string charmapSignature = charmapSignature32;
             string targetSignature = targetSignature32;
             string enmitySignature = enmitySignature32;
+            string aggroSignature = aggroSignature32;
             int targetOffset = targetOffset32;
             int charmapOffset = charmapOffset32;
             int enmityOffset = enmityOffset32;
@@ -163,6 +167,7 @@ namespace Tamagawa.EnmityPlugin
                 charmapSignature = charmapSignature64;
                 enmitySignature = enmitySignature64;
                 enmityOffset = enmityOffset64;
+                aggroSignature = aggroSignature64;
             }
 
             /// CHARMAP
@@ -213,9 +218,26 @@ namespace Tamagawa.EnmityPlugin
                 success = false;
             }
 
+            // Aggro
+            list = SigScan(aggroSignature, 0, bRIP);
+            if (list == null || list.Count == 0)
+            {
+                aggroAddress = IntPtr.Zero;
+            }
+            if (list.Count == 1)
+            {
+                aggroAddress = list[0];
+            }
+            if (aggroAddress == IntPtr.Zero)
+            {
+                _overlay.LogError(Messages.FailedToSigScan, "Aggro");
+                success = false;
+            }
+
             _overlay.LogDebug("charmapAddress: 0x{0:X}", charmapAddress.ToInt64());
             _overlay.LogDebug("enmityAddress: 0x{0:X}", enmityAddress.ToInt64());
             _overlay.LogDebug("targetAddress: 0x{0:X}", targetAddress.ToInt64());
+            _overlay.LogDebug("aggroAddress: 0x{0:X}", aggroAddress.ToInt64());
 
             if (success)
             {
@@ -477,6 +499,58 @@ namespace Tamagawa.EnmityPlugin
                         topEnmity = entry.Enmity;
                     }
                     entry.HateRate = (int)(((double)entry.Enmity / (double)topEnmity) * 100);
+                    result.Add(entry);
+                }
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// 敵視リスト情報を取得
+        /// </summary>
+        public unsafe List<AggroEntry> GetAggroList()
+        {
+            int num = 0;
+            List<AggroEntry> result = new List<AggroEntry>();
+            List<Combatant> combatantList = Combatants;
+
+            /// 一度に全部読む
+            byte[] buffer = GetByteArray(aggroAddress, 32 * 72 + 2);
+
+            fixed (byte* p = buffer) num = (short)p[0x900];
+            if (num <= 0 || num > 32)
+            {
+                return result;
+            }
+
+            ///
+            for (int i = 0; i < num; i++)
+            {
+                int p = i * 72;
+                uint _id;
+                short _enmity;
+
+                fixed (byte* bp = buffer)
+                {
+                        _id = *(uint*)&bp[p+64];
+                        _enmity = (short)bp[p + 68];
+                }
+
+                var entry = new AggroEntry()
+                {
+                    ID = _id,
+                    HateRate = _enmity,
+                    Name = "Unknown",
+                };
+                if (entry.ID > 0)
+                {
+                    Combatant c = combatantList.Find(x => x.ID == entry.ID);
+                    if (c != null)
+                    {
+                        entry.Name = c.Name;
+                        entry.MaxHP = c.MaxHP;
+                        entry.CurrentHP = c.CurrentHP;
+                    }
                     result.Add(entry);
                 }
             }
