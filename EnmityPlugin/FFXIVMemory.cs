@@ -314,29 +314,33 @@ namespace Tamagawa.EnmityPlugin
         /// <summary>
         /// カレントターゲットの敵視情報を取得
         /// </summary>
-        public List<EnmityEntry> GetEnmityEntryList()
+        public unsafe List<EnmityEntry> GetEnmityEntryList()
         {
+            short num = 0;
+            uint topEnmity = 0;
             List<EnmityEntry> result = new List<EnmityEntry>();
             List<Combatant> combatantList = GetCombatantList();
             Combatant mychar = GetSelfCombatant();
 
             /// 一度に全部読む
-            byte[] buffer = GetByteArray(enmityAddress, 16 * 72);
-            uint TopEnmity = 0;
-            ///
-            for (int i = 0; i < 16; i++)
+            byte[] buffer = GetByteArray(enmityAddress, 0x8c0 + 2);
+            fixed (byte* p = buffer) num = (short)p[0x8c0];
+
+            if (num <= 0 || num > 31)
+            {
+                return result;
+            }
+
+            for (short i = 0; i < num; i++)
             {
                 int p = i * 72;
                 uint _id;
                 uint _enmity;
 
-                unsafe
+                fixed (byte* bp = buffer)
                 {
-                    fixed (byte* bp = buffer)
-                    {
-                        _id = *(uint*)&bp[p];
-                        _enmity = *(uint*)&bp[p + 4];
-                    }
+                    _id = *(uint*)&bp[p];
+                    _enmity = *(uint*)&bp[p + 4];
                 }
                 var entry = new EnmityEntry()
                 {
@@ -359,16 +363,12 @@ namespace Tamagawa.EnmityPlugin
                     {
                         entry.isMe = true;
                     }
-                    if (TopEnmity == 0)
+                    if (topEnmity <= entry.Enmity)
                     {
-                        TopEnmity = entry.Enmity;
+                        topEnmity = entry.Enmity;
                     }
-                    entry.HateRate = (int)(((double)entry.Enmity / (double)TopEnmity) * 100);
+                    entry.HateRate = (int)(((double)entry.Enmity / (double)topEnmity) * 100);
                     result.Add(entry);
-                }
-                else
-                {
-                    break; // もう読まない
                 }
             }
             return result;
