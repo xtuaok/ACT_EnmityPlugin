@@ -13,13 +13,23 @@ namespace Tamagawa.EnmityPlugin
     {
         public event EventHandler<ScanIntervalChangedEventArgs> ScanIntervalChanged;
         public event EventHandler<FollowFFXIVPluginChangedEventArgs> FollowFFXIVPluginChanged;
+        public event EventHandler<DisableTargetChangedEventArgs> DisableTargetChanged;
+        public event EventHandler<DisableAggroListChangedEventArgs> DisableAggroListChanged;
+        public event EventHandler<DisableEnmityListChangedEventArgs> DisableEnmityListChanged;
+        public event EventHandler<AggroListSortKeyChangedEventArgs> AggroListSortKeyChanged;
+        public event EventHandler<AggroListSortDecendChangedEventArgs> AggroListSortDecendChanged;
 
         public EnmityOverlayConfig(string name)
             : base(name)
         {
-            this.scanInterval = 100;
+            this._scanInterval = 100;
             this.Url = new Uri(System.IO.Path.Combine(OverlayAddonMain.ResourcesDirectory, "enmity.html")).ToString();
-            this.followFFXIVPlugin = false;
+            this._followFFXIVPlugin = false;
+            this._disableTarget = false;
+            this._disableAggroList = false;
+            this._disableEnmityList = false;
+            this._aggroListSortKey = "none";
+            this._aggroListSortDecend = false;
         }
 
         private EnmityOverlayConfig()
@@ -32,47 +42,151 @@ namespace Tamagawa.EnmityPlugin
             get { return typeof(EnmityOverlay); }
         }
 
-        private int scanInterval;
+        private int _scanInterval;
         [XmlElement("ScanInterval")]
         public int ScanInterval
         {
             get
             {
-                return this.scanInterval;
+                return this._scanInterval;
             }
             set
             {
-                if (this.scanInterval != value)
+                if (this._scanInterval != value)
                 {
-                    this.scanInterval = value;
+                    this._scanInterval = value;
                     if (ScanIntervalChanged != null)
                     {
-                        ScanIntervalChanged(this, new ScanIntervalChangedEventArgs(this.scanInterval));
+                        ScanIntervalChanged(this, new ScanIntervalChangedEventArgs(this._scanInterval));
                     }
                 }
             }
         }
 
-        private bool followFFXIVPlugin;
+        private bool _followFFXIVPlugin;
         [XmlElement("FollowFFXIVPlugin")]
         public bool FollowFFXIVPlugin
         {
             get
             {
-                return this.followFFXIVPlugin;
+                return this._followFFXIVPlugin;
             }
             set
             {
-                if (this.followFFXIVPlugin != value)
+                if (this._followFFXIVPlugin != value)
                 {
-                    this.followFFXIVPlugin = value;
+                    this._followFFXIVPlugin = value;
                     if (FollowFFXIVPluginChanged != null)
                     {
-                        FollowFFXIVPluginChanged(this, new FollowFFXIVPluginChangedEventArgs(this.followFFXIVPlugin));
+                        FollowFFXIVPluginChanged(this, new FollowFFXIVPluginChangedEventArgs(this._followFFXIVPlugin));
                     }
                 }
             }
         }
 
+        private bool _disableTarget;
+        [XmlElement("DisableTarget")]
+        public bool DisableTarget
+        {
+            get
+            {
+                return this._disableTarget;
+            }
+            set
+            {
+                if (this._disableTarget != value)
+                {
+                    this._disableTarget = value;
+                    if (DisableTargetChanged != null)
+                    {
+                        DisableTargetChanged(this, new DisableTargetChangedEventArgs(this._disableTarget));
+                    }
+                }
+            }
+        }
+
+        private bool _disableAggroList;
+        [XmlElement("DisableAggroList")]
+        public bool DisableAggroList
+        {
+            get
+            {
+                return this._disableAggroList;
+            }
+            set
+            {
+                if (this._disableAggroList != value)
+                {
+                    this._disableAggroList = value;
+                    if (DisableAggroListChanged != null)
+                    {
+                        DisableAggroListChanged(this, new DisableAggroListChangedEventArgs(this._disableAggroList));
+                    }
+                }
+            }
+        }
+
+        private bool _disableEnmityList;
+        [XmlElement("DisableEnmityList")]
+        public bool DisableEnmityList
+        {
+            get
+            {
+                return this._disableEnmityList;
+            }
+            set
+            {
+                if (this._disableEnmityList != value)
+                {
+                    this._disableEnmityList = value;
+                    if (DisableEnmityListChanged != null)
+                    {
+                        DisableEnmityListChanged(this, new DisableEnmityListChangedEventArgs(this._disableEnmityList));
+                    }
+                }
+            }
+        }
+
+        private string _aggroListSortKey;
+        [XmlElement("AggroListSortKey")]
+        public string AggroListSortKey
+        {
+            get
+            {
+                return this._aggroListSortKey;
+            }
+            set
+            {
+                if (this._aggroListSortKey != value)
+                {
+                    this._aggroListSortKey = value;
+                    if (AggroListSortKeyChanged != null)
+                    {
+                        AggroListSortKeyChanged(this, new AggroListSortKeyChangedEventArgs(this._aggroListSortKey));
+                    }
+                }
+            }
+        }
+
+        private bool _aggroListSortDecend;
+        [XmlElement("AggroListSortDecend")]
+        public bool AggroListSortDecend
+        {
+            get
+            {
+                return this._aggroListSortDecend;
+            }
+            set
+            {
+                if (this._aggroListSortDecend != value)
+                {
+                    this._aggroListSortDecend = value;
+                    if (AggroListSortDecendChanged != null)
+                    {
+                        AggroListSortDecendChanged(this, new AggroListSortDecendChangedEventArgs(this._aggroListSortDecend));
+                    }
+                }
+            }
+        }
     }
 }

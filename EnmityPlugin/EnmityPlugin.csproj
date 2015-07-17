@@ -148,6 +148,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="resources\aggrolist.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\aggrolist.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\aggrolist.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="resources\enmity.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

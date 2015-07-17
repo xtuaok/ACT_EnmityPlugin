@@ -115,8 +115,8 @@ td { text-align: right; }
 #combatants td div.gauge {
   position: absolute;
   display: block;
-  bottom: -2px;
-  height: 2px;
+  bottom: -3px;
+  height: 3px;
   z-index: -1;
 }
 

@@ -44,6 +44,11 @@ namespace Tamagawa.EnmityPlugin
             this.textEnmityGlobalHotkey.Enabled = this.checkEnmityEnableGlobalHotkey.Checked;
             this.textEnmityGlobalHotkey.Text = GetHotkeyString(this.config.GlobalHotkeyModifiers, this.config.GlobalHotkey);
             this.checkFollowFFXIVPlugin.Checked = this.config.FollowFFXIVPlugin;
+            this.check_disableTarget.Checked = this.config.DisableTarget;
+            this.check_disableAggroList.Checked = this.config.DisableAggroList;
+            this.check_disableEnmityList.Checked = this.config.DisableEnmityList;
+            this.combo_AggroListSortKey.SelectedItem = this.config.AggroListSortKey ?? "none";
+            this.check_AggroListSortDescend.Checked = this.config.AggroListSortDecend;
         }
 
         private void SetupConfigEventHandlers()
@@ -117,6 +122,41 @@ namespace Tamagawa.EnmityPlugin
                 this.InvokeIfRequired(() =>
                 {
                     this.checkFollowFFXIVPlugin.Checked = e.NewFollowFFXIVPlugin;
+                });
+            };
+            this.config.DisableTargetChanged += (o, e) =>
+            {
+                this.InvokeIfRequired(() =>
+                {
+                    this.check_disableTarget.Checked = e.NewDisableTarget;
+                });
+            };
+            this.config.DisableAggroListChanged += (o, e) =>
+            {
+                this.InvokeIfRequired(() =>
+                {
+                    this.check_disableAggroList.Checked = e.NewDisableAggroList;
+                });
+            };
+            this.config.DisableEnmityListChanged += (o, e) =>
+            {
+                this.InvokeIfRequired(() =>
+                {
+                    this.check_disableEnmityList.Checked = e.NewDisableEnmityList;
+                });
+            };
+            this.config.AggroListSortKeyChanged += (o, e) =>
+            {
+                this.InvokeIfRequired(() =>
+                {
+                    this.combo_AggroListSortKey.SelectedItem = e.NewAggroListSortKey;
+                });
+            };
+            this.config.AggroListSortDecendChanged += (o, e) =>
+            {
+                this.InvokeIfRequired(() =>
+                {
+                    this.check_AggroListSortDescend.Checked = e.NewAggroListSortDecend;
                 });
             };
         }
@@ -318,6 +358,33 @@ namespace Tamagawa.EnmityPlugin
                 int.TryParse(s, out processID);
                 this.overlay.changeProcessId(processID);
             }
+        }
+
+        private void check_disableTarget_CheckedChanged(object sender, EventArgs e)
+        {
+            this.config.DisableTarget = this.check_disableTarget.Checked;
+        }
+
+        private void check_disableAggroList_CheckedChanged(object sender, EventArgs e)
+        {
+            this.config.DisableAggroList = this.check_disableAggroList.Checked;
+            this.check_AggroListSortDescend.Enabled =
+            this.combo_AggroListSortKey.Enabled = !this.config.DisableAggroList;
+        }
+
+        private void check_disableEnmityList_CheckedChanged(object sender, EventArgs e)
+        {
+            this.config.DisableEnmityList = this.check_disableEnmityList.Checked;
+        }
+
+        private void combo_AggroListSortKey_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.config.AggroListSortKey = this.combo_AggroListSortKey.SelectedItem.ToString();
+        }
+
+        private void check_AggroListSortDescend_CheckedChanged(object sender, EventArgs e)
+        {
+            this.config.AggroListSortDecend = this.check_AggroListSortDescend.Checked;
         }
     }
 }

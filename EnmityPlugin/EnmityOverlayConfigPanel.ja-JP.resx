@@ -181,7 +181,9 @@
     <value>最大フレームレート</value>
   </data>
   <data name="label_Help.Text" xml:space="preserve">
-    <value>※最大フレームレートおよびホットキーの変更を有効にするためにはプラグインの再起動が必要です</value>
+    <value>※ 最大フレームレートおよびホットキーの変更を有効にするためにはプラグインの再起動が必要です。
+
+※ メインターゲット以外の情報、及び敵視リストの適切な表示には対応したHTMLをURLに指定する必要があります。</value>
   </data>
   <data name="buttonEnmityCopyActXiv.Text" xml:space="preserve">
     <value>ActXiv変数をクリップボードにコピー</value>
@@ -189,7 +191,55 @@
   <data name="buttonEnmityReloadBrowser.Text" xml:space="preserve">
     <value>オーバーレイの表示をリロード</value>
   </data>
+  <data name="label_MemorySetting.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 12</value>
+  </data>
+  <data name="label_MemorySetting.Text" xml:space="preserve">
+    <value>メモリスキャン</value>
+  </data>
+  <data name="check_disableTarget.Size" type="System.Drawing.Size, System.Drawing">
+    <value>225, 16</value>
+  </data>
+  <data name="check_disableTarget.Text" xml:space="preserve">
+    <value>メインターゲット以外の情報をスキャンしない</value>
+  </data>
+  <data name="check_disableAggroList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>146, 16</value>
+  </data>
+  <data name="check_disableAggroList.Text" xml:space="preserve">
+    <value>敵視リストをスキャンしない</value>
+  </data>
+  <data name="check_disableEnmityList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>213, 16</value>
+  </data>
+  <data name="check_disableEnmityList.Text" xml:space="preserve">
+    <value>メインターゲットの敵視量をスキャンしない</value>
+  </data>
+  <data name="label_AggroListSort.Text" xml:space="preserve">
+    <value>敵視リストのソート</value>
+  </data>
+  <data name="table_AggroListSort.ColumnCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="check_AggroListSortDescend.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 16</value>
+  </data>
+  <data name="check_AggroListSortDescend.Text" xml:space="preserve">
+    <value>降順</value>
+  </data>
+  <data name="table_AggroListSort.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="table_AggroListSort.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="table_AggroListSort.RowCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="table_AggroListSort.Size" type="System.Drawing.Size, System.Drawing">
+    <value>441, 22</value>
+  </data>
   <data name="tableLayoutPanel7.RowCount" type="System.Int32, mscorlib">
-    <value>10</value>
+    <value>12</value>
   </data>
 </root>

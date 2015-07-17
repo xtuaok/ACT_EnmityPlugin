@@ -58,6 +58,15 @@
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonEnmityCopyActXiv = new System.Windows.Forms.Button();
             this.buttonEnmityReloadBrowser = new System.Windows.Forms.Button();
+            this.label_MemorySetting = new System.Windows.Forms.Label();
+            this.table_MemorySetting = new System.Windows.Forms.TableLayoutPanel();
+            this.check_disableTarget = new System.Windows.Forms.CheckBox();
+            this.check_disableAggroList = new System.Windows.Forms.CheckBox();
+            this.check_disableEnmityList = new System.Windows.Forms.CheckBox();
+            this.label_AggroListSort = new System.Windows.Forms.Label();
+            this.table_AggroListSort = new System.Windows.Forms.TableLayoutPanel();
+            this.combo_AggroListSortKey = new System.Windows.Forms.ComboBox();
+            this.check_AggroListSortDescend = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel7.SuspendLayout();
             this.table_Process.SuspendLayout();
             this.table_URL.SuspendLayout();
@@ -66,6 +75,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudEnmityMaxFrameRate)).BeginInit();
             this.panel_Buttons.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
+            this.table_MemorySetting.SuspendLayout();
+            this.table_AggroListSort.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel7
@@ -87,8 +98,12 @@
             this.tableLayoutPanel7.Controls.Add(this.table_Hotkey, 1, 6);
             this.tableLayoutPanel7.Controls.Add(this.label_Framerate, 0, 7);
             this.tableLayoutPanel7.Controls.Add(this.nudEnmityMaxFrameRate, 1, 7);
-            this.tableLayoutPanel7.Controls.Add(this.label_Help, 1, 8);
-            this.tableLayoutPanel7.Controls.Add(this.panel_Buttons, 1, 9);
+            this.tableLayoutPanel7.Controls.Add(this.label_Help, 0, 10);
+            this.tableLayoutPanel7.Controls.Add(this.panel_Buttons, 1, 11);
+            this.tableLayoutPanel7.Controls.Add(this.label_MemorySetting, 0, 8);
+            this.tableLayoutPanel7.Controls.Add(this.table_MemorySetting, 1, 8);
+            this.tableLayoutPanel7.Controls.Add(this.label_AggroListSort, 0, 9);
+            this.tableLayoutPanel7.Controls.Add(this.table_AggroListSort, 1, 9);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             // 
             // label_Process
@@ -268,6 +283,7 @@
             // label_Help
             // 
             resources.ApplyResources(this.label_Help, "label_Help");
+            this.tableLayoutPanel7.SetColumnSpan(this.label_Help, 2);
             this.label_Help.Name = "label_Help";
             // 
             // panel_Buttons
@@ -297,6 +313,72 @@
             this.buttonEnmityReloadBrowser.UseVisualStyleBackColor = true;
             this.buttonEnmityReloadBrowser.Click += new System.EventHandler(this.buttonEnmityReloadBrowser_Click);
             // 
+            // label_MemorySetting
+            // 
+            resources.ApplyResources(this.label_MemorySetting, "label_MemorySetting");
+            this.label_MemorySetting.Name = "label_MemorySetting";
+            // 
+            // table_MemorySetting
+            // 
+            resources.ApplyResources(this.table_MemorySetting, "table_MemorySetting");
+            this.table_MemorySetting.Controls.Add(this.check_disableTarget, 0, 0);
+            this.table_MemorySetting.Controls.Add(this.check_disableAggroList, 0, 1);
+            this.table_MemorySetting.Controls.Add(this.check_disableEnmityList, 0, 2);
+            this.table_MemorySetting.Name = "table_MemorySetting";
+            // 
+            // check_disableTarget
+            // 
+            resources.ApplyResources(this.check_disableTarget, "check_disableTarget");
+            this.check_disableTarget.Name = "check_disableTarget";
+            this.check_disableTarget.UseVisualStyleBackColor = true;
+            this.check_disableTarget.CheckedChanged += new System.EventHandler(this.check_disableTarget_CheckedChanged);
+            // 
+            // check_disableAggroList
+            // 
+            resources.ApplyResources(this.check_disableAggroList, "check_disableAggroList");
+            this.check_disableAggroList.Name = "check_disableAggroList";
+            this.check_disableAggroList.UseVisualStyleBackColor = true;
+            this.check_disableAggroList.CheckedChanged += new System.EventHandler(this.check_disableAggroList_CheckedChanged);
+            // 
+            // check_disableEnmityList
+            // 
+            resources.ApplyResources(this.check_disableEnmityList, "check_disableEnmityList");
+            this.check_disableEnmityList.Name = "check_disableEnmityList";
+            this.check_disableEnmityList.UseVisualStyleBackColor = true;
+            this.check_disableEnmityList.CheckedChanged += new System.EventHandler(this.check_disableEnmityList_CheckedChanged);
+            // 
+            // label_AggroListSort
+            // 
+            resources.ApplyResources(this.label_AggroListSort, "label_AggroListSort");
+            this.label_AggroListSort.Name = "label_AggroListSort";
+            // 
+            // table_AggroListSort
+            // 
+            resources.ApplyResources(this.table_AggroListSort, "table_AggroListSort");
+            this.table_AggroListSort.Controls.Add(this.combo_AggroListSortKey, 0, 0);
+            this.table_AggroListSort.Controls.Add(this.check_AggroListSortDescend, 1, 0);
+            this.table_AggroListSort.Name = "table_AggroListSort";
+            // 
+            // combo_AggroListSortKey
+            // 
+            resources.ApplyResources(this.combo_AggroListSortKey, "combo_AggroListSortKey");
+            this.combo_AggroListSortKey.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combo_AggroListSortKey.FormattingEnabled = true;
+            this.combo_AggroListSortKey.Items.AddRange(new object[] {
+            resources.GetString("combo_AggroListSortKey.Items"),
+            resources.GetString("combo_AggroListSortKey.Items1"),
+            resources.GetString("combo_AggroListSortKey.Items2"),
+            resources.GetString("combo_AggroListSortKey.Items3")});
+            this.combo_AggroListSortKey.Name = "combo_AggroListSortKey";
+            this.combo_AggroListSortKey.SelectedIndexChanged += new System.EventHandler(this.combo_AggroListSortKey_SelectedIndexChanged);
+            // 
+            // check_AggroListSortDescend
+            // 
+            resources.ApplyResources(this.check_AggroListSortDescend, "check_AggroListSortDescend");
+            this.check_AggroListSortDescend.Name = "check_AggroListSortDescend";
+            this.check_AggroListSortDescend.UseVisualStyleBackColor = true;
+            this.check_AggroListSortDescend.CheckedChanged += new System.EventHandler(this.check_AggroListSortDescend_CheckedChanged);
+            // 
             // EnmityOverlayConfigPanel
             // 
             resources.ApplyResources(this, "$this");
@@ -316,6 +398,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudEnmityMaxFrameRate)).EndInit();
             this.panel_Buttons.ResumeLayout(false);
             this.tableLayoutPanel8.ResumeLayout(false);
+            this.table_MemorySetting.ResumeLayout(false);
+            this.table_MemorySetting.PerformLayout();
+            this.table_AggroListSort.ResumeLayout(false);
+            this.table_AggroListSort.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -351,5 +437,14 @@
         private System.Windows.Forms.ComboBox comboProcessList;
         private System.Windows.Forms.Button buttonRefreshProcessList;
         private System.Windows.Forms.CheckBox checkFollowFFXIVPlugin;
+        private System.Windows.Forms.Label label_MemorySetting;
+        private System.Windows.Forms.TableLayoutPanel table_MemorySetting;
+        private System.Windows.Forms.CheckBox check_disableTarget;
+        private System.Windows.Forms.CheckBox check_disableAggroList;
+        private System.Windows.Forms.CheckBox check_disableEnmityList;
+        private System.Windows.Forms.Label label_AggroListSort;
+        private System.Windows.Forms.TableLayoutPanel table_AggroListSort;
+        private System.Windows.Forms.ComboBox combo_AggroListSortKey;
+        private System.Windows.Forms.CheckBox check_AggroListSortDescend;
     }
 }

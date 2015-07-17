@@ -216,48 +216,90 @@ namespace Tamagawa.EnmityPlugin
                 // 自キャラ
                 mychar = _memory.GetSelfCombatant();
 
-                // 各種ターゲット
+                // メインターゲット
                 enmity.Target = _memory.GetTargetCombatant();
-                enmity.Focus = _memory.GetFocusCombatant();
-                enmity.Hover = _memory.GetHoverCombatant();
-                enmity.Anchor = _memory.GetAnchorCombatant();
-                enmity.AggroList = _memory.GetAggroList();
-
-                // ターゲット
                 if (enmity.Target != null)
                 {
-                    if (enmity.Target.TargetID > 0)
+                    if (!this.Config.DisableTarget && enmity.Target.TargetID > 0)
                     {
                         enmity.TargetOfTarget = combatants.FirstOrDefault((Combatant x) => x.ID == (enmity.Target.TargetID));
                     }
+
                     // 距離計算
                     enmity.Target.Distance = mychar.GetDistanceTo(enmity.Target).ToString("0.00");
                     enmity.Target.HorizontalDistance = mychar.GetHorizontalDistanceTo(enmity.Target).ToString("0.00");
-                    if (enmity.Target.type == ObjectType.Monster)
+
+                    // 敵視量
+                    if (!this.Config.DisableEnmityList && enmity.Target.type == ObjectType.Monster)
                     {
                         enmity.Entries = _memory.GetEnmityEntryList();
                     }
                 }
 
-                if (enmity.Focus != null)
+                // メイン以外のターゲット
+                if (!this.Config.DisableTarget)
                 {
-                    enmity.Focus.Distance = mychar.GetDistanceTo(enmity.Focus).ToString("0.00");
-                    enmity.Focus.HorizontalDistance = mychar.GetHorizontalDistanceTo(enmity.Focus).ToString("0.00");
+                    enmity.Focus = _memory.GetFocusCombatant();
+                    enmity.Hover = _memory.GetHoverCombatant();
+                    enmity.Anchor = _memory.GetAnchorCombatant();
+                    if (enmity.Focus != null)
+                    {
+                        enmity.Focus.Distance = mychar.GetDistanceTo(enmity.Focus).ToString("0.00");
+                        enmity.Focus.HorizontalDistance = mychar.GetHorizontalDistanceTo(enmity.Focus).ToString("0.00");
+                    }
+                    if (enmity.Anchor != null)
+                    {
+                        enmity.Anchor.Distance = mychar.GetDistanceTo(enmity.Anchor).ToString("0.00");
+                        enmity.Anchor.HorizontalDistance = mychar.GetHorizontalDistanceTo(enmity.Anchor).ToString("0.00");
+                    }
+                    if (enmity.Hover != null)
+                    {
+                        enmity.Hover.Distance = mychar.GetDistanceTo(enmity.Hover).ToString("0.00");
+                        enmity.Hover.HorizontalDistance = mychar.GetHorizontalDistanceTo(enmity.Hover).ToString("0.00");
+                    }
+                    if (enmity.TargetOfTarget != null)
+                    {
+                        enmity.TargetOfTarget.Distance = mychar.GetDistanceTo(enmity.TargetOfTarget).ToString("0.00");
+                        enmity.TargetOfTarget.HorizontalDistance = mychar.GetHorizontalDistanceTo(enmity.TargetOfTarget).ToString("0.00");
+                    }
                 }
-                if (enmity.Anchor != null)
+
+                // 敵視リスト
+                if (!this.Config.DisableAggroList)
                 {
-                    enmity.Anchor.Distance = mychar.GetDistanceTo(enmity.Anchor).ToString("0.00");
-                    enmity.Anchor.HorizontalDistance = mychar.GetHorizontalDistanceTo(enmity.Anchor).ToString("0.00");
-                }
-                if (enmity.Hover != null)
-                {
-                    enmity.Hover.Distance = mychar.GetDistanceTo(enmity.Hover).ToString("0.00");
-                    enmity.Hover.HorizontalDistance = mychar.GetHorizontalDistanceTo(enmity.Hover).ToString("0.00");
-                }
-                if (enmity.TargetOfTarget != null)
-                {
-                    enmity.TargetOfTarget.Distance = mychar.GetDistanceTo(enmity.TargetOfTarget).ToString("0.00");
-                    enmity.TargetOfTarget.HorizontalDistance = mychar.GetHorizontalDistanceTo(enmity.TargetOfTarget).ToString("0.00");
+                    enmity.AggroList = _memory.GetAggroList();
+                    if (this.Config.AggroListSortKey == "HateRate") {
+                        if (this.Config.AggroListSortDecend)
+                        {
+                            enmity.AggroList = enmity.AggroList.OrderByDescending(s => s.HateRate).ToList<AggroEntry>();
+                        }
+                        else
+                        {
+                            enmity.AggroList = enmity.AggroList.OrderBy(s => s.HateRate).ToList<AggroEntry>();
+                        }
+                    }
+                    else if (this.Config.AggroListSortKey == "Name")
+                    {
+                        if (this.Config.AggroListSortDecend)
+                        {
+                            enmity.AggroList = enmity.AggroList.OrderByDescending(s => s.Name).ToList<AggroEntry>();
+                        }
+                        else
+                        {
+                            enmity.AggroList = enmity.AggroList.OrderBy(s => s.Name).ToList<AggroEntry>();
+                        }
+                    }
+                    else if (this.Config.AggroListSortKey == "HPP")
+                    {
+                        if (this.Config.AggroListSortDecend)
+                        {
+                            enmity.AggroList = enmity.AggroList.OrderByDescending(s => Single.Parse(s.HPPercent)).ToList<AggroEntry>();
+                        }
+                        else
+                        {
+                            enmity.AggroList = enmity.AggroList.OrderBy(s => Single.Parse(s.HPPercent)).ToList<AggroEntry>();
+                        }
+                    }
                 }
             }
             catch (Exception ex)
