@@ -212,7 +212,7 @@ namespace Tamagawa.EnmityPlugin
                 enmity.Target = _memory.GetTargetCombatant();
                 enmity.Focus = _memory.GetFocusCombatant();
                 enmity.Hover = _memory.GetHoverCombatant();
-                enmity.Circle = _memory.GetCircleCombatant();
+                enmity.Anchor = _memory.GetAnchorCombatant();
 
                 // ターゲット
                 if (enmity.Target != null)
@@ -235,10 +235,10 @@ namespace Tamagawa.EnmityPlugin
                     enmity.Focus.Distance = mychar.GetDistanceTo(enmity.Focus).ToString("0.00");
                     enmity.Focus.HorizontalDistance = mychar.GetHorizontalDistanceTo(enmity.Focus).ToString("0.00");
                 }
-                if (enmity.Circle != null)
+                if (enmity.Anchor != null)
                 {
-                    enmity.Circle.Distance = mychar.GetDistanceTo(enmity.Circle).ToString("0.00");
-                    enmity.Circle.HorizontalDistance = mychar.GetHorizontalDistanceTo(enmity.Circle).ToString("0.00");
+                    enmity.Anchor.Distance = mychar.GetDistanceTo(enmity.Anchor).ToString("0.00");
+                    enmity.Anchor.HorizontalDistance = mychar.GetHorizontalDistanceTo(enmity.Anchor).ToString("0.00");
                 }
                 if (enmity.Hover != null)
                 {
@@ -315,7 +315,7 @@ namespace Tamagawa.EnmityPlugin
             public Combatant Target;
             public Combatant Focus;
             public Combatant Hover;
-            public Combatant Circle;
+            public Combatant Anchor;
             public Combatant TargetOfTarget;
             public List<EnmityEntry> Entries;
         }

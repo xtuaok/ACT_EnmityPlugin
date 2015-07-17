@@ -275,7 +275,7 @@ namespace Tamagawa.EnmityPlugin
         /// <summary>
         /// サークルターゲット情報を取得
         /// </summary>
-        public Combatant GetCircleCombatant()
+        public Combatant GetAnchorCombatant()
         {
             Combatant self = null;
             int offset = _mode == FFXIVClientMode.FFXIV_64 ? 0x08 : 0x04;
