@@ -434,10 +434,11 @@ namespace Tamagawa.EnmityPlugin
             byte[] buffer = GetByteArray(enmityAddress, 0x8c0 + 2);
             fixed (byte* p = buffer) num = (short)p[0x8c0];
 
-            if (num <= 0 || num > 31)
+            if (num < 0)
             {
                 return result;
             }
+            if (num > 31) num = 31;
 
             for (short i = 0; i < num; i++)
             {
