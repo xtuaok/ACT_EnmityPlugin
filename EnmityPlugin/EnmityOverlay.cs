@@ -30,6 +30,14 @@ namespace Tamagawa.EnmityPlugin
             }
         }
 
+        public override void Dispose()
+        {
+            this.xivWindowTimer.Enabled = false;
+            this.timer.Enabled = false;
+            if (this._memory != null) this._memory.Dispose();
+            base.Dispose();
+        }
+
         public void changeProcessId(int processId)
         {
             lock (_lock)
