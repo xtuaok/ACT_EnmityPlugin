@@ -518,10 +518,11 @@ namespace Tamagawa.EnmityPlugin
             byte[] buffer = GetByteArray(aggroAddress, 32 * 72 + 2);
 
             fixed (byte* p = buffer) num = (short)p[0x900];
-            if (num <= 0 || num > 32)
+            if (num <= 0)
             {
                 return result;
             }
+            if (num > 32) num = 32;
 
             ///
             for (int i = 0; i < num; i++)
