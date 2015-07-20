@@ -30,18 +30,18 @@ namespace Tamagawa.EnmityPlugin
             }
         }
 
-        private const string charmapSignature32 = "81feffff0000743581fe58010000732d8b3cb5";
-        private const string charmapSignature64 = "48c1e8033dffff0000742b3da80100007324488d0d";
-        private const string targetSignature32  = "750e85d2750ab9";
+        private const string charmapSignature32 = "81FEFFFF0000743581FE58010000732D8B3CB5";
+        private const string charmapSignature64 = "48C1E8033DFFFF0000742B3DA80100007324488D0D";
+        private const string targetSignature32  = "750E85D2750AB9";
         private const string targetSignature64  = "4883C4205FC3483935285729017520483935";
-        private const string enmitySignature32  = "568B353484????33C085F67E45578B7D0CBA";
-        private const string enmitySignature64  = "004533C94863DA4C8BD94585D27E47488D05";
+        private const string enmitySignature32  = "E8D1A73300B9";
+        private const string enmitySignature64  = "9F3C00488D0DA5DF3C01E840EE3F00488D0D";
         private const int charmapOffset32 = 0;
         private const int charmapOffset64 = 0;
         private const int targetOffset32  = 88;
         private const int targetOffset64  = 0;
-        private const int enmityOffset32 = 0;
-        private const int enmityOffset64 = 0;
+        private const int enmityOffset32  = 0;
+        private const int enmityOffset64  = 0;
 
         private EnmityOverlay _overlay;
         private Process _process;
@@ -431,14 +431,14 @@ namespace Tamagawa.EnmityPlugin
             Combatant mychar = GetSelfCombatant();
 
             /// 一度に全部読む
-            byte[] buffer = GetByteArray(enmityAddress, 0x8c0 + 2);
-            fixed (byte* p = buffer) num = (short)p[0x8c0];
+            byte[] buffer = GetByteArray(enmityAddress, 0x900 + 2);
+            fixed (byte* p = buffer) num = (short)p[0x900];
 
             if (num <= 0)
             {
                 return result;
             }
-            if (num > 31) num = 31;
+            if (num > 32) num = 32;
 
             for (short i = 0; i < num; i++)
             {
@@ -448,8 +448,8 @@ namespace Tamagawa.EnmityPlugin
 
                 fixed (byte* bp = buffer)
                 {
-                    _id = *(uint*)&bp[p];
-                    _enmity = *(uint*)&bp[p + 4];
+                    _id = *(uint*)&bp[p + 0x40];
+                    _enmity = *(uint*)&bp[p + 0x44];
                 }
                 var entry = new EnmityEntry()
                 {
