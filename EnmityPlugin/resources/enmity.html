@@ -15,29 +15,32 @@
         </div>
 
         <div v-if="updated">
+
           <div id="target">
+
             <div class="box">
               <div class="gauge {{target | hpcolor}}" style="width: {{target.HPPercent}}%"></div>
-                <div class="name">
-                  <span class="header">ターゲット: </span>
-                  <span class="value">{{target.Name}}</span>
-                </div>
-              </div>
-              <div>
-                <span class="header">HP: </span>
-                <span class="value">{{target.HPPercent}}% ({{target.CurrentHP}}/{{target.MaxHP}})</span>
-                <div style="float: right">
-                  <span class="header">距離: </span>
-                  <span class="value">{{target.Distance}}m ({{target.EffectiveDistance}}m)</span>
-                </div>
+              <div class="name">
+                <span class="header">ターゲット: </span>
+                <span class="value">{{target.Name}}</span>
               </div>
             </div>
+
+            <div>
+              <span class="header">HP: </span>
+              <span class="value">{{target.HPPercent}}% ({{target.CurrentHP}}/{{target.MaxHP}})</span>
+              <div style="float: right">
+                <span class="header">距離: </span>
+                <span class="value">{{target.Distance}}m ({{target.EffectiveDistance}}m)</span>
+              </div>
+            </div>
+
           </div>
 
           <div id="entries">
             <div class="box" v-repeat="e: entries">
               <div class="content"><span class="name {{e.isMe ? 'me' : '' }}">{{$index + 1}}.{{e | you}}</span><span class="enmity">{{e.EnmityString}}</span></div>
-              <div class="gauge {{e | jobclass}}" style="width: {{e.HateRate}}%" />
+              <div class="gauge {{e | jobclass}}" style="width: {{e.HateRate}}%"></div>
             </div>
           </div><!-- entries -->
 

@@ -15,7 +15,16 @@ body {
   margin: 0;
   padding: 0;
 }
- 
+
+
+/* Role Colors */
+.TANK { background-color: rgba(52,67,150,0.75); }
+.HEALER { background-color: rgba(57,101,39,0.75); }
+.DPS { background-color: rgba(101, 50, 50, 0.75); }
+.Pet { background-color: rgba(150,147,52,0.75); }
+.UNKNOWN { background-color: rgba(211,211,211,0.75); }
+.Me { background-color: rgba(255, 247, 0, 0.75); }
+
 th { text-align: center; }
 td { text-align: right; }
  

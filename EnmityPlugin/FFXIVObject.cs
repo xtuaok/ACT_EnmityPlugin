@@ -175,5 +175,8 @@ namespace Tamagawa.EnmityPlugin
                 }
             }
         }
+
+        // Target of Enemy
+        public EnmityEntry Target;
     }
 }

@@ -5,35 +5,43 @@ Vue.directive('combatant', {
   }
 });
 
-// デバッグ用
-var debugList = {
-  detail: {
-    Enmity: {
-      AggroList: [
-        {
-          Name: '木人A',
-          HateRate: 100,
-          HPPercent: "23.34"
-        },
-        {
-          Name: '木人B',
-          HateRate: 43,
-          HPPercent: "68.80"
-        },
-        {
-          Name: '木人C',
-          HateRate: 74,
-          HPPercent: "43.21"
-        },
-        {
-          Name: '木人D',
-          HateRate: 22,
-          HPPercent: "100.00"
-        },
-      ]
-    }
-  }
+
+// ロールの定義
+var JobRole = {
+    PLD: 'TANK',
+    WAR: 'TANK',
+    GLD: 'TANK',
+    MRD: 'TANK',
+    DRK: 'TANK',
+
+    CNJ: 'HEALER',
+    WHM: 'HEALER',
+    SCH: 'HEALER',
+    AST: 'HEALER',
+
+    PGL: 'DPS',
+    LNC: 'DPS',
+    ARC: 'DPS',
+    THM: 'DPS',
+    MNK: 'DPS',
+    DRG: 'DPS',
+    BRD: 'DPS',
+    BLM: 'DPS',
+    ACN: 'DPS',
+    SMN: 'DPS',
+    ROG: 'DPS',
+    NIN: 'DPS',
+    MCH: 'DPS',
 };
+
+// フィルタ
+Vue.filter('jobrole', function (v) {
+    var role = JobRole[v.JobName];
+    if (v.isPet) return "Pet";
+    if (v.isMe) return "Me";
+    if (role != null) return role;
+    return "UNKNOWN";
+});
 
 var aggrolist = new Vue({
   el: '#aggrolist',

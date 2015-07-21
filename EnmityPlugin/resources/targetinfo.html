@@ -131,18 +131,17 @@ body {
           <div class="target" v-repeat="t: targets">
             <div class="box">
               <div class="gauge {{t | hpcolor}}" style="width: {{t.HPPercent}}%"></div>
-                <div class="name">
-                  <span class="header">{{t.Key}}: </span>
-                  <span class="value">{{t.Name}}</span>
-                </div>
+              <div class="name">
+                <span class="header">{{t.Key}}: </span>
+                <span class="value">{{t.Name}}</span>
               </div>
-              <div>
-                <span class="header">HP: </span>
-                <span class="value">{{t.HPPercent}}% ({{t.CurrentHP}}/{{t.MaxHP}})</span>
-                <div style="float: right">
-                  <span class="header">距離: </span>
-                  <span class="value">{{t.Distance}}m ({{t.EffectiveDistance}}m)</span>
-                </div>
+            </div>
+            <div>
+              <span class="header">HP: </span>
+              <span class="value">{{t.HPPercent}}% ({{t.CurrentHP}}/{{t.MaxHP}})</span>
+              <div style="float: right">
+                <span class="header">距離: </span>
+                <span class="value">{{t.Distance}}m ({{t.EffectiveDistance}}m)</span>
               </div>
             </div>
           </div>

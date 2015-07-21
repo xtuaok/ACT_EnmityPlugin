@@ -513,6 +513,7 @@ namespace Tamagawa.EnmityPlugin
             int num = 0;
             List<AggroEntry> result = new List<AggroEntry>();
             List<Combatant> combatantList = Combatants;
+            Combatant mychar = GetSelfCombatant();
 
             /// 一度に全部読む
             byte[] buffer = GetByteArray(aggroAddress, 32 * 72 + 2);
@@ -551,6 +552,24 @@ namespace Tamagawa.EnmityPlugin
                         entry.Name = c.Name;
                         entry.MaxHP = c.MaxHP;
                         entry.CurrentHP = c.CurrentHP;
+                        if (c.TargetID > 0)
+                        {
+                            Combatant t = combatantList.Find(x => x.ID == c.TargetID);
+                            if (t != null)
+                            {
+                                entry.Target = new EnmityEntry()
+                                {
+                                    ID = t.ID,
+                                    Name = t.Name,
+                                    Job = t.Job,
+                                    OwnerID = t.OwnerID,
+                                    isMe = mychar.ID == t.ID ? true : false,
+                                    Enmity = 0,
+                                    HateRate = 0
+                                };
+                            }
+                        }
+
                     }
                     result.Add(entry);
                 }
