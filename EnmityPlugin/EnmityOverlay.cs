@@ -267,7 +267,7 @@ namespace Tamagawa.EnmityPlugin
                 // 敵視リスト
                 if (!this.Config.DisableAggroList)
                 {
-                    enmity.AggroList = _memory.GetAggroList();
+                    enmity.AggroList = _memory.GetAggroList(enmity.Target != null ? enmity.Target.ID : 0);
                     if (this.Config.AggroListSortKey == "HateRate") {
                         if (this.Config.AggroListSortDecend)
                         {

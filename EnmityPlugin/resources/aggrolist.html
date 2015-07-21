@@ -24,7 +24,7 @@
               </thead>
              <tbody class="blue">
                <tr v-repeat="combatant: combatants" v-combatant="combatant">
-                <td class="text-right" style="width: 4em"><div style="margin: 1px; padding-right: 1px"  class="{{combatant.hatecolor}}">{{combatant.HateRate}}%</div></td>
+                <td class="text-right" style="width: 4em"><div style="margin: 1px; padding-right: 1px"  class="{{combatant.hatecolor}}">{{combatant.isCurrentTarget ? "➸" : ""}}{{combatant.HateRate}}%</div></td>
                 <td class="text-left" colspan="2">
                   <div class="box">
                     <div class="content">{{combatant.Name}}<span style="float: right">{{combatant.HPPercent}}%</span>

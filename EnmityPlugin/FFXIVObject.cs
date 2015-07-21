@@ -156,10 +156,10 @@ namespace Tamagawa.EnmityPlugin
         public uint ID;
         public string Name;
         public int HateRate;
+        public bool isCurrentTarget;
 
         public int CurrentHP;
         public int MaxHP;
-
         public string HPPercent
         {
             get

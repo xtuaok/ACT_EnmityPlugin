@@ -508,7 +508,7 @@ namespace Tamagawa.EnmityPlugin
         /// <summary>
         /// 敵視リスト情報を取得
         /// </summary>
-        public unsafe List<AggroEntry> GetAggroList()
+        public unsafe List<AggroEntry> GetAggroList(uint currentTargetID = 0)
         {
             int num = 0;
             List<AggroEntry> result = new List<AggroEntry>();
@@ -549,6 +549,8 @@ namespace Tamagawa.EnmityPlugin
                     Combatant c = combatantList.Find(x => x.ID == entry.ID);
                     if (c != null)
                     {
+                        entry.ID = c.ID;
+                        entry.isCurrentTarget = (c.ID == currentTargetID);
                         entry.Name = c.Name;
                         entry.MaxHP = c.MaxHP;
                         entry.CurrentHP = c.CurrentHP;
