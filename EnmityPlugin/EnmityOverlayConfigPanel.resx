@@ -121,15 +121,15 @@
   <data name="label_Help.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 10, 3, 0</value>
   </data>
+  <data name="table_MemorySetting.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="check_disableTarget" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="check_disableAggroList" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="check_disableEnmityList" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="Absolute,22,Absolute,22,Absolute,22" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
   <data name="textEnmityGlobalHotkey.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label_LockOverlay.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
-  </data>
-  <data name="tableLayoutPanel7.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label_Process" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="table_Process" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label_ShowOverlay" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="checkEnmityVisible" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label_Clickthru" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="checkEnmityClickThru" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label_LockOverlay" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="checkLock" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label_URL" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="table_URL" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label_ScanInterval" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="nudEnmityScanInterval" Row="5" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label_Hotkey" Row="6" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="table_Hotkey" Row="6" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label_Framerate" Row="7" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="nudEnmityMaxFrameRate" Row="7" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label_Help" Row="10" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="panel_Buttons" Row="11" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label_MemorySetting" Row="8" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="table_MemorySetting" Row="8" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label_AggroListSort" Row="9" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="table_AggroListSort" Row="9" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,155,Percent,100" /&gt;&lt;Rows Styles="Absolute,22,Absolute,22,Absolute,22,Absolute,22,Absolute,22,Absolute,22,Absolute,22,Absolute,22,Absolute,70,Absolute,22,Percent,100,Absolute,57" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="checkEnmityVisible.Location" type="System.Drawing.Point, System.Drawing">
     <value>161, 28</value>
@@ -228,14 +228,14 @@
   <data name="&gt;&gt;buttonEnmityReloadBrowser.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="label_URL.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="&gt;&gt;label_Hotkey.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;buttonEnmitySelectFile.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboProcessList.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="check_disableTarget.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
@@ -254,6 +254,9 @@
   </data>
   <data name="table_URL.Size" type="System.Drawing.Size, System.Drawing">
     <value>439, 20</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel8.Name" xml:space="preserve">
+    <value>tableLayoutPanel8</value>
   </data>
   <data name="checkLock.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -276,8 +279,14 @@
   <data name="table_URL.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
+  <data name="table_Hotkey.Location" type="System.Drawing.Point, System.Drawing">
+    <value>158, 135</value>
+  </data>
   <data name="nudEnmityScanInterval.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 19</value>
+  </data>
+  <data name="label_Hotkey.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
   <data name="label_Hotkey.Text" xml:space="preserve">
     <value>Enable Global Hotkey</value>
@@ -291,11 +300,11 @@
   <data name="&gt;&gt;label_ShowOverlay.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
   </data>
+  <data name="label_ScanInterval.TabIndex" type="System.Int32, mscorlib">
+    <value>99</value>
+  </data>
   <data name="nudEnmityScanInterval.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
-  </data>
-  <data name="&gt;&gt;check_disableAggroList.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="label_AggroListSort.Text" xml:space="preserve">
     <value>AggroList sort key</value>
@@ -305,9 +314,6 @@
   </data>
   <data name="&gt;&gt;checkLock.ZOrder" xml:space="preserve">
     <value>7</value>
-  </data>
-  <data name="&gt;&gt;label_AggroListSort.Parent" xml:space="preserve">
-    <value>tableLayoutPanel7</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel8.Parent" xml:space="preserve">
     <value>panel_Buttons</value>
@@ -363,9 +369,6 @@
   <data name="textEnmityGlobalHotkey.Location" type="System.Drawing.Point, System.Drawing">
     <value>22, 1</value>
   </data>
-  <data name="buttonRefreshProcessList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>127, 1</value>
-  </data>
   <data name="&gt;&gt;label_ScanInterval.Name" xml:space="preserve">
     <value>label_ScanInterval</value>
   </data>
@@ -405,9 +408,6 @@
   <data name="&gt;&gt;buttonEnmityCopyActXiv.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label_URL.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 91</value>
-  </data>
   <data name="label_ShowOverlay.TabIndex" type="System.Int32, mscorlib">
     <value>99</value>
   </data>
@@ -416,9 +416,6 @@
   </data>
   <data name="label_Hotkey.TabIndex" type="System.Int32, mscorlib">
     <value>99</value>
-  </data>
-  <data name="panel_Buttons.Size" type="System.Drawing.Size, System.Drawing">
-    <value>435, 51</value>
   </data>
   <data name="panel_Buttons.Location" type="System.Drawing.Point, System.Drawing">
     <value>161, 355</value>
@@ -433,9 +430,6 @@
     <value>1</value>
   </data>
   <data name="&gt;&gt;table_AggroListSort.Parent" xml:space="preserve">
-    <value>tableLayoutPanel7</value>
-  </data>
-  <data name="&gt;&gt;checkLock.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
   </data>
   <data name="table_Hotkey.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
@@ -489,6 +483,9 @@
   <data name="table_MemorySetting.Size" type="System.Drawing.Size, System.Drawing">
     <value>435, 64</value>
   </data>
+  <data name="tableLayoutPanel8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>435, 51</value>
+  </data>
   <data name="&gt;&gt;buttonEnmitySelectFile.Parent" xml:space="preserve">
     <value>table_URL</value>
   </data>
@@ -510,14 +507,14 @@
   <data name="buttonEnmityReloadBrowser.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="&gt;&gt;table_AggroListSortKey.ZOrder" xml:space="preserve">
-    <value>21</value>
+  <data name="label_ScanInterval.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 113</value>
   </data>
   <data name="&gt;&gt;nudEnmityMaxFrameRate.ZOrder" xml:space="preserve">
     <value>15</value>
   </data>
-  <data name="&gt;&gt;checkLock.Name" xml:space="preserve">
-    <value>checkLock</value>
+  <data name="nudEnmityMaxFrameRate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 19</value>
   </data>
   <data name="label_AggroListSort.Size" type="System.Drawing.Size, System.Drawing">
     <value>149, 22</value>
@@ -542,6 +539,9 @@
   </data>
   <data name="checkEnmityClickThru.Location" type="System.Drawing.Point, System.Drawing">
     <value>161, 50</value>
+  </data>
+  <data name="&gt;&gt;buttonEnmitySelectFile.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="comboProcessList.Size" type="System.Drawing.Size, System.Drawing">
     <value>122, 20</value>
@@ -582,9 +582,6 @@
   <data name="label_LockOverlay.Text" xml:space="preserve">
     <value>Lock overlay</value>
   </data>
-  <data name="&gt;&gt;table_URL.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="label_MemorySetting.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 0</value>
   </data>
@@ -620,6 +617,9 @@
   </data>
   <data name="&gt;&gt;checkEnmityVisible.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="label_Hotkey.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="table_Process.ColumnCount" type="System.Int32, mscorlib">
     <value>3</value>
@@ -675,8 +675,11 @@
   <data name="table_Process.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="checkFollowFFXIVPlugin.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="&gt;&gt;textEnmityGlobalHotkey.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;table_URL.ZOrder" xml:space="preserve">
+    <value>9</value>
   </data>
   <data name="label_Process.Text" xml:space="preserve">
     <value>Process</value>
@@ -686,6 +689,9 @@
   </data>
   <data name="check_disableTarget.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="table_AggroListSort.Location" type="System.Drawing.Point, System.Drawing">
+    <value>158, 249</value>
   </data>
   <data name="table_Process.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
@@ -717,6 +723,9 @@
   <data name="&gt;&gt;label_Help.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
   </data>
+  <data name="&gt;&gt;check_disableAggroList.Name" xml:space="preserve">
+    <value>check_disableAggroList</value>
+  </data>
   <data name="&gt;&gt;label_URL.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
@@ -726,8 +735,8 @@
   <data name="textEnmityUrl.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 1</value>
   </data>
-  <data name="label_ScanInterval.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 113</value>
+  <data name="label_AggroListSort.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
   </data>
   <data name="table_AggroListSortKey.Location" type="System.Drawing.Point, System.Drawing">
     <value>158, 249</value>
@@ -744,17 +753,11 @@
   <data name="table_MemorySetting.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="&gt;&gt;checkEnmityEnableGlobalHotkey.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;table_Process.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
   </data>
   <data name="label_Clickthru.TabIndex" type="System.Int32, mscorlib">
     <value>99</value>
-  </data>
-  <data name="label_ShowOverlay.Text" xml:space="preserve">
-    <value>Show overlay</value>
   </data>
   <data name="label_Framerate.TabIndex" type="System.Int32, mscorlib">
     <value>99</value>
@@ -771,8 +774,8 @@
   <data name="buttonEnmitySelectFile.Text" xml:space="preserve">
     <value>...</value>
   </data>
-  <data name="check_disableTarget.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;check_disableAggroList.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;table_URL.Name" xml:space="preserve">
     <value>table_URL</value>
@@ -786,17 +789,14 @@
   <data name="label_URL.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
+  <data name="&gt;&gt;table_Process.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="table_Process.Location" type="System.Drawing.Point, System.Drawing">
     <value>158, 3</value>
   </data>
   <data name="table_URL.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
-  </data>
-  <data name="tableLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="label_Clickthru.Text" xml:space="preserve">
-    <value>Enable clickthru</value>
   </data>
   <data name="label_MemorySetting.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 182</value>
@@ -810,14 +810,14 @@
   <data name="&gt;&gt;buttonEnmityCopyActXiv.Name" xml:space="preserve">
     <value>buttonEnmityCopyActXiv</value>
   </data>
+  <data name="&gt;&gt;label_Process.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;label_AggroListSort.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;comboProcessList.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="buttonEnmityCopyActXiv.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="label_ShowOverlay.Text" xml:space="preserve">
+    <value>Show overlay</value>
   </data>
   <data name="label_ShowOverlay.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -837,6 +837,9 @@
   <data name="combo_AggroListSortKey.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
   </data>
+  <data name="label_Clickthru.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="&gt;&gt;table_MemorySetting.Type" xml:space="preserve">
     <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -855,8 +858,8 @@
   <data name="check_disableTarget.Text" xml:space="preserve">
     <value>Don't scan target information except main target.</value>
   </data>
-  <data name="&gt;&gt;label_Process.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="buttonEnmityCopyActXiv.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
   <data name="combo_AggroListSortKey.Size" type="System.Drawing.Size, System.Drawing">
     <value>122, 20</value>
@@ -875,9 +878,6 @@
   </data>
   <data name="checkLock.Location" type="System.Drawing.Point, System.Drawing">
     <value>161, 72</value>
-  </data>
-  <data name="table_MemorySetting.RowCount" type="System.Int32, mscorlib">
-    <value>3</value>
   </data>
   <data name="table_MemorySetting.TabIndex" type="System.Int32, mscorlib">
     <value>101</value>
@@ -909,9 +909,6 @@
   <data name="&gt;&gt;buttonRefreshProcessList.Parent" xml:space="preserve">
     <value>table_Process</value>
   </data>
-  <data name="&gt;&gt;textEnmityGlobalHotkey.Name" xml:space="preserve">
-    <value>textEnmityGlobalHotkey</value>
-  </data>
   <data name="checkLock.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
@@ -933,8 +930,8 @@
   <data name="tableLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="label_Hotkey.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;checkLock.Parent" xml:space="preserve">
+    <value>tableLayoutPanel7</value>
   </data>
   <data name="&gt;&gt;checkEnmityEnableGlobalHotkey.Name" xml:space="preserve">
     <value>checkEnmityEnableGlobalHotkey</value>
@@ -954,9 +951,6 @@
   <data name="&gt;&gt;checkFollowFFXIVPlugin.Parent" xml:space="preserve">
     <value>table_Process</value>
   </data>
-  <data name="label_Process.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
   <data name="label_Help.TabIndex" type="System.Int32, mscorlib">
     <value>99</value>
   </data>
@@ -971,9 +965,6 @@
   </data>
   <data name="&gt;&gt;comboProcessList.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;check_disableAggroList.Parent" xml:space="preserve">
-    <value>table_MemorySetting</value>
   </data>
   <data name="&gt;&gt;label_MemorySetting.Name" xml:space="preserve">
     <value>label_MemorySetting</value>
@@ -993,6 +984,12 @@
   <data name="table_AggroListSortKey.TabIndex" type="System.Int32, mscorlib">
     <value>103</value>
   </data>
+  <data name="&gt;&gt;label_URL.Parent" xml:space="preserve">
+    <value>tableLayoutPanel7</value>
+  </data>
+  <data name="&gt;&gt;label_Framerate.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
   <data name="comboProcessList.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 2</value>
   </data>
@@ -1005,8 +1002,8 @@
   <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>103</value>
   </data>
-  <data name="label_AggroListSort.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
+  <data name="check_disableTarget.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="&gt;&gt;table_AggroListSort.Name" xml:space="preserve">
     <value>table_AggroListSort</value>
@@ -1020,8 +1017,14 @@
   <data name="tableLayoutPanel8.ColumnCount" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
+  <data name="label_MemorySetting.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 12</value>
+  </data>
   <data name="label_Help.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
+  </data>
+  <data name="&gt;&gt;table_Hotkey.Parent" xml:space="preserve">
+    <value>tableLayoutPanel7</value>
   </data>
   <data name="label_LockOverlay.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>No</value>
@@ -1059,11 +1062,8 @@
   <data name="label_ScanInterval.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
-  <data name="comboProcessList.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;textEnmityGlobalHotkey.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;table_URL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>EnmityOverlayConfigPanel</value>
@@ -1101,8 +1101,8 @@
   <data name="label_ScanInterval.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;label_URL.Parent" xml:space="preserve">
-    <value>tableLayoutPanel7</value>
+  <data name="&gt;&gt;checkLock.Name" xml:space="preserve">
+    <value>checkLock</value>
   </data>
   <data name="table_AggroListSortKey.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="combo_AggroListSortKey" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="check_AggroListSortDescend" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Absolute,315" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
@@ -1131,8 +1131,8 @@
   <data name="&gt;&gt;tableLayoutPanel1.Type" xml:space="preserve">
     <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;table_Process.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="buttonRefreshProcessList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>127, 1</value>
   </data>
   <data name="label_ShowOverlay.Size" type="System.Drawing.Size, System.Drawing">
     <value>149, 22</value>
@@ -1161,11 +1161,17 @@
   <data name="label_Process.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 3</value>
   </data>
+  <data name="&gt;&gt;label_Clickthru.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <data name="tableLayoutPanel8.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="label_Clickthru.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="panel_Buttons.Size" type="System.Drawing.Size, System.Drawing">
+    <value>435, 51</value>
+  </data>
+  <data name="&gt;&gt;table_AggroListSort.ZOrder" xml:space="preserve">
+    <value>21</value>
   </data>
   <data name="&gt;&gt;label_Framerate.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1178,23 +1184,20 @@
 
 * You need a capable HTML file if you want to show the AggroList or other target informations correctly.</value>
   </data>
-  <data name="table_MemorySetting.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="check_disableTarget" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="check_disableAggroList" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="check_disableEnmityList" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="Absolute,22,Absolute,22,Absolute,22" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
   <data name="label_Framerate.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
-  <data name="&gt;&gt;label_Clickthru.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="label_Process.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
   </data>
   <data name="buttonEnmityCopyActXiv.Size" type="System.Drawing.Size, System.Drawing">
     <value>211, 45</value>
   </data>
-  <data name="&gt;&gt;buttonEnmitySelectFile.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="label_URL.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="table_Hotkey.Location" type="System.Drawing.Point, System.Drawing">
-    <value>158, 135</value>
+  <data name="checkFollowFFXIVPlugin.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
   <data name="label_ShowOverlay.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -1205,8 +1208,8 @@
   <data name="label_Framerate.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 157</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel8.Name" xml:space="preserve">
-    <value>tableLayoutPanel8</value>
+  <data name="&gt;&gt;label_AggroListSort.Parent" xml:space="preserve">
+    <value>tableLayoutPanel7</value>
   </data>
   <data name="label_Process.TabIndex" type="System.Int32, mscorlib">
     <value>99</value>
@@ -1223,17 +1226,14 @@
   <data name="nudEnmityMaxFrameRate.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
   </data>
-  <data name="&gt;&gt;table_URL.ZOrder" xml:space="preserve">
-    <value>9</value>
+  <data name="table_MemorySetting.RowCount" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
   <data name="&gt;&gt;checkEnmityVisible.Name" xml:space="preserve">
     <value>checkEnmityVisible</value>
   </data>
   <data name="buttonEnmitySelectFile.Location" type="System.Drawing.Point, System.Drawing">
     <value>402, 0</value>
-  </data>
-  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>441, 22</value>
   </data>
   <data name="&gt;&gt;label_Help.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1253,8 +1253,8 @@
   <data name="&gt;&gt;checkEnmityEnableGlobalHotkey.Parent" xml:space="preserve">
     <value>table_Hotkey</value>
   </data>
-  <data name="nudEnmityMaxFrameRate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 19</value>
+  <data name="comboProcessList.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;label_ScanInterval.ZOrder" xml:space="preserve">
     <value>10</value>
@@ -1265,8 +1265,8 @@
   <data name="label_AggroListSort.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;check_disableAggroList.Name" xml:space="preserve">
-    <value>check_disableAggroList</value>
+  <data name="&gt;&gt;table_AggroListSortKey.ZOrder" xml:space="preserve">
+    <value>21</value>
   </data>
   <data name="&gt;&gt;checkEnmityClickThru.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1280,8 +1280,8 @@
   <data name="checkEnmityClickThru.Size" type="System.Drawing.Size, System.Drawing">
     <value>435, 16</value>
   </data>
-  <data name="label_MemorySetting.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 12</value>
+  <data name="&gt;&gt;textEnmityGlobalHotkey.Name" xml:space="preserve">
+    <value>textEnmityGlobalHotkey</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel1.ZOrder" xml:space="preserve">
     <value>21</value>
@@ -1289,14 +1289,14 @@
   <data name="nudEnmityScanInterval.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>80, 0</value>
   </data>
-  <data name="tableLayoutPanel8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>435, 51</value>
+  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>441, 22</value>
   </data>
   <data name="check_disableAggroList.Text" xml:space="preserve">
     <value>Don't scan aggro list.</value>
   </data>
-  <data name="&gt;&gt;label_Framerate.ZOrder" xml:space="preserve">
-    <value>14</value>
+  <data name="tableLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="checkEnmityEnableGlobalHotkey.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
@@ -1313,8 +1313,8 @@
   <data name="combo_AggroListSortKey.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 1, 0</value>
   </data>
-  <data name="&gt;&gt;table_AggroListSort.ZOrder" xml:space="preserve">
-    <value>21</value>
+  <data name="&gt;&gt;checkEnmityEnableGlobalHotkey.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="check_disableEnmityList.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1352,8 +1352,8 @@
   <data name="check_disableAggroList.Size" type="System.Drawing.Size, System.Drawing">
     <value>132, 16</value>
   </data>
-  <data name="label_Hotkey.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="&gt;&gt;check_disableAggroList.Parent" xml:space="preserve">
+    <value>table_MemorySetting</value>
   </data>
   <data name="&gt;&gt;table_MemorySetting.Name" xml:space="preserve">
     <value>table_MemorySetting</value>
@@ -1367,11 +1367,11 @@
   <data name="comboProcessList.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 1, 0</value>
   </data>
-  <data name="&gt;&gt;table_Hotkey.Parent" xml:space="preserve">
-    <value>tableLayoutPanel7</value>
+  <data name="label_Clickthru.Text" xml:space="preserve">
+    <value>Enable clickthru</value>
   </data>
-  <data name="label_ScanInterval.TabIndex" type="System.Int32, mscorlib">
-    <value>99</value>
+  <data name="tableLayoutPanel7.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label_Process" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="table_Process" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label_ShowOverlay" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="checkEnmityVisible" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label_Clickthru" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="checkEnmityClickThru" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label_LockOverlay" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="checkLock" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label_URL" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="table_URL" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label_ScanInterval" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="nudEnmityScanInterval" Row="5" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label_Hotkey" Row="6" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="table_Hotkey" Row="6" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label_Framerate" Row="7" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="nudEnmityMaxFrameRate" Row="7" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label_Help" Row="10" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="panel_Buttons" Row="11" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label_MemorySetting" Row="8" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="table_MemorySetting" Row="8" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label_AggroListSort" Row="9" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="table_AggroListSort" Row="9" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,155,Percent,100" /&gt;&lt;Rows Styles="Absolute,22,Absolute,22,Absolute,22,Absolute,22,Absolute,22,Absolute,22,Absolute,22,Absolute,22,Absolute,70,Absolute,22,Percent,100,Absolute,57" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="label_MemorySetting.TabIndex" type="System.Int32, mscorlib">
     <value>100</value>
@@ -1379,8 +1379,8 @@
   <data name="checkEnmityClickThru.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="table_AggroListSort.Location" type="System.Drawing.Point, System.Drawing">
-    <value>158, 249</value>
+  <data name="label_URL.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 91</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
