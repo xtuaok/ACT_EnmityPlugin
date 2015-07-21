@@ -153,9 +153,9 @@ body {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/0.12.7/vue.min.js"></script>
     <script>
 Vue.filter('hpcolor', function (t) {
-  if (t.HPPerecnt > 75) return "green";
-  if (t.HPPerecnt > 50) return "yellow";
-  if (t.HPPerecnt > 25) return "orange";
+  if (t.HPPercent > 75) return "green";
+  if (t.HPPercent > 50) return "yellow";
+  if (t.HPPercent > 25) return "orange";
   return "red";
 });
 
