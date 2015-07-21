@@ -49,9 +49,9 @@ Vue.filter('jobclass', function (v) {
 });
 
 Vue.filter('hpcolor', function (t) {
-  if (t.HPPerecnt > 75) return "green";
-  if (t.HPPerecnt > 50) return "yellow";
-  if (t.HPPerecnt > 25) return "orange";
+  if (t.HPPercent > 75) return "green";
+  if (t.HPPercent > 50) return "yellow";
+  if (t.HPPercent > 25) return "orange";
   return "red";
 });
 
@@ -85,6 +85,8 @@ var enmity = new Vue({
       this.target  = e.detail.Enmity.Target ? e.detail.Enmity.Target : noTarget;
       if (hideNoTarget && e.detail.Enmity.Target == null) {
         this.hideNoTarget = 'hide';
+      } else {
+        this.hideNoTarget = '';
       }
     },
     updateState: function(e) {
