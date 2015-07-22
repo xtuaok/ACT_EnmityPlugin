@@ -52,7 +52,9 @@ td { text-align: right; }
   background-repeat: no-repeat;
   box-sizing: border-box;
 }
- 
+
+#aggrolist .hide { display: none; }
+
 #aggrolist .outer {
   height: 100%;
   padding: 10px;
@@ -112,6 +114,11 @@ td { text-align: right; }
 }
 #combatants td div.red, td.red {
   background-color: rgba(255, 45, 45, 0.75);
+}
+
+#combatants tr.current {
+  border-color: #E2EBF5;
+  border: 1px dotted;
 }
 
 #combatants td div.content {

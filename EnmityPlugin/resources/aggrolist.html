@@ -6,7 +6,7 @@
   </head>
 
   <body id="aggrolist" v-class="resize-handle: !locked">
-    <div class="outer">
+    <div class="{{hide ? 'hide' : ''}} outer">
       <div class="inner">
         <div class="background"></div>
           <div v-if="!updated" class="gold">
@@ -23,8 +23,9 @@
                 </tr>
               </thead>
              <tbody class="blue">
-               <tr v-repeat="combatant: combatants" v-combatant="combatant">
-                <td class="text-right" style="width: 4em"><div style="margin: 1px; padding-right: 1px"  class="{{combatant.hatecolor}}">{{combatant.isCurrentTarget ? "➸" : ""}}{{combatant.HateRate}}%</div></td>
+             <template v-repeat="combatant: combatants">
+               <tr class="{{combatant.isCurrentTarget ? '' : ''}}">
+                <td class="text-right" style="width: 4em"><div style="margin: 1px; padding-right: 1px" class="{{combatant.hatecolor}}">{{combatant.isCurrentTarget ? " ➸ " : "  "}}{{combatant.HateRate}}%</div></td>
                 <td class="text-left" colspan="2">
                   <div class="box">
                     <div class="content">{{combatant.Name}}<span style="float: right">{{combatant.HPPercent}}%</span>
@@ -34,6 +35,7 @@
                 </td>
                  <td class="text-center"><div style="margin: 1px; padding-right: 1px" class="{{combatant.Target | jobrole}}">{{combatant.Target.isMe ? "YOU" : combatant.Target.isPet ? "PET" : combatant.Target.JobName}}</div></td>
               </tr>
+              </template>
             </tbody>
           </table>
         </div>

@@ -1,10 +1,5 @@
-Vue.directive('combatant', {
-  update: function(value) {
-    var ds = this.el.dataset;
-    ds.deaths = value.deaths;
-  }
-});
-
+// 敵視リストが空のとき表示しない
+var hideNoAggro = false;
 
 // ロールの定義
 var JobRole = {
@@ -50,7 +45,8 @@ var aggrolist = new Vue({
     locked: false,
     collapsed: false,
     encounter: null,
-    combatants: null
+    combatants: null,
+    hide: false
   },
   attached: function() {
     document.addEventListener('onOverlayDataUpdate', this.update);
@@ -89,6 +85,7 @@ var aggrolist = new Vue({
           this.combatants.push(c);
         }
       }
+      this.hide = (hideNoAggro && this.combatants.length == 0);
     },
     updateState: function(e) {
       this.locked = e.detail.isLocked;

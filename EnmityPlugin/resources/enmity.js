@@ -68,7 +68,7 @@ var enmity = new Vue({
     collapsed: false,
     target: null,
     entries: null,
-    hideNoTarget: ""
+    hide: false
   },
   attached: function() {
     document.addEventListener('onOverlayDataUpdate', this.update);
@@ -83,11 +83,7 @@ var enmity = new Vue({
       this.updated = true;
       this.entries = e.detail.Enmity.Entries;
       this.target  = e.detail.Enmity.Target ? e.detail.Enmity.Target : noTarget;
-      if (hideNoTarget && e.detail.Enmity.Target == null) {
-        this.hideNoTarget = 'hide';
-      } else {
-        this.hideNoTarget = '';
-      }
+      this.hide = (hideNoTarget && e.detail.Enmity.Target == null);
     },
     updateState: function(e) {
       this.locked = e.detail.isLocked;

@@ -178,6 +178,7 @@ var targetinfo = new Vue({
   methods: {
     update: function(e) {
       this.updated = true;
+      this.targets = [];
       for(var k of targets) {
         var t = e.detail.Enmity[k];
         if (t == null) {

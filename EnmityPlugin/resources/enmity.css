@@ -16,7 +16,6 @@ body {
   padding: 0;
 }
 
-.hide { display: none; }
 
 .text-left { text-align: left; }
 .text-center { text-align: center; }
@@ -30,19 +29,21 @@ body {
   color: #E2EBF5;
   text-shadow: -1px 0 3px #217AA2, 0 1px 3px #217AA2, 1px 0 3px #217AA2, 0 -1px 3px #217AA2;
 }
- 
+
 .gold {
   color: #DED7BE;
   text-shadow: -1px 0 2px #795516, 0 1px 2px #795516, 1px 0 2px #795516, 0 -1px 2px #795516;
 }
- 
+
 .resize-handle {
   background-image: url(handle.png);
   background-position: bottom right;
   background-repeat: no-repeat;
   box-sizing: border-box;
 }
- 
+
+#enmity .hide { display: none; }
+
 #enmity .outer {
   height: 100%;
   padding: 10px;
