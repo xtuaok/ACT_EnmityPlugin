@@ -36,8 +36,6 @@ namespace Tamagawa.EnmityPlugin
         private const string targetSignature64  = "29017520483935";
         private const string enmitySignature32  = "E801A83300B9";
         private const string enmitySignature64  = "488D0DB5C13C01E820EF3F00488D0D";
-        private const string aggroSignature32   = "E84DCC2D00B9";
-        private const string aggroSignature64   = "3B01E8948E3800488D0D";
         private const int charmapOffset32 = 0;
         private const int charmapOffset64 = 0;
         private const int targetOffset32  = 88;
@@ -151,7 +149,6 @@ namespace Tamagawa.EnmityPlugin
             string charmapSignature = charmapSignature32;
             string targetSignature = targetSignature32;
             string enmitySignature = enmitySignature32;
-            string aggroSignature = aggroSignature32;
             int targetOffset = targetOffset32;
             int charmapOffset = charmapOffset32;
             int enmityOffset = enmityOffset32;
@@ -167,7 +164,6 @@ namespace Tamagawa.EnmityPlugin
                 charmapSignature = charmapSignature64;
                 enmitySignature = enmitySignature64;
                 enmityOffset = enmityOffset64;
-                aggroSignature = aggroSignature64;
             }
 
             /// CHARMAP
@@ -195,6 +191,7 @@ namespace Tamagawa.EnmityPlugin
             if (list.Count == 1)
             {
                 enmityAddress = list[0] + enmityOffset;
+                aggroAddress = IntPtr.Add(enmityAddress, 0x900 + 8);
             }
             if (enmityAddress == IntPtr.Zero)
             {
@@ -218,26 +215,9 @@ namespace Tamagawa.EnmityPlugin
                 success = false;
             }
 
-            // Aggro
-            list = SigScan(aggroSignature, 0, bRIP);
-            if (list == null || list.Count == 0)
-            {
-                aggroAddress = IntPtr.Zero;
-            }
-            if (list.Count == 1)
-            {
-                aggroAddress = list[0];
-            }
-            if (aggroAddress == IntPtr.Zero)
-            {
-                _overlay.LogError(Messages.FailedToSigScan, "Aggro");
-                success = false;
-            }
-
             _overlay.LogDebug("charmapAddress: 0x{0:X}", charmapAddress.ToInt64());
             _overlay.LogDebug("enmityAddress: 0x{0:X}", enmityAddress.ToInt64());
             _overlay.LogDebug("targetAddress: 0x{0:X}", targetAddress.ToInt64());
-            _overlay.LogDebug("aggroAddress: 0x{0:X}", aggroAddress.ToInt64());
 
             if (success || charmapAddress != IntPtr.Zero)
             {
@@ -376,6 +356,7 @@ namespace Tamagawa.EnmityPlugin
                         }
                         if (combatant.ID != 0 && combatant.ID != 3758096384u && !result.Exists((Combatant x) => x.ID == combatant.ID))
                         {
+                            combatant.Order = i;
                             result.Add(combatant);
                         }
                     }
@@ -550,6 +531,7 @@ namespace Tamagawa.EnmityPlugin
                     if (c != null)
                     {
                         entry.ID = c.ID;
+                        entry.Order = c.Order;
                         entry.isCurrentTarget = (c.ID == currentTargetID);
                         entry.Name = c.Name;
                         entry.MaxHP = c.MaxHP;
