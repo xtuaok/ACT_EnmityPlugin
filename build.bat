@@ -22,11 +22,17 @@ if not exist "%~dp0\Thirdparty\OverlayPlugin\HtmlRenderer.dll" (
 
 set DOTNET_PATH=%windir%\Microsoft.NET\Framework\v4.0.30319
 if not exist %DOTNET_PATH% (
-	echo エラー: .NET Framework のディレクトリが見つかりません。ビルドを実行するためには .NET Framework 4.5.1 がインストールされている必要があります。
+	echo エラー: .NET Framework のディレクトリが見つかりません。ビルドを実行するためには .NET Framework 4.6がインストールされている必要があります。
+	goto END
+)
+
+set MSBUILD_PATH="%ProgramFiles(x86)%\MSBuild\14.0"
+if not exist %MSBUILD_PATH% (
+	echo エラー: Microsoft Build Tool 2015 のディレクトリが見つかりません。ビルドを実行するためには Microsoft Build Tool 2015がインストールされている必要があります。
 	goto END
 )
 
 
-%DOTNET_PATH%\msbuild /t:Rebuild /p:Configuration=Release /p:Platform="Any CPU" /p:OutputPath="%~dp0\Build" "%~dp0\EnmityPlugin.sln"
+%MSBUILD_PATH%\Bin\msbuild /t:Rebuild /p:Configuration=Release /p:Platform="Any CPU" /p:OutputPath="%~dp0\Build" "%~dp0\EnmityPlugin.sln"
 
 :END
