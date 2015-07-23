@@ -187,7 +187,7 @@
     <value>3, 3</value>
   </data>
   <data name="buttonYes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 39</value>
+    <value>88, 36</value>
   </data>
   <data name="buttonYes.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -217,7 +217,7 @@
     <value>97, 3</value>
   </data>
   <data name="buttonLater.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 39</value>
+    <value>87, 36</value>
   </data>
   <data name="buttonLater.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -247,7 +247,7 @@
     <value>190, 3</value>
   </data>
   <data name="buttonIgnore.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 39</value>
+    <value>107, 36</value>
   </data>
   <data name="buttonIgnore.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -277,7 +277,7 @@
     <value>1</value>
   </data>
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>300, 45</value>
+    <value>300, 42</value>
   </data>
   <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -316,7 +316,7 @@
     <value>320, 160</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>109</value>
+    <value>112</value>
   </data>
   <data name="splitContainer1.SplitterWidth" type="System.Int32, mscorlib">
     <value>1</value>

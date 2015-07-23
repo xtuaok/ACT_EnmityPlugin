@@ -35,7 +35,7 @@ namespace Tamagawa.EnmityPlugin
         private const string targetSignature32  = "750E85D2750AB9";
         private const string targetSignature64  = "29017520483935";
         private const string enmitySignature32  = "E801A83300B9";
-        private const string enmitySignature64  = "488D0DB5C13C01E820EF3F00488D0D";
+        private const string enmitySignature64  = "488D0D????????E820EF3F00488D0D"; //"488D0DB5C13C01E820EF3F00488D0D";
         private const int charmapOffset32 = 0;
         private const int charmapOffset64 = 0;
         private const int targetOffset32  = 88;
@@ -489,14 +489,15 @@ namespace Tamagawa.EnmityPlugin
         /// <summary>
         /// 敵視リスト情報を取得
         /// </summary>
-        public unsafe List<AggroEntry> GetAggroList(uint currentTargetID = 0)
+        public unsafe List<AggroEntry> GetAggroList()
         {
             int num = 0;
+            uint currentTargetID = 0;
             List<AggroEntry> result = new List<AggroEntry>();
             List<Combatant> combatantList = Combatants;
             Combatant mychar = GetSelfCombatant();
 
-            /// 一度に全部読む
+            // 一度に全部読む
             byte[] buffer = GetByteArray(aggroAddress, 32 * 72 + 2);
 
             fixed (byte* p = buffer) num = (short)p[0x900];
@@ -506,7 +507,10 @@ namespace Tamagawa.EnmityPlugin
             }
             if (num > 32) num = 32;
 
-            ///
+            // current target
+            currentTargetID = GetUInt32(aggroAddress, -4);
+            if (currentTargetID == 3758096384u) currentTargetID = 0;
+            //
             for (int i = 0; i < num; i++)
             {
                 int p = i * 72;
@@ -525,38 +529,36 @@ namespace Tamagawa.EnmityPlugin
                     HateRate = _enmity,
                     Name = "Unknown",
                 };
-                if (entry.ID > 0)
+                if (entry.ID <= 0) continue;
+                Combatant c = combatantList.Find(x => x.ID == entry.ID);
+                if (c != null)
                 {
-                    Combatant c = combatantList.Find(x => x.ID == entry.ID);
-                    if (c != null)
+                    entry.ID = c.ID;
+                    entry.Order = c.Order;
+                    entry.isCurrentTarget = (c.ID == currentTargetID);
+                    entry.Name = c.Name;
+                    entry.MaxHP = c.MaxHP;
+                    entry.CurrentHP = c.CurrentHP;
+                    if (c.TargetID > 0)
                     {
-                        entry.ID = c.ID;
-                        entry.Order = c.Order;
-                        entry.isCurrentTarget = (c.ID == currentTargetID);
-                        entry.Name = c.Name;
-                        entry.MaxHP = c.MaxHP;
-                        entry.CurrentHP = c.CurrentHP;
-                        if (c.TargetID > 0)
+                        Combatant t = combatantList.Find(x => x.ID == c.TargetID);
+                        if (t != null)
                         {
-                            Combatant t = combatantList.Find(x => x.ID == c.TargetID);
-                            if (t != null)
+                            entry.Target = new EnmityEntry()
                             {
-                                entry.Target = new EnmityEntry()
-                                {
-                                    ID = t.ID,
-                                    Name = t.Name,
-                                    Job = t.Job,
-                                    OwnerID = t.OwnerID,
-                                    isMe = mychar.ID == t.ID ? true : false,
-                                    Enmity = 0,
-                                    HateRate = 0
-                                };
-                            }
+                                ID = t.ID,
+                                Name = t.Name,
+                                Job = t.Job,
+                                OwnerID = t.OwnerID,
+                                isMe = mychar.ID == t.ID ? true : false,
+                                Enmity = 0,
+                                HateRate = 0
+                            };
                         }
-
                     }
-                    result.Add(entry);
+
                 }
+                result.Add(entry);
             }
             return result;
         }
