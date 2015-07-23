@@ -34,7 +34,7 @@ namespace Tamagawa.EnmityPlugin
         {
             this.xivWindowTimer.Enabled = false;
             this.timer.Enabled = false;
-            if (this._memory != null) this._memory.Dispose();
+            this._memory?.Dispose();
             base.Dispose();
         }
 
@@ -105,7 +105,7 @@ namespace Tamagawa.EnmityPlugin
                         p = FFXIVPluginHelper.GetFFXIVProcess;
                         if (p == null || (_memory != null && _memory.process.Id != p.Id))
                         {
-                            if (_memory != null) _memory.Dispose();
+                            _memory?.Dispose();
                             _memory = null;
                         }
                     }
@@ -130,7 +130,7 @@ namespace Tamagawa.EnmityPlugin
                 }
                 else
                 {
-                    _memory.Dispose();
+                    _memory?.Dispose();
                     _memory = null;
                 }
             }

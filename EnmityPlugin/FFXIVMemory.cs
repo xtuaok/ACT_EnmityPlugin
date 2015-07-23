@@ -515,7 +515,7 @@ namespace Tamagawa.EnmityPlugin
 
                 fixed (byte* bp = buffer)
                 {
-                        _id = *(uint*)&bp[p+64];
+                        _id = *(uint*)&bp[p + 64];
                         _enmity = (short)bp[p + 68];
                 }
 
