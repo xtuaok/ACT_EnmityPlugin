@@ -24,8 +24,8 @@ namespace Tamagawa.EnmityPlugin
         private const string charmapSignature64 = "48C1E8033DFFFF0000742B3DA80100007324488D0D";
         private const string targetSignature32  = "750E85D2750AB9";
         private const string targetSignature64  = "29017520483935";
-        private const string enmitySignature32  = "E831AA3300B9";
-        private const string enmitySignature64  = "488D0D????????E8D0F23F00488D0D";
+        private const string enmitySignature32  = "E86BE33000B900A4????E8????3300B9";
+        private const string enmitySignature64  = "FCA33C00488D0D????3C01E8????3F00488D0D";
         private const int charmapOffset32 = 0;
         private const int charmapOffset64 = 0;
         private const int targetOffset32  = 88;
