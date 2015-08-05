@@ -12,6 +12,15 @@ namespace Tamagawa.EnmityPlugin
 {
     public class FFXIVMemory : IDisposable
     {
+        public class MemoryScanException : Exception
+        {
+            public MemoryScanException() : base(Messages.FailedToSigScan) { }
+            public MemoryScanException(string message) : base(message) { }
+            public MemoryScanException(string message, System.Exception inner) : base(message, inner) { }
+            protected MemoryScanException(System.Runtime.Serialization.SerializationInfo info,
+                System.Runtime.Serialization.StreamingContext context){ }
+        }
+
         private Thread _thread;
         private List<Combatant> _Combatants = new List<Combatant>();
         internal List<Combatant> Combatants
@@ -68,7 +77,7 @@ namespace Tamagawa.EnmityPlugin
             {
                 _mode = FFXIVClientMode.Unknown;
             }
-            overlay.LogInfo("Attached process: {0} ({1})",
+            overlay.LogDebug("Attatching process: {0} ({1})",
                 process.Id, (_mode == FFXIVClientMode.FFXIV_32 ? "dx9" : "dx11"));
 
             this.getPointerAddress();
@@ -77,6 +86,8 @@ namespace Tamagawa.EnmityPlugin
             _thread.IsBackground = true;
             _thread.Start();
 
+            overlay.LogInfo("Attatched process successfully, pid: {0} ({1})",
+                process.Id, (_mode == FFXIVClientMode.FFXIV_32 ? "dx9" : "dx11"));
         }
 
         public void Dispose()
@@ -152,6 +163,7 @@ namespace Tamagawa.EnmityPlugin
             int targetOffset = targetOffset32;
             int charmapOffset = charmapOffset32;
             int enmityOffset = enmityOffset32;
+            List<string> sigs = new List<string>();
 
             bool bRIP = false;
 
@@ -178,7 +190,7 @@ namespace Tamagawa.EnmityPlugin
             }
             if (charmapAddress == IntPtr.Zero)
             {
-                _overlay.LogError(Messages.FailedToSigScan, "CombatantList");
+                sigs.Add( "CombatantList");
                 success = false;
             }
 
@@ -195,7 +207,7 @@ namespace Tamagawa.EnmityPlugin
             }
             if (enmityAddress == IntPtr.Zero)
             {
-                _overlay.LogError(Messages.FailedToSigScan, "Enmity");
+                sigs.Add("EnmityMap");
                 success = false;
             }
 
@@ -211,7 +223,7 @@ namespace Tamagawa.EnmityPlugin
             }
             if (targetAddress == IntPtr.Zero)
             {
-                _overlay.LogError(Messages.FailedToSigScan, "Target");
+                sigs.Add("Target");
                 success = false;
             }
 
@@ -226,6 +238,10 @@ namespace Tamagawa.EnmityPlugin
                 {
                     _overlay.LogDebug("MyCharacter: '{0}' ({1})", c.Name, c.ID);
                 }
+            }
+            else if (!success)
+            {
+                throw new MemoryScanException(String.Format(Messages.FailedToSigScan, String.Join(",", sigs)));
             }
             return success;
         }

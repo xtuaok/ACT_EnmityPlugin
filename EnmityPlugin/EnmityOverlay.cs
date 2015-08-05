@@ -59,7 +59,15 @@ namespace Tamagawa.EnmityPlugin
                 if ((_memory == null && p != null) ||
                     (_memory != null && p != null && p.Id != _memory.process.Id))
                 {
-                    _memory = new FFXIVMemory(this, p);
+                    try {
+                        _memory = new FFXIVMemory(this, p);
+                    }
+                    catch (Exception ex)
+                    {
+                        LogError(ex.Message);
+                        suppress_log = true;
+                        _memory = null;
+                    }
                 }
                 else if (_memory != null && p == null)
                 {
@@ -71,18 +79,21 @@ namespace Tamagawa.EnmityPlugin
 
         public void LogDebug(string format, params object[] args)
         {
+            string prefix = isDebug ? "DEBUG: " : "";
             LogLevel level = isDebug ? LogLevel.Info : LogLevel.Debug;
-            Log(level, format, args);
+            Log(level, prefix + format, args);
         }
 
         public void LogError(string format, params object[] args)
         {
-            Log(LogLevel.Error, format, args);
+            if (suppress_log == false)
+                Log(LogLevel.Error, format, args);
         }
 
         public void LogWarning(string format, params object[] args)
         {
-            Log(LogLevel.Warning, format, args);
+            if (suppress_log == false)
+                Log(LogLevel.Warning, format, args);
         }
 
         public void LogInfo(string format, params object[] args)
@@ -136,10 +147,7 @@ namespace Tamagawa.EnmityPlugin
             }
             catch (Exception ex)
             {
-                if (suppress_log == false)
-                {
-                    LogError(ex.Message);
-                }
+                LogError(ex.Message);
             }
         }
 
