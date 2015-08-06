@@ -1,10 +1,6 @@
-﻿﻿using RainbowMage.OverlayPlugin;
+﻿using RainbowMage.OverlayPlugin;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Tamagawa.EnmityPlugin
 {
@@ -32,49 +28,22 @@ namespace Tamagawa.EnmityPlugin
             UpdateMessage = UpdateChecker.Check();
         }
 
-        public string Name
-        {
-            get { return "Enmity"; }
-        }
+        public string Name => "Enmity";
 
-        public string Description
-        {
-            get { return "Show enmity values of current target."; }
-        }
+        public string Description => "Show enmity values of current target.";
 
-        public Type OverlayType
-        {
-            get { return typeof(EnmityOverlay); }
-        }
+        public Type OverlayType => typeof(EnmityOverlay);
 
-        public Type OverlayConfigType
-        {
-            get { return typeof(EnmityOverlayConfig); }
-        }
+        public Type OverlayConfigType => typeof(EnmityOverlayConfig);
 
-        public Type OverlayConfigControlType
-        {
-            get { return typeof(EnmityOverlayConfigPanel); }
-        }
+        public Type OverlayConfigControlType => typeof(EnmityOverlayConfigPanel);
 
-        public IOverlay CreateOverlayInstance(IOverlayConfig config)
-        {
-            return new EnmityOverlay((EnmityOverlayConfig)config);
-        }
+        public IOverlay CreateOverlayInstance(IOverlayConfig config) => new EnmityOverlay((EnmityOverlayConfig)config);
 
-        public IOverlayConfig CreateOverlayConfigInstance(string name)
-        {
-            return new EnmityOverlayConfig(name);
-        }
+        public IOverlayConfig CreateOverlayConfigInstance(string name) => new EnmityOverlayConfig(name);
 
-        public System.Windows.Forms.Control CreateOverlayConfigControlInstance(IOverlay overlay)
-        {
-            return new EnmityOverlayConfigPanel((EnmityOverlay)overlay);
-        }
+        public System.Windows.Forms.Control CreateOverlayConfigControlInstance(IOverlay overlay) => new EnmityOverlayConfigPanel((EnmityOverlay)overlay);
 
-        public void Dispose()
-        {
-
-        }
+        public void Dispose() { }
     }
 }

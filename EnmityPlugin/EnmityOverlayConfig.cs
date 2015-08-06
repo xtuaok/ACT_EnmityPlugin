@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 using RainbowMage.OverlayPlugin;
 
@@ -37,10 +33,7 @@ namespace Tamagawa.EnmityPlugin
         {
         }
 
-        public override Type OverlayType
-        {
-            get { return typeof(EnmityOverlay); }
-        }
+        public override Type OverlayType => typeof(EnmityOverlay);
 
         private int _scanInterval;
         [XmlElement("ScanInterval")]
@@ -55,10 +48,7 @@ namespace Tamagawa.EnmityPlugin
                 if (this._scanInterval != value)
                 {
                     this._scanInterval = value;
-                    if (ScanIntervalChanged != null)
-                    {
-                        ScanIntervalChanged(this, new ScanIntervalChangedEventArgs(this._scanInterval));
-                    }
+                    ScanIntervalChanged?.Invoke(this, new ScanIntervalChangedEventArgs(this._scanInterval));
                 }
             }
         }
@@ -76,10 +66,7 @@ namespace Tamagawa.EnmityPlugin
                 if (this._followFFXIVPlugin != value)
                 {
                     this._followFFXIVPlugin = value;
-                    if (FollowFFXIVPluginChanged != null)
-                    {
-                        FollowFFXIVPluginChanged(this, new FollowFFXIVPluginChangedEventArgs(this._followFFXIVPlugin));
-                    }
+                    FollowFFXIVPluginChanged?.Invoke(this, new FollowFFXIVPluginChangedEventArgs(this._followFFXIVPlugin));
                 }
             }
         }
@@ -97,10 +84,7 @@ namespace Tamagawa.EnmityPlugin
                 if (this._disableTarget != value)
                 {
                     this._disableTarget = value;
-                    if (DisableTargetChanged != null)
-                    {
-                        DisableTargetChanged(this, new DisableTargetChangedEventArgs(this._disableTarget));
-                    }
+                    DisableTargetChanged?.Invoke(this, new DisableTargetChangedEventArgs(this._disableTarget));
                 }
             }
         }
@@ -118,10 +102,7 @@ namespace Tamagawa.EnmityPlugin
                 if (this._disableAggroList != value)
                 {
                     this._disableAggroList = value;
-                    if (DisableAggroListChanged != null)
-                    {
-                        DisableAggroListChanged(this, new DisableAggroListChangedEventArgs(this._disableAggroList));
-                    }
+                    DisableAggroListChanged?.Invoke(this, new DisableAggroListChangedEventArgs(this._disableAggroList));
                 }
             }
         }
@@ -139,10 +120,7 @@ namespace Tamagawa.EnmityPlugin
                 if (this._disableEnmityList != value)
                 {
                     this._disableEnmityList = value;
-                    if (DisableEnmityListChanged != null)
-                    {
-                        DisableEnmityListChanged(this, new DisableEnmityListChangedEventArgs(this._disableEnmityList));
-                    }
+                    DisableEnmityListChanged?.Invoke(this, new DisableEnmityListChangedEventArgs(this._disableEnmityList));
                 }
             }
         }
@@ -160,10 +138,7 @@ namespace Tamagawa.EnmityPlugin
                 if (this._aggroListSortKey != value)
                 {
                     this._aggroListSortKey = value;
-                    if (AggroListSortKeyChanged != null)
-                    {
-                        AggroListSortKeyChanged(this, new AggroListSortKeyChangedEventArgs(this._aggroListSortKey));
-                    }
+                    AggroListSortKeyChanged?.Invoke(this, new AggroListSortKeyChangedEventArgs(this._aggroListSortKey));
                 }
             }
         }
@@ -181,10 +156,7 @@ namespace Tamagawa.EnmityPlugin
                 if (this._aggroListSortDecend != value)
                 {
                     this._aggroListSortDecend = value;
-                    if (AggroListSortDecendChanged != null)
-                    {
-                        AggroListSortDecendChanged(this, new AggroListSortDecendChangedEventArgs(this._aggroListSortDecend));
-                    }
+                    AggroListSortDecendChanged?.Invoke(this, new AggroListSortDecendChangedEventArgs(this._aggroListSortDecend));
                 }
             }
         }

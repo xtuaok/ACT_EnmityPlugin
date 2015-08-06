@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Reflection;
-using System.Text.RegularExpressions;
-using Advanced_Combat_Tracker;
-using System.Runtime.InteropServices;
 using System.Threading;
 
 namespace Tamagawa.EnmityPlugin
@@ -22,22 +17,8 @@ namespace Tamagawa.EnmityPlugin
         }
 
         private Thread _thread;
-        private List<Combatant> _Combatants = new List<Combatant>();
-        internal List<Combatant> Combatants
-        {
-            get
-            {
-                return this._Combatants;
-            }
-        }
-        private object _CombatantsLock = new object();
-        internal object CombatantsLock
-        {
-            get
-            {
-                return this._CombatantsLock;
-            }
-        }
+        internal List<Combatant> Combatants { get; private set; }
+        internal object CombatantsLock => new object();
 
         private const string charmapSignature32 = "81FEFFFF0000743581FE58010000732D8B3CB5";
         private const string charmapSignature64 = "48C1E8033DFFFF0000742B3DA80100007324488D0D";
@@ -82,6 +63,8 @@ namespace Tamagawa.EnmityPlugin
 
             this.getPointerAddress();
 
+            Combatants = new List<Combatant>();
+
             _thread = new Thread(new ThreadStart(doScanCombatants));
             _thread.IsBackground = true;
             _thread.Start();
@@ -112,7 +95,7 @@ namespace Tamagawa.EnmityPlugin
                 c = this._getCombatantList();
                 lock (CombatantsLock)
                 {
-                    this._Combatants = c;
+                    this.Combatants = c;
                 }
             }
         }
@@ -163,7 +146,7 @@ namespace Tamagawa.EnmityPlugin
             int targetOffset = targetOffset32;
             int charmapOffset = charmapOffset32;
             int enmityOffset = enmityOffset32;
-            List<string> sigs = new List<string>();
+            List<string> fail = new List<string>();
 
             bool bRIP = false;
 
@@ -190,7 +173,7 @@ namespace Tamagawa.EnmityPlugin
             }
             if (charmapAddress == IntPtr.Zero)
             {
-                sigs.Add( "CombatantList");
+                fail.Add(nameof(charmapAddress));
                 success = false;
             }
 
@@ -207,7 +190,7 @@ namespace Tamagawa.EnmityPlugin
             }
             if (enmityAddress == IntPtr.Zero)
             {
-                sigs.Add("EnmityMap");
+                fail.Add(nameof(enmityAddress));
                 success = false;
             }
 
@@ -223,7 +206,7 @@ namespace Tamagawa.EnmityPlugin
             }
             if (targetAddress == IntPtr.Zero)
             {
-                sigs.Add("Target");
+                fail.Add(nameof(targetAddress));
                 success = false;
             }
 
@@ -241,7 +224,7 @@ namespace Tamagawa.EnmityPlugin
             }
             else if (!success)
             {
-                throw new MemoryScanException(String.Format(Messages.FailedToSigScan, String.Join(",", sigs)));
+                throw new MemoryScanException(String.Format(Messages.FailedToSigScan, String.Join(",", fail)));
             }
             return success;
         }

@@ -1,15 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Reflection;
-using System.Resources;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
 
@@ -38,6 +31,7 @@ namespace Tamagawa.EnmityPlugin
                 return product.Product;
             }
         }
+
         public static string Check()
         {
             var release = string.Empty;
@@ -111,7 +105,7 @@ namespace Tamagawa.EnmityPlugin
                 }
             } catch (Exception ex)
             {
-                release = String.Format("Update check error: {0}", ex.ToString());
+                release = $"Update check error: {ex.ToString()}";
             }
             return release;
         }

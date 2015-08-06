@@ -1,13 +1,7 @@
-﻿using Advanced_Combat_Tracker;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
-using System.Resources;
-using System.Runtime.Serialization.Json;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using RainbowMage.OverlayPlugin;
 
@@ -87,19 +81,21 @@ namespace Tamagawa.EnmityPlugin
         public void LogError(string format, params object[] args)
         {
             if (suppress_log == false)
+            {
                 Log(LogLevel.Error, format, args);
+            }
         }
 
         public void LogWarning(string format, params object[] args)
         {
             if (suppress_log == false)
+            {
                 Log(LogLevel.Warning, format, args);
+            }
         }
 
         public void LogInfo(string format, params object[] args)
-        {
-            Log(LogLevel.Info, format, args);
-        }
+            => Log(LogLevel.Info, format, args);
 
         /// <summary>
         /// プロセスの有効性をチェック
@@ -181,7 +177,7 @@ namespace Tamagawa.EnmityPlugin
             }
             catch (Exception ex)
             {
-                LogError("Update: {1}", this.Name, ex);
+                LogError("Update: {0} {1}", this.Name, ex.ToString());
             }
         }
 
@@ -318,10 +314,8 @@ namespace Tamagawa.EnmityPlugin
         }
 
         private string CreateEventDispatcherScript()
-        {
-            return "var ActXiv = { 'Enmity': " + this.CreateJsonData() + " };\n" +
-                   "document.dispatchEvent(new CustomEvent('onOverlayDataUpdate', { detail: ActXiv }));";
-        }
+            => "var ActXiv = { 'Enmity': " + this.CreateJsonData() + " };\n" +
+               "document.dispatchEvent(new CustomEvent('onOverlayDataUpdate', { detail: ActXiv }));";
 
         /// <summary>
         /// スキャン間隔を更新する
@@ -363,10 +357,7 @@ namespace Tamagawa.EnmityPlugin
             }
         }
 
-        protected override void InitializeTimer()
-        {
-            base.InitializeTimer();
-        }
+        protected override void InitializeTimer() => base.InitializeTimer();
 
         //// JSON用オブジェクト
         private class EnmityObject

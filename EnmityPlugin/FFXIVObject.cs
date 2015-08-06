@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Tamagawa.EnmityPlugin
 {
@@ -127,27 +123,9 @@ namespace Tamagawa.EnmityPlugin
         public bool isMe;
         public int HateRate;
         public byte Job;
-        public string JobName
-        {
-            get
-            {
-                return Enum.GetName(typeof(JobEnum), Job);
-            }
-        }
-        public string EnmityString
-        {
-            get
-            {
-                return Enmity.ToString("##,#");
-            }
-        }
-        public bool isPet
-        {
-            get
-            {
-                return (OwnerID != 0);
-            }
-        }
+        public string JobName => Enum.GetName(typeof(JobEnum), Job);
+        public string EnmityString => Enmity.ToString("##,#");
+        public bool isPet => (OwnerID != 0);
     }
   
     //// 敵視リストエントリ
