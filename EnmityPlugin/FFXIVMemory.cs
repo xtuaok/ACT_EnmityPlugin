@@ -214,17 +214,15 @@ namespace Tamagawa.EnmityPlugin
             _overlay.LogDebug("enmityAddress: 0x{0:X}", enmityAddress.ToInt64());
             _overlay.LogDebug("targetAddress: 0x{0:X}", targetAddress.ToInt64());
 
-            if (success || charmapAddress != IntPtr.Zero)
-            {
-                Combatant c = GetSelfCombatant();
-                if (c != null)
-                {
-                    _overlay.LogDebug("MyCharacter: '{0}' ({1})", c.Name, c.ID);
-                }
-            }
-            else if (!success)
+            if (!success)
             {
                 throw new MemoryScanException(String.Format(Messages.FailedToSigScan, String.Join(",", fail)));
+            }
+
+            Combatant c = GetSelfCombatant();
+            if (c != null)
+            {
+                _overlay.LogDebug("MyCharacter: '{0}' ({1})", c.Name, c.ID);
             }
             return success;
         }
