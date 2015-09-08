@@ -30,8 +30,8 @@ namespace Tamagawa.EnmityPlugin
         private const int charmapOffset64 = 0;
         private const int targetOffset32  = 88;
         private const int targetOffset64  = 0;
-        private const int enmityOffset32  = 0;
-        private const int enmityOffset64  = 0;
+        private const int enmityOffset32  = 0x4AB4;
+        private const int enmityOffset64  = 0x62A0;
 
         private EnmityOverlay _overlay;
         private Process _process;
@@ -142,7 +142,7 @@ namespace Tamagawa.EnmityPlugin
             bool success = true;
             string charmapSignature = charmapSignature32;
             string targetSignature = targetSignature32;
-            string enmitySignature = enmitySignature32;
+            // string enmitySignature = enmitySignature32;
             int targetOffset = targetOffset32;
             int charmapOffset = charmapOffset32;
             int enmityOffset = enmityOffset32;
@@ -157,7 +157,7 @@ namespace Tamagawa.EnmityPlugin
                 charmapOffset = charmapOffset64;
                 targetSignature = targetSignature64;
                 charmapSignature = charmapSignature64;
-                enmitySignature = enmitySignature64;
+                //enmitySignature = enmitySignature64;
                 enmityOffset = enmityOffset64;
             }
 
@@ -178,6 +178,9 @@ namespace Tamagawa.EnmityPlugin
             }
 
             // ENMITY
+            enmityAddress = IntPtr.Add(charmapAddress, enmityOffset);
+            aggroAddress = IntPtr.Add(enmityAddress, 0x900 + 8);
+            /*
             list = SigScan(enmitySignature, 0, bRIP);
             if (list == null || list.Count == 0)
             {
@@ -193,7 +196,7 @@ namespace Tamagawa.EnmityPlugin
                 fail.Add(nameof(enmityAddress));
                 success = false;
             }
-
+            */
             /// TARGET
             list = SigScan(targetSignature, 0, bRIP);
             if (list == null || list.Count == 0)
