@@ -312,7 +312,7 @@ namespace Tamagawa.EnmityPlugin
         public Combatant GetHoverCombatant()
         {
             Combatant self = null;
-            int offset = _mode == FFXIVClientMode.FFXIV_64 ? 0x30 : 0x18;
+            int offset = _mode == FFXIVClientMode.FFXIV_64 ? 0x38 : 0x1B;
             IntPtr address = (IntPtr)GetUInt32(targetAddress + offset);
             if (address.ToInt64() > 0)
             {
