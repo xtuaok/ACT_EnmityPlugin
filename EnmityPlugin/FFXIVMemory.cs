@@ -23,7 +23,7 @@ namespace Tamagawa.EnmityPlugin
         private const string charmapSignature32 = "81FEFFFF0000743581FE58010000732D8B3CB5";
         private const string charmapSignature64 = "48C1E8033DFFFF0000742B3DA80100007324488D0D";
         private const string targetSignature32  = "750E85D2750AB9";
-        private const string targetSignature64  = "31017520483935";
+        private const string targetSignature64  = "37017520483935";
         private const string enmitySignature32  = "E8??E33000B9??A4????E8????3300B9";
         private const string enmitySignature64  = "0CA43C00488D0D????3C01E8????3F00488D0D";
         private const int charmapOffset32 = 0;
@@ -399,7 +399,7 @@ namespace Tamagawa.EnmityPlugin
 
                 if (combatant.type == ObjectType.PC || combatant.type == ObjectType.Monster)
                 {
-                    offset = (_mode == FFXIVClientMode.FFXIV_64) ? 5304 : 4656;
+                    offset = (_mode == FFXIVClientMode.FFXIV_64) ? 0x14E8 : 4656;
                     combatant.Job       = p[offset];
                     combatant.Level     = p[offset + 1];
                     combatant.CurrentHP = *(int*)&p[offset + 8];
