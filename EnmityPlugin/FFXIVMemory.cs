@@ -296,7 +296,7 @@ namespace Tamagawa.EnmityPlugin
         public Combatant GetFocusCombatant()
         {
             Combatant self = null;
-            int offset = _mode == FFXIVClientMode.FFXIV_64 ? 0x70 : 0x48;
+            int offset = _mode == FFXIVClientMode.FFXIV_64 ? 0x78 : 0x44;
             IntPtr address = (IntPtr)GetUInt32(targetAddress + offset);
             if (address.ToInt64() > 0)
             {
@@ -312,7 +312,7 @@ namespace Tamagawa.EnmityPlugin
         public Combatant GetHoverCombatant()
         {
             Combatant self = null;
-            int offset = _mode == FFXIVClientMode.FFXIV_64 ? 0x38 : 0x1B;
+            int offset = _mode == FFXIVClientMode.FFXIV_64 ? 0x48 : 0x24;
             IntPtr address = (IntPtr)GetUInt32(targetAddress + offset);
             if (address.ToInt64() > 0)
             {
