@@ -666,7 +666,7 @@ namespace Tamagawa.EnmityPlugin
                 }
             }
 
-            int num = 4096;
+            int num = 65536;
 
             int moduleMemorySize = _process.MainModule.ModuleMemorySize;
             IntPtr baseAddress = _process.MainModule.BaseAddress;
