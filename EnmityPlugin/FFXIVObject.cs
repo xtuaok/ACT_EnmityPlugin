@@ -110,7 +110,9 @@ namespace Tamagawa.EnmityPlugin
         NIN, // 30
         MCH, // 31
         DRK, // 32
-        AST  // 33
+        AST, // 33
+        SAM, // 34
+        RDM  // 35
     }
 
     //// 敵視されてるキャラエントリ
