@@ -27,6 +27,8 @@ var JobRole = {
     ROG: 'DPS',
     NIN: 'DPS',
     MCH: 'DPS',
+	SAM: 'DPS',
+	RDM: 'DPS'
 };
 
 // フィルタ
