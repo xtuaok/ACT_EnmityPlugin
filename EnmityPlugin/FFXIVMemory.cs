@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
 
+// 2017/06/20 1:12:38: Info: EnmityDebug: DEBUG: MyCharacter: 'Amazon Prime' (268717602) 224E0410
+
 namespace Tamagawa.EnmityPlugin
 {
     public class FFXIVMemory : IDisposable
@@ -21,17 +23,17 @@ namespace Tamagawa.EnmityPlugin
         internal object CombatantsLock => new object();
 
         private const string charmapSignature32 = "81FEFFFF0000743581FE58010000732D8B3CB5";
-        private const string charmapSignature64 = "48C1E8033DFFFF0000742B3DA80100007324488D0D";
+        private const string charmapSignature64 = "488b03488bcbff90a0000000888391000000488d0d";
         private const string targetSignature32  = "750E85D2750AB9";
-        private const string targetSignature64  = "4F017520483935";
+        private const string targetSignature64  = "1E017520483935";
         private const string enmitySignature32  = "E8??E33000B9??A4????E8????3300B9";
         private const string enmitySignature64  = "0CA43C00488D0D????3C01E8????3F00488D0D";
         private const int charmapOffset32 = 0;
-        private const int charmapOffset64 = 0;
+        private const int charmapOffset64 = 16;
         private const int targetOffset32  = 88;
         private const int targetOffset64  = 0;
         private const int enmityOffset32  = 0x4A58;
-        private const int enmityOffset64  = 0x61B8;
+        private const int enmityOffset64  = 0x4A38;
 
         private EnmityOverlay _overlay;
         private Process _process;
@@ -49,6 +51,7 @@ namespace Tamagawa.EnmityPlugin
             if (process.ProcessName == "ffxiv")
             {
                 _mode = FFXIVClientMode.FFXIV_32;
+                throw new MemoryScanException(String.Format("DX9 is not supported."));
             }
             else if (process.ProcessName == "ffxiv_dx11")
             {
@@ -266,7 +269,7 @@ namespace Tamagawa.EnmityPlugin
         public Combatant GetSelfCombatant()
         {
             Combatant self = null;
-            IntPtr address = (IntPtr)GetUInt32(charmapAddress);
+            IntPtr address = (IntPtr)GetUInt64(charmapAddress);
             if (address.ToInt64() > 0) {
                 byte[] source = GetByteArray(address, 0x3F40);
                 self = GetCombatantFromByteArray(source);
@@ -374,7 +377,7 @@ namespace Tamagawa.EnmityPlugin
             Combatant combatant = new Combatant();
             fixed (byte* p = source)
             {
-                combatant.Name    = GetStringFromBytes(source, 48);
+                combatant.Name    = GetStringFromBytes(source, 0x30);
                 combatant.ID      = *(uint*)&p[0x74];
                 combatant.OwnerID = *(uint*)&p[0x84];
                 if (combatant.OwnerID == 3758096384u)
@@ -384,7 +387,7 @@ namespace Tamagawa.EnmityPlugin
                 combatant.type = (ObjectType)p[0x8C];
                 combatant.EffectiveDistance = p[0x92];
 
-                offset = (_mode == FFXIVClientMode.FFXIV_64) ? 176 : 160;
+                offset = (_mode == FFXIVClientMode.FFXIV_64) ? 0xA0 : 160;
                 combatant.PosX = *(Single*)&p[offset];
                 combatant.PosZ = *(Single*)&p[offset + 4];
                 combatant.PosY = *(Single*)&p[offset + 8];
@@ -399,9 +402,9 @@ namespace Tamagawa.EnmityPlugin
 
                 if (combatant.type == ObjectType.PC || combatant.type == ObjectType.Monster)
                 {
-                    offset = (_mode == FFXIVClientMode.FFXIV_64) ? 0x1440 : 0x1198;
-                    combatant.Job       = p[offset];
-                    combatant.Level     = p[offset + 1];
+                    offset = (_mode == FFXIVClientMode.FFXIV_64) ? 0x1684 : 0x1198;
+                    combatant.Job       = p[offset + 0x3E];
+                    combatant.Level     = p[offset + 0x40];
                     combatant.CurrentHP = *(int*)&p[offset + 8];
                     combatant.MaxHP     = *(int*)&p[offset + 12];
                     combatant.CurrentMP = *(int*)&p[offset + 16];
@@ -633,6 +636,20 @@ namespace Tamagawa.EnmityPlugin
             var value = new byte[4];
             Peek(IntPtr.Add(address, offset), value);
             fixed (byte* p = &value[0]) ret = *(uint*)p;
+            return ret;
+        }
+
+        /// <summary>
+        /// </summary>
+        /// <param name="address"></param>
+        /// <param name="offset"></param>
+        /// <returns></returns>
+        private unsafe UInt64 GetUInt64(IntPtr address, int offset = 0)
+        {
+            UInt64 ret;
+            var value = new byte[8];
+            Peek(IntPtr.Add(address, offset), value);
+            fixed (byte* p = &value[0]) ret = *(UInt64*)p;
             return ret;
         }
 
